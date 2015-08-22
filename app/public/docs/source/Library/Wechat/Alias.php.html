@@ -1,0 +1,128 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../../../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../../../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../../../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../../../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+/**
+ * Alias.php
+ *
+ * Part of Overtrue\Wechat.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @author    overtrue &lt;i@overtrue.me&gt;
+ * @copyright 2015 overtrue &lt;i@overtrue.me&gt;
+ * @link      https://github.com/overtrue
+ * @link      http://overtrue.me
+ */
+
+namespace Overtrue\Wechat;
+
+/**
+ * SDK 服务别名
+ */
+class Alias
+{
+
+    /**
+     * 别名对应关系
+     *
+     * @var array
+     */
+    protected static $aliases = array(
+                                 'WechatAuth'            =&gt; 'Overtrue\\Wechat\\Auth',
+                                 'WechatCard'            =&gt; 'Overtrue\\Wechat\\Card',
+                                 'WechatException'       =&gt; 'Overtrue\\Wechat\\Exception',
+                                 'WechatGroup'           =&gt; 'Overtrue\\Wechat\\Group',
+                                 'WechatImage'           =&gt; 'Overtrue\\Wechat\\Image',
+                                 'WechatJs'              =&gt; 'Overtrue\\Wechat\\Js',
+                                 'WechatMedia'           =&gt; 'Overtrue\\Wechat\\Media',
+                                 'WechatMenu'            =&gt; 'Overtrue\\Wechat\\Menu',
+                                 'WechatMenuItem'        =&gt; 'Overtrue\\Wechat\\MenuItem',
+                                 'WechatMessage'         =&gt; 'Overtrue\\Wechat\\Message',
+                                 'WechatBaseMessage'     =&gt; 'Overtrue\\Wechat\\Messages\\BaseMessage',
+                                 'WechatImageMessage'    =&gt; 'Overtrue\\Wechat\\Messages\\Image',
+                                 'WechatLinkMessage'     =&gt; 'Overtrue\\Wechat\\Messages\\Link',
+                                 'WechatLocationMessage' =&gt; 'Overtrue\\Wechat\\Messages\\Location',
+                                 'WechatMusicMessage'    =&gt; 'Overtrue\\Wechat\\Messages\\Music',
+                                 'WechatNewsMessage'     =&gt; 'Overtrue\\Wechat\\Messages\\News',
+                                 'WechatNewsMessageItem' =&gt; 'Overtrue\\Wechat\\Messages\\NewsItem',
+                                 'WechatTextMessage'     =&gt; 'Overtrue\\Wechat\\Messages\\Text',
+                                 'WechatTransferMessage' =&gt; 'Overtrue\\Wechat\\Messages\\Transfer',
+                                 'WechatVideoMessage'    =&gt; 'Overtrue\\Wechat\\Messages\\Video',
+                                 'WechatVoiceMessage'    =&gt; 'Overtrue\\Wechat\\Messages\\Voice',
+                                 'WechatQRCode'          =&gt; 'Overtrue\\Wechat\\QRCode',
+                                 'WechatServer'          =&gt; 'Overtrue\\Wechat\\Server',
+                                 'WechatStaff'           =&gt; 'Overtrue\\Wechat\\Staff',
+                                 'WechatStore'           =&gt; 'Overtrue\\Wechat\\Store',
+                                 'WechatUrl'             =&gt; 'Overtrue\\Wechat\\Url',
+                                 'WechatUser'            =&gt; 'Overtrue\\Wechat\\User',
+                                 'WechatNotice'          =&gt; 'Overtrue\\Wechat\\Notice',
+                                 'WechatStats'           =&gt; 'Overtrue\\Wechat\\Stats',
+                                 'WechatSemantic'        =&gt; 'Overtrue\\Wechat\\Semantic',
+                                 'WechatColor'           =&gt; 'Overtrue\\Wechat\\Color',
+                                );
+
+    /**
+     * 是否已经注册过
+     *
+     * @var bool
+     */
+    protected static $registered = false;
+
+    /**
+     * 注册别名
+     */
+    public static function register()
+    {
+        if (!self::$registered) {
+            foreach (self::$aliases as $alias =&gt; $class) {
+                class_alias($class, $alias);
+            }
+
+            self::$registered = true;
+        }
+    }
+}
+</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all();
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,197 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../../../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../../../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../../../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../../../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+/**
+ * Cache.php
+ *
+ * Part of Overtrue\Wechat.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @author    overtrue &lt;i@overtrue.me&gt;
+ * @copyright 2015 overtrue &lt;i@overtrue.me&gt;
+ * @link      https://github.com/overtrue
+ * @link      http://overtrue.me
+ */
+
+namespace Overtrue\Wechat;
+
+/**
+ * 缓存服务
+ */
+class Cache
+{
+
+    /**
+     * 缓存文件前缀
+     *
+     * @var string
+     */
+    protected $prefix;
+
+    /**
+     * 缓存写入器
+     *
+     * @var callable
+     */
+    protected static $cacheSetter;
+
+    /**
+     * 缓存读取器
+     *
+     * @var callable
+     */
+    protected static $cacheGetter;
+
+    /**
+     * 设置缓存文件前缀
+     *
+     * @param string $prefix 缓存文件前缀
+     */
+    public function __construct($prefix = '')
+    {
+        $this-&gt;prefix = $prefix;
+    }
+
+    /**
+     * 默认的缓存写入器
+     *
+     * @param string $key
+     * @param mixed  $value
+     * @param int    $lifetime
+     */
+    public function set($key, $value, $lifetime = 7200)
+    {
+        if (self::$cacheSetter) {
+            return call_user_func_array(self::$cacheSetter, func_get_args());
+        }
+
+        $data = array(
+                 'data'       =&gt; $value,
+                 'expired_at' =&gt; time() + $lifetime - 500, //XXX: 减去 100 秒更可靠的说
+                );
+
+        if (!file_put_contents($this-&gt;getCacheFile($key), serialize($data))) {
+            throw new Exception('Access toekn 缓存失败');
+        }
+    }
+
+    /**
+     * 默认的缓存读取器
+     *
+     * @param string $key
+     * @param mixed  $default
+     */
+    public function get($key, $default = null)
+    {
+        $return = null;
+
+        if (self::$cacheGetter) {
+            $return = call_user_func_array(self::$cacheGetter, func_get_args());
+        } else {
+            $file = $this-&gt;getCacheFile($key);
+
+            if (file_exists($file) &amp;&amp; ($data = unserialize(file_get_contents($file)))) {
+                $return = $data['expired_at'] &gt; time() ? $data['data'] : null;
+            }
+        }
+
+        if (!$return) {
+            $return = is_callable($default) ? $default($key) : $default;
+        }
+
+        return $return;
+    }
+
+    /**
+     * 删除缓存
+     *
+     * @return bool
+     */
+    public function forget($key)
+    {
+        try {
+            unlink($this-&gt;getCacheFile($key));
+        } catch (Exception $e) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * 设置缓存写入器
+     *
+     * @param callable $handler
+     */
+    public static function setter($handler)
+    {
+        is_callable($handler) &amp;&amp; self::$cacheSetter = $handler;
+    }
+
+    /**
+     * 设置缓存读取器
+     *
+     * @param callable $handler
+     */
+    public static function getter($handler)
+    {
+        is_callable($handler) &amp;&amp; self::$cacheGetter = $handler;
+    }
+
+    /**
+     * 获取缓存文件名
+     *
+     * @param string $key
+     *
+     * @return string
+     */
+    protected function getCacheFile($key)
+    {
+        return sys_get_temp_dir().DIRECTORY_SEPARATOR.md5($this-&gt;prefix.$key);
+    }
+}
+</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all();
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>

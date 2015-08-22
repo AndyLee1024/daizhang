@@ -1,0 +1,122 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../../../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../../../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../../../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../../../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+/**
+ * Color.php
+ *
+ * Part of Overtrue\Wechat.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @author    overtrue &lt;i@overtrue.me&gt;
+ * @copyright 2015 overtrue &lt;i@overtrue.me&gt;
+ * @link      https://github.com/overtrue
+ * @link      http://overtrue.me
+ */
+
+namespace Overtrue\Wechat;
+
+/**
+ * 颜色接口
+ */
+class Color
+{
+
+    /**
+     * Http对象
+     *
+     * @var Http
+     */
+    protected $http;
+
+    /**
+     * Cache对象
+     *
+     * @var Cache
+     */
+    protected $cache;
+
+    const API_LIST = 'https://api.weixin.qq.com/card/getcolors';
+
+    /**
+     * constructor
+     *
+     * @param string $appId
+     * @param string $appSecret
+     */
+    public function __construct($appId, $appSecret)
+    {
+        $this-&gt;http  = new Http(new AccessToken($appId, $appSecret));
+        $this-&gt;cache = new Cache($appId);
+    }
+
+    /**
+     * 获取颜色列表
+     *
+     * @return array
+     */
+    public function lists()
+    {
+        $key = 'overtrue.wechat.colors';
+
+        // for php 5.3
+        $http    = $this-&gt;http;
+        $cache   = $this-&gt;cache;
+        $apiList = self::API_LIST;
+
+        return $this-&gt;cache-&gt;get(
+            $key,
+            function ($key) use ($http, $cache, $apiList) {
+                $result = $http-&gt;get($apiList);
+
+                $cache-&gt;set($key, $result['colors'], 86400);// 1 day
+
+                return $result['colors'];
+            }
+        );
+    }
+}
+</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all();
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>

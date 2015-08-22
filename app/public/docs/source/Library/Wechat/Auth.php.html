@@ -1,0 +1,310 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../../../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../../../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../../../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../../../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+/**
+ * Auth.php
+ *
+ * Part of Overtrue\Wechat.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @author    overtrue &lt;i@overtrue.me&gt;
+ * @copyright 2015 overtrue &lt;i@overtrue.me&gt;
+ * @link      https://github.com/overtrue
+ * @link      http://overtrue.me
+ */
+
+namespace Overtrue\Wechat;
+
+use Overtrue\Wechat\Utils\Bag;
+
+/**
+ * OAuth 网页授权获取用户信息
+ */
+class Auth
+{
+
+    /**
+     * 应用ID
+     *
+     * @var string
+     */
+    protected $appId;
+
+    /**
+     * 应用secret
+     *
+     * @var string
+     */
+    protected $appSecret;
+
+    /**
+     * Http对象
+     *
+     * @var Http
+     */
+    protected $http;
+
+    /**
+     * 输入
+     *
+     * @var Bag
+     */
+    protected $input;
+
+    /**
+     * 获取上一次的授权信息
+     *
+     * @var array
+     */
+    protected $lastPermission;
+
+    /**
+     * 已授权用户
+     *
+     * @var \Overtrue\Wechat\Utils\Bag
+     */
+    protected $authorizedUser;
+
+    const API_USER           = 'https://api.weixin.qq.com/sns/userinfo';
+    const API_TOKEN_GET      = 'https://api.weixin.qq.com/sns/oauth2/access_token';
+    const API_TOKEN_REFRESH  = 'https://api.weixin.qq.com/sns/oauth2/refresh_token';
+    const API_TOKEN_VALIDATE = 'https://api.weixin.qq.com/sns/auth';
+    const API_URL            = 'https://open.weixin.qq.com/connect/oauth2/authorize';
+
+    /**
+     * constructor
+     *
+     * @param string $appId
+     * @param string $appSecret
+     */
+    public function __construct($appId, $appSecret)
+    {
+        $this-&gt;appId     = $appId;
+        $this-&gt;appSecret = $appSecret;
+        $this-&gt;http      = new Http(); // 不需要公用的access_token
+        $this-&gt;input     = new Input();
+    }
+
+    /**
+     * 生成outh URL
+     *
+     * @param string $to
+     * @param string $scope
+     * @param string $state
+     *
+     * @return string
+     */
+    public function url($to = null, $scope = 'snsapi_userinfo', $state = 'STATE')
+    {
+        $to !== null || $to = Url::current();
+
+        $params = array(
+                   'appid'         =&gt; $this-&gt;appId,
+                   'redirect_uri'  =&gt; $to,
+                   'response_type' =&gt; 'code',
+                   'scope'         =&gt; $scope,
+                   'state'         =&gt; $state,
+                  );
+
+        return self::API_URL.'?'.http_build_query($params).'#wechat_redirect';
+    }
+
+    /**
+     * 直接跳转
+     *
+     * @param string $to
+     * @param string $scope
+     * @param string $state
+     */
+    public function redirect($to = null, $scope = 'snsapi_userinfo', $state = 'STATE')
+    {
+        header('Location:'.$this-&gt;url($to, $scope, $state));
+
+        exit;
+    }
+
+    /**
+     * 获取已授权用户
+     *
+     * @return \Overtrue\Wechat\Utils\Bag | null
+     */
+    public function user()
+    {
+        if ($this-&gt;authorizedUser
+            || !$this-&gt;input-&gt;has('state')
+            || (!$code = $this-&gt;input-&gt;get('code')) &amp;&amp; $this-&gt;input-&gt;has('state')) {
+            return $this-&gt;authorizedUser;
+        }
+
+        $permission = $this-&gt;getAccessPermission($code);
+
+        if ($permission['scope'] !== 'snsapi_userinfo') {
+            $user = new Bag(array('openid' =&gt; $permission['openid']));
+        } else {
+            $user = $this-&gt;getUser($permission['openid'], $permission['access_token']);
+        }
+
+        return $this-&gt;authorizedUser = $user;
+    }
+
+    /**
+     * 通过授权获取用户
+     *
+     * @param string $to
+     * @param string $state
+     * @param string $scope
+     *
+     * @return Bag | null
+     */
+    public function authorize($to = null, $scope = 'snsapi_userinfo', $state = 'STATE')
+    {
+        if (!$this-&gt;input-&gt;has('state') &amp;&amp; !$this-&gt;input-&gt;has('code')) {
+            $this-&gt;redirect($to, $scope, $state);
+        }
+
+        return $this-&gt;user();
+    }
+
+    /**
+     * 检查 Access Token 是否有效
+     *
+     * @param string $accessToken
+     * @param string $openId
+     *
+     * @return boolean
+     */
+    public function accessTokenIsValid($accessToken, $openId)
+    {
+        $params = array(
+                   'openid'       =&gt; $openId,
+                   'access_token' =&gt; $accessToken,
+                  );
+        try {
+            $this-&gt;http-&gt;get(self::API_TOKEN_VALIDATE, $params);
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    /**
+     * 刷新 access_token
+     *
+     * @param string $refreshToken
+     *
+     * @return Bag
+     */
+    public function refresh($refreshToken)
+    {
+        $params = array(
+                   'appid'         =&gt; $this-&gt;appId,
+                   'grant_type'    =&gt; 'refresh_token',
+                   'refresh_token' =&gt; $refreshToken,
+                  );
+
+        $permission = $this-&gt;http-&gt;get(self::API_TOKEN_REFRESH, $params);
+
+        $this-&gt;lastPermission = array_merge($this-&gt;lastPermission, $permission);
+
+        return new Bag($permission);
+    }
+
+    /**
+     * 获取用户信息
+     *
+     * @param string $openId
+     * @param string $accessToken
+     *
+     * @return array
+     */
+    public function getUser($openId, $accessToken)
+    {
+        $queries = array(
+                    'access_token' =&gt; $accessToken,
+                    'openid'       =&gt; $openId,
+                    'lang'         =&gt; 'zh_CN',
+                   );
+
+        $url = self::API_USER.'?'.http_build_query($queries);
+
+        return new Bag($this-&gt;http-&gt;get($url));
+    }
+
+    /**
+     * 获取access token
+     *
+     * @param string $code
+     *
+     * @return string
+     */
+    public function getAccessPermission($code)
+    {
+        $params = array(
+                   'appid'      =&gt; $this-&gt;appId,
+                   'secret'     =&gt; $this-&gt;appSecret,
+                   'code'       =&gt; $code,
+                   'grant_type' =&gt; 'authorization_code',
+                  );
+
+        return $this-&gt;lastPermission = $this-&gt;http-&gt;get(self::API_TOKEN_GET, $params);
+    }
+
+    /**
+     * 魔术访问
+     *
+     * @param string $property
+     *
+     * @return mixed
+     */
+    public function __get($property)
+    {
+        if (isset($this-&gt;lastPermission[$property])) {
+            return $this-&gt;lastPermission[$property];
+        }
+    }
+}
+</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all();
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>

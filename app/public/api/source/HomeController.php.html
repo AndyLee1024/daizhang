@@ -1,0 +1,256 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+
+namespace App\Http\Controllers;
+
+use Auth;
+use View;
+use Input;
+use App\Task;
+use Validator;
+use App\Company;
+use App\UserNexus;
+use App\Http\Requests;
+use App\CustomerCompany;
+use Illuminate\Http\Request;
+
+/**
+ * Class HomeController
+ * @package App\Http\Controllers
+ * @version 1.0
+ * @author  AndyLee &lt;root@lostman.org&gt;
+ */
+class HomeController extends BaseController
+{
+
+
+    /**
+     * Home
+     * @return mixed
+     * @param Request $request
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getHome(Request $request)
+    {
+
+        $nexus = new UserNexus();
+
+        $record = $nexus-&gt;where('operator_id', Auth::user()-&gt;id)-&gt;first();
+
+
+        if(empty($record)){
+            return view('home')-&gt;with('record', '');
+        }
+
+        if($request-&gt;session()-&gt;has('company_id')){
+
+            return redirect()-&gt;to('/dashboard');
+
+        }else{
+            $record = $nexus-&gt;where('operator_id', Auth::user()-&gt;id)-&gt;get();
+
+            return view('home')-&gt;with('record', $record);
+        }
+
+    }
+
+    /**
+     * 创建或者选择代账公司
+     * @return mixed
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getCreateCompany()
+    {
+        return view('create_user');
+    }
+
+    /**
+     * 添加代帐公司
+     * @return mixed
+     * @param Request $request
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function postChooseType(Request $request)
+    {
+        //TODO 是否限制用户创建的代帐公司个数
+
+        $input = $request-&gt;only('type', 'company', 'mobile');
+        $rules = [
+
+            'type'    =&gt; 'required|min:0|max:1|integer',
+            'company' =&gt; 'required',
+            'mobile'  =&gt; 'required|Regex:/^1[0-9]{10}$/'
+
+        ];
+
+        $v = Validator::make($input, $rules);
+        if($v-&gt;fails()){
+            $request-&gt;session()-&gt;flash('error', $v-&gt;messages()-&gt;first());
+            return redirect()-&gt;to('/');
+        }
+
+        $company = new Company;
+
+        /**
+         * 0为个人版本   1为收费
+         */
+        if($input['type'] == 0){
+            $company-&gt;registion_type = 'personal';
+        }else{
+            $company-&gt;registion_type = 'company';
+        }
+
+        $company-&gt;package_id = $input['type'];
+        $company-&gt;name = $input['company'];
+        $company-&gt;status = 0 ; //0为正常运行状态
+        $company-&gt;mobile = $input['mobile'];
+        $company-&gt;main_user = Auth::user()-&gt;id;
+        $company-&gt;save();
+
+        /**
+         * 绑定代帐公司与操作员
+         */
+        $nexus = new UserNexus;
+        $nexus-&gt;operator_id = Auth::user()-&gt;id;
+        $nexus-&gt;user_id = $company-&gt;id;
+        $nexus-&gt;level = 1;
+        $nexus-&gt;save();
+
+        $request-&gt;session()-&gt;flash('success', '信息完善成功，欢迎使用代帐通,请选择登录的代帐账户');
+
+        return redirect()-&gt;to('/');
+
+    }
+
+    /**
+     * 设置代帐公司
+     * @return mixed
+     * @param Request $request
+     * @param $company_id int 公司ID
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getSetCompany(Request $request, $company_id)
+    {
+        /**
+         * 检测是否有权限操作
+         */
+
+        $map = array();
+        $map['user_id'] = $company_id;
+        $map['operator_id'] = auth()-&gt;user()-&gt;id;
+
+        $nexus = new UserNexus();
+        $record = $nexus-&gt;where($map)-&gt;first();
+        if(empty($record)){
+            $request-&gt;session()-&gt;flash('error', '您不属于此代账公司,没有权限进行操作');
+            return redirect()-&gt;back();
+        }
+
+        $request-&gt;session()-&gt;put('company_id', $company_id);
+
+        return redirect()-&gt;to('/dashboard');
+
+    }
+
+    /**
+     * 仪表盘
+     * @param Request $request
+     * @return mixed
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getDashBoard(Request $request)
+    {
+        if(!$request-&gt;session()-&gt;has('company_id')){
+            $request-&gt;session()-&gt;flash('error', '请先选择一个代帐公司');
+            return redirect()-&gt;to('/');
+        }
+
+        $today_start = strtotime(date('Y-m-d', time()).' 00:00:00');
+        $today_end = strtotime(date('Y-m-d', time()).' 23:59:59');
+
+
+        /**
+         * 获取公司
+         */
+
+        $customers = CustomerCompany::where('user_id', $request-&gt;session()-&gt;get('company_id'));
+
+        $count = $customers-&gt;count();
+
+        $new_customer = CustomerCompany::where('user_id', $request-&gt;session()-&gt;get('company_id'))
+            -&gt;whereBetween('create_time', array($today_start, $today_end))-&gt;count();
+
+
+        $month_begin = mktime(0,0,0,date('m'),1,date('Y'));
+
+        $month_end = mktime(23,59,59,date('m'),date('t'),date('Y'));
+
+        /**
+         * 获取todo
+         */
+
+        $count_task  =  Task::where('user_id', $request-&gt;session()-&gt;get('company_id'))-&gt;count();
+
+        $finish = Task::whereRaw('user_id = ? and is_finish = ?', [$request-&gt;session()-&gt;get('company_id'), 1])
+            -&gt;whereBetween('finish_time', array(
+                $month_begin,
+                $month_end
+            ))-&gt;count();
+
+        $order = $customers-&gt;orderBy('last_active_time', 'desc')-&gt;take(10)-&gt;get();
+
+
+        return view('dashboard')-&gt;with('count', $count)
+            -&gt;with('new', $new_customer)
+            -&gt;with('tasks', $count_task)
+            -&gt;with('order', $order)
+            -&gt;with('finish', $finish);
+    }
+
+
+
+}
+</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all();
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>

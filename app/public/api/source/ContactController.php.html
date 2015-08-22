@@ -1,0 +1,272 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+
+namespace App\Http\Controllers;
+
+use Auth;
+use Input;
+use Session;
+use Redirect;
+use Validator;
+use App\Contact;
+use App\Http\Requests;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+/**
+ * 客户 - 联系人模块
+ * @package App\Http\Controllers
+ * @version 1.0
+ * @author  AndyLee &lt;root@lostman.org&gt;
+ */
+class ContactController extends BaseController
+{
+
+    /**
+     * 公司联系人
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getContact()
+    {
+        $map = [
+            'company_id' =&gt; Session::get('customer_id'),
+            'operator_id' =&gt; Auth::user()-&gt;id
+        ];
+        $contacts = Contact::where($map)-&gt;get();
+
+        return view('customer.contact.index')-&gt;with('contacts', $contacts);
+    }
+
+    /**
+     * 设置默认联系人
+     * @param int $id 客户公司id
+     * @param int $pid 联系人ID
+     * @return mixed
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getSetDefaultContact($id, $pid)
+    {
+        $map = [
+            'id' =&gt; $pid,
+            'company_id' =&gt; Session::get('customer_id')
+        ];
+
+        try {
+            $record = Contact::where($map)-&gt;findOrFail($pid);
+        } catch (ModelNotFoundException $e) {
+            Session::flash('error', '记录不存在');
+            return redirect()-&gt;back();
+        }
+
+        $contacts = Contact::where('company_id', Session::get('customer_id'))-&gt;get();
+
+        foreach ($contacts as $contact) {
+            $contact-&gt;is_default = 0;
+            $contact-&gt;save();
+        }
+
+        $record-&gt;is_default = 1;
+        $record-&gt;save();
+        Session::flash('success', '设置默认联系人成功');
+        return redirect()-&gt;back();
+
+    }
+
+    /**
+     * 创建联系人
+     * @return mixed
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getCreateContact()
+    {
+        return view('customer.contact.create');
+    }
+
+    /**
+     * 创建联系人 action
+     * @return mixed
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function postCreateContact()
+    {
+        $input = Input::Only('name', 'post', 'mobile', 'email', 'remarks');
+        $rules = [
+            'name' =&gt; 'required',
+            'post' =&gt; 'required',
+            'mobile' =&gt; 'required|Regex:/^1[0-9]{10}$/|unique:company_contacts,mobile',
+            'email' =&gt; 'email|unique:company_contacts',
+        ];
+
+        $v = Validator::make($input, $rules);
+        if ($v-&gt;fails()) {
+            Session::flash('error', $v-&gt;messages()-&gt;first());
+            return Redirect::back();
+        }
+
+        $contact = new Contact();
+        $contact-&gt;company_id = Session::get('customer_id');
+        $contact-&gt;operator_id = Auth::user()-&gt;id;
+        $contact-&gt;name = $input['name'];
+        $contact-&gt;post = $input['post'];
+        $contact-&gt;mobile = $input['mobile'];
+        $contact-&gt;email = $input['email'];
+        $contact-&gt;remarks = $input['remarks'];
+        $contact-&gt;save();
+
+        Session::flash('success', '添加联系人成功');
+        return Redirect::back();
+    }
+
+    /**
+     * 编辑联系人
+     * @param integer $id 联系人ID
+     * @param integer $cid 公司id
+     * @return mixed
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getModifyContact($cid, $id)
+    {
+        try {
+            $contact = Contact::findOrFail($id);
+        } catch (ModelNotFoundException $e) {
+            Session::flash('error', '操作不存在,联系人不存在!');
+            return Redirect::back();
+        }
+
+        if ($contact-&gt;company_id == Session::get('customer_id')) {
+
+            return view('customer.contact.modify')-&gt;with('contact', $contact);
+        } else {
+            Session::flash('error', '操作失败, 您没有权限访问');
+            return Redirect::back();
+        }
+    }
+
+    /**
+     * 编辑联系人Action
+     * @param $cid integer 公司id
+     * @param $id integer 联系人ID
+     * @return mixed
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function postModifyContact($cid, $id)
+    {
+        $input = Input::Only('name', 'post', 'mobile', 'email', 'remarks');
+        $rules = [
+            'name' =&gt; 'required',
+            'post' =&gt; 'required',
+            'mobile' =&gt; 'required|Regex:/^1[0-9]{10}$/',
+            'email' =&gt; 'required|email',
+        ];
+
+        $v = Validator::make($input, $rules);
+        if ($v-&gt;fails()) {
+            Session::flash('error', $v-&gt;messages()-&gt;first());
+            return Redirect::to(action('ContactController@getModifyContact', [Session::get('customer_id'),$id]));
+        }
+
+        try {
+            $contact = Contact::findOrFail($id);
+        } catch (ModelNotFoundException $e) {
+            Session::flash('error', '操作不存在,联系人不存在!');
+            return Redirect::to(action('ContactController@getContact', Session::get('customer_id')));
+        }
+
+        if ($contact-&gt;company_id == Session::get('customer_id')) {
+
+            $contact-&gt;name = $input['name'];
+            $contact-&gt;post = $input['post'];
+            $contact-&gt;mobile = $input['mobile'];
+            $contact-&gt;email = $input['email'];
+            $contact-&gt;remarks = $input['remarks'];
+            $contact-&gt;save();
+
+            Session::flash('success', '操作成功, 编辑联系人成功');
+            return Redirect::to(action('ContactController@getContact', Session::get('customer_id')));
+
+        } else {
+            Session::flash('error', '操作失败, 您没有权限访问');
+            return Redirect::to(action('ContactController@getContact', Session::get('customer_id')));
+        }
+    }
+
+
+    /**
+     * 删除联系人
+     * @param integer $cid
+     * @return mixed
+     * @param $id
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getDeleteContact($cid, $id)
+    {
+        try {
+            $contact = Contact::findOrFail($id);
+        } catch (ModelNotFoundException $e) {
+            Session::flash('error', '操作不存在,联系人不存在!');
+            return Redirect::to(action('ContactController@getContact', Session::get('customer_id')));
+        }
+
+        if ($contact-&gt;company_id == Session::get('customer_id')) {
+
+            if ($contact-&gt;is_default == 1) {
+                Session::flash('error', '操作失败, 无法删除默认联系人');
+                return Redirect::to(action('ContactController@getContact', Session::get('customer_id')));
+
+            }
+
+            $contact-&gt;delete();
+
+            Session::flash('success', '删除联系人成功');
+            return Redirect::to(action('ContactController@getContact', Session::get('customer_id')));
+
+        } else {
+            Session::flash('error', '操作失败, 您没有权限访问');
+            return Redirect::to(action('ContactController@getContact', Session::get('customer_id')));
+        }
+
+
+    }
+}
+</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all();
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>

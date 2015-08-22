@@ -1,0 +1,117 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+
+namespace App;
+
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
+
+/**
+ * 公司账单
+ * @package App
+ * @version 1.0
+ * @author  Minco &lt;minco.wang@gmail.com&gt;
+ */
+class CompanyBill extends Model
+{
+    //
+    protected $table = 'company_bills';
+
+    const IS_INVOICE_YES = 1;
+    const IS_INVOICE_NO = 0;
+
+    const IS_PAID_YES = 1;
+    const IS_PAID_NO = 0;
+
+    public function getDates()
+    {
+        return array_merge(parent::getDates(), ['deadline', 'paid_date']);
+    }
+
+    /**
+     * 获得有待收款项公司个数
+     * @param $userId
+     * @return int
+     */
+    public static function countUnpaidCompany($userId)
+    {
+        return count(self::where('is_paid', self::IS_PAID_NO)-&gt;where('user_id', $userId)-&gt;distinct()-&gt;lists('company_id'));
+    }
+
+    /**
+     * 获得公司待收款个数
+     * @param $userId
+     * @param $companyId
+     * @return int
+     */
+    public static function countUnpaid($userId, $companyId)
+    {
+        return self::where('is_paid', self::IS_PAID_NO)-&gt;where('company_id', $companyId)-&gt;where('user_id', $userId)-&gt;count();
+    }
+
+
+    /**
+     * 统计代账公司所有都待收款总额
+     * @param $userId
+     * @return mixed
+     */
+    public static function sumAllUnpaidByUser($userId)
+    {
+        return self::where('is_paid', self::IS_PAID_NO)-&gt;where('user_id', $userId)-&gt;sum('grand_total');
+    }
+
+    /**
+     * 统计代账公司本月已收总额
+     * @param $userId
+     * @return mixed
+     */
+    public static function sumCurrentMonthPaidByUser($userId)
+    {
+        $now = Carbon::now();
+        return self::where('user_id', $userId)-&gt;where('deadline', '&gt;=', $now-&gt;format('Y-m-1 00:00:00'))-&gt;where('deadline', '&lt;=', $now-&gt;format('Y-m-31 23:59:59'))-&gt;sum('grand_total');
+    }
+}
+</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all();
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>

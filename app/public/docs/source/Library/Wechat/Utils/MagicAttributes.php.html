@@ -1,0 +1,200 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../../../../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../../../../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../../../../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../../../../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+/**
+ * MagicAttributes.php
+ *
+ * Part of Overtrue\Wechat.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @author    overtrue &lt;i@overtrue.me&gt;
+ * @copyright 2015 overtrue &lt;i@overtrue.me&gt;
+ * @link      https://github.com/overtrue
+ * @link      http://overtrue.me
+ */
+
+namespace Overtrue\Wechat\Utils;
+
+use InvalidArgumentException;
+
+/**
+ * 用于操作通用数组式属性的工具类
+ */
+abstract class MagicAttributes
+{
+
+    /**
+     * 允许设置的属性名称
+     *
+     * @var array
+     */
+    protected $attributes = array();
+
+    /**
+     * 方法名转换缓存
+     *
+     * @var array
+     */
+    protected static $snakeCache = array();
+
+    /**
+     * 设置属性
+     *
+     * @param string $attribute
+     * @param string $value
+     */
+    public function setAttribute($attribute, $value)
+    {
+        return $this-&gt;with($attribute, $value);
+    }
+
+    /**
+     * 设置属性
+     *
+     * @param string $attribute
+     * @param mixed  $value
+     *
+     * @return MagicAttributes
+     */
+    public function with($attribute, $value)
+    {
+        $attribute = $this-&gt;snake($attribute);
+
+        if (!$this-&gt;validate($attribute, $value)) {
+            throw new InvalidArgumentException(&quot;错误的属性值'{$attribute}'&quot;);
+        }
+
+        $this-&gt;attributes[$attribute] = $value;
+
+        return $this;
+    }
+
+    /**
+     * 生成数组
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        return $this-&gt;attributes;
+    }
+
+    /**
+     * 验证
+     *
+     * @param string $attribute
+     * @param mixed  $value
+     *
+     * @return bool
+     */
+    protected function validate($attribute, $value)
+    {
+        return true;
+    }
+
+    /**
+     * 调用不存在的方法
+     *
+     * @param string $method
+     * @param array  $args
+     *
+     * @return MagicAttributes
+     */
+    public function __call($method, $args)
+    {
+        if (stripos($method, 'with') === 0) {
+            $method = substr($method, 4);
+        }
+
+        return $this-&gt;with($method, array_shift($args));
+    }
+
+    /**
+     * 魔术读取
+     *
+     * @param string $property
+     */
+    public function __get($property)
+    {
+        return !isset($this-&gt;attributes[$property]) ? null : $this-&gt;attributes[$property];
+    }
+
+    /**
+     * 魔术写入
+     *
+     * @param string $property
+     * @param mixed  $value
+     */
+    public function __set($property, $value)
+    {
+        return $this-&gt;with($property, $value);
+    }
+
+    /**
+     * 转换为下划线模式字符串
+     *
+     * @param string $value
+     * @param string $delimiter
+     *
+     * @return string
+     */
+    protected function snake($value, $delimiter = '_')
+    {
+        $key = $value.$delimiter;
+
+        if (isset(static::$snakeCache[$key])) {
+            return static::$snakeCache[$key];
+        }
+
+        if (!ctype_lower($value)) {
+            $value = strtolower(preg_replace('/(.)(?=[A-Z])/', '$1'.$delimiter, $value));
+        }
+
+        return static::$snakeCache[$key] = $value;
+    }
+}
+</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all();
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>

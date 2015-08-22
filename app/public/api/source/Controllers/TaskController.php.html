@@ -1,0 +1,203 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+
+namespace App\Http\Controllers;
+
+use Auth;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Validator;
+use Illuminate\Http\Request;
+use App\Task;
+use App\Http\Requests;
+use App\Http\Controllers\BaseController;
+use Illuminate\Support\Facades\Session;
+
+/**
+ * 任务管理
+ * @package App\Http\Controllers
+ * @version 1.0
+ * @author  AndyLee &lt;root@lostman.org&gt;
+ */
+class TaskController extends Controller
+{
+    /**
+     * 列出当前任务
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getTaskList()
+    {
+        $map = [
+            'user_id'    =&gt; Session::get('company_id'),
+            'company_id' =&gt; Session::get('customer_id')
+        ];
+
+        $task_list = Task::where($map)-&gt;get();
+
+        return view('customer.task.index')-&gt;with('tasks', $task_list);
+    }
+
+    /**
+     * 创建任务
+     * @param Request $request
+     * @return mixed
+     * @param integer $id
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getCreateTask(Request $request, $id)
+    {
+        $input = $request-&gt;input('task_name');
+
+        return view('customer.task.create')-&gt;with('input', $input);
+    }
+
+    /**
+     * 创建任务action
+     * @param Request $request
+     * @return mixed
+     * @param integer $id
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function postCreateTask(Request $request, $id)
+    {
+        $input = $request-&gt;only('task_name', 'alert_time', 'remarks');
+
+        $rules = [
+            'task_name'  =&gt; 'required',
+            'alert_time' =&gt; 'date'
+        ];
+
+        $v = Validator::make($input, $rules);
+        if($v-&gt;fails()){
+            Session::flash('error', $v-&gt;messages()-&gt;first());
+            return redirect()-&gt;back();
+        }
+
+        $task = new Task();
+        $task-&gt;todo_name = $input['task_name'];
+        $task-&gt;user_id = Session::get('company_id');
+        $task-&gt;remarks = $input['remarks'];
+        $task-&gt;company_id = Session::get('customer_id');
+        $task-&gt;operator_id = Auth::user()-&gt;id;
+        if(!empty($input['alert_time'])){
+            $task-&gt;remind_time = strtotime($input['alert_time']);
+        }
+
+        $task-&gt;save();
+
+        Session::flash('success', '添加任务成功');
+
+        return redirect(action('TaskController@getTaskList', Session::get('customer_id')));
+    }
+
+    /**
+     * 完成任务
+     * @param integer $id
+     * @return mixed
+     * @param Request $request
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function postFinishTask(Request $request, $id)
+    {
+        if ($request-&gt;ajax())
+        {
+
+            $task_id = $request-&gt;input('task_id');
+
+            $map = [
+                'user_id'     =&gt; Session::get('company_id'),
+                'company_id'  =&gt; Session::get('customer_id'),
+                'id'          =&gt; $task_id
+            ];
+
+            try{
+                $task = Task::where($map)-&gt;firstOrFail();
+            }catch (ModelNotFoundException $e){
+                return response()-&gt;json(['message_code' =&gt; -1, 'message' =&gt; '任务不存在,非法操作']);
+            }
+
+            if($task-&gt;is_finish == 1){
+                $task-&gt;is_finish = 0;
+                $task-&gt;finish_time = '';
+            }else{
+                $task-&gt;finish_time = time();
+                $task-&gt;is_finish = 1;
+            }
+
+            $task-&gt;save();
+
+            return response()-&gt;json(['message_code' =&gt; 1, 'message' =&gt; '操作完成']);
+        }
+    }
+
+    /**
+     * 删除任务
+     * @param Request $request
+     * @param integer $id
+     * @return mixed
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function postRemoveTask(Request $request, $id)
+    {
+        $task_id = $request-&gt;input('task_id');
+
+        $map = [
+            'user_id'     =&gt; Session::get('company_id'),
+            'company_id'  =&gt; Session::get('customer_id'),
+            'id'          =&gt; $task_id
+        ];
+
+
+        try{
+            $task = Task::where($map)-&gt;firstOrFail();
+        }catch (ModelNotFoundException $e){
+            return response()-&gt;json(['message_code' =&gt; -1, 'message' =&gt; '任务不存在,非法操作']);
+        }
+
+        $task-&gt;delete();
+        return response()-&gt;json(['message_code' =&gt; 1, 'message' =&gt; '操作完成']);
+    }
+}
+</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all();
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>

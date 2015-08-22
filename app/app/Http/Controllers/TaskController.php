@@ -1,0 +1,158 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Auth;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Validator;
+use Illuminate\Http\Request;
+use App\Task;
+use App\Http\Requests;
+use App\Http\Controllers\BaseController;
+use Illuminate\Support\Facades\Session;
+
+/**
+ * 任务管理
+ * @package App\Http\Controllers
+ * @version 1.0
+ * @author  AndyLee <root@lostman.org>
+ */
+class TaskController extends Controller
+{
+    /**
+     * 列出当前任务
+     * @author AndyLee <root@lostman.org>
+     */
+    public function getTaskList()
+    {
+        $map = [
+            'user_id'    => Session::get('company_id'),
+            'company_id' => Session::get('customer_id')
+        ];
+
+        $task_list = Task::where($map)->get();
+
+        return view('customer.task.index')->with('tasks', $task_list);
+    }
+
+    /**
+     * 创建任务
+     * @param Request $request
+     * @return mixed
+     * @param integer $id
+     * @author AndyLee <root@lostman.org>
+     */
+    public function getCreateTask(Request $request, $id)
+    {
+        $input = $request->input('task_name');
+
+        return view('customer.task.create')->with('input', $input);
+    }
+
+    /**
+     * 创建任务action
+     * @param Request $request
+     * @return mixed
+     * @param integer $id
+     * @author AndyLee <root@lostman.org>
+     */
+    public function postCreateTask(Request $request, $id)
+    {
+        $input = $request->only('task_name', 'alert_time', 'remarks');
+
+        $rules = [
+            'task_name'  => 'required',
+            'alert_time' => 'date'
+        ];
+
+        $v = Validator::make($input, $rules);
+        if($v->fails()){
+            Session::flash('error', $v->messages()->first());
+            return redirect()->back();
+        }
+
+        $task = new Task();
+        $task->todo_name = $input['task_name'];
+        $task->user_id = Session::get('company_id');
+        $task->remarks = $input['remarks'];
+        $task->company_id = Session::get('customer_id');
+        $task->operator_id = Auth::user()->id;
+        if(!empty($input['alert_time'])){
+            $task->remind_time = strtotime($input['alert_time']);
+        }
+
+        $task->save();
+
+        Session::flash('success', '添加任务成功');
+
+        return redirect(action('TaskController@getTaskList', Session::get('customer_id')));
+    }
+
+    /**
+     * 完成任务
+     * @param integer $id
+     * @return mixed
+     * @param Request $request
+     * @author AndyLee <root@lostman.org>
+     */
+    public function postFinishTask(Request $request, $id)
+    {
+        if ($request->ajax())
+        {
+
+            $task_id = $request->input('task_id');
+
+            $map = [
+                'user_id'     => Session::get('company_id'),
+                'company_id'  => Session::get('customer_id'),
+                'id'          => $task_id
+            ];
+
+            try{
+                $task = Task::where($map)->firstOrFail();
+            }catch (ModelNotFoundException $e){
+                return response()->json(['message_code' => -1, 'message' => '任务不存在,非法操作']);
+            }
+
+            if($task->is_finish == 1){
+                $task->is_finish = 0;
+                $task->finish_time = '';
+            }else{
+                $task->finish_time = time();
+                $task->is_finish = 1;
+            }
+
+            $task->save();
+
+            return response()->json(['message_code' => 1, 'message' => '操作完成']);
+        }
+    }
+
+    /**
+     * 删除任务
+     * @param Request $request
+     * @param integer $id
+     * @return mixed
+     * @author AndyLee <root@lostman.org>
+     */
+    public function postRemoveTask(Request $request, $id)
+    {
+        $task_id = $request->input('task_id');
+
+        $map = [
+            'user_id'     => Session::get('company_id'),
+            'company_id'  => Session::get('customer_id'),
+            'id'          => $task_id
+        ];
+
+
+        try{
+            $task = Task::where($map)->firstOrFail();
+        }catch (ModelNotFoundException $e){
+            return response()->json(['message_code' => -1, 'message' => '任务不存在,非法操作']);
+        }
+
+        $task->delete();
+        return response()->json(['message_code' => 1, 'message' => '操作完成']);
+    }
+}

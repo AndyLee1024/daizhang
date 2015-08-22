@@ -1,0 +1,109 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+/**
+ * @Author Xiaoming &lt;minco.wang@gmail.com&gt;
+ */
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class WxUser extends Model
+{
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
+    protected $table = 'wx_users';
+
+    public static function getByOpenId($openId)
+    {
+        return self::where('openid', $openId)-&gt;first();
+    }
+
+
+    /**
+     * 保存微信用户信息
+     * @param $user
+     * @return mixed
+     * @throws \Exception
+     */
+    public static function saveWxUser($obj)
+    {
+        $user = new self;
+        $user-&gt;nickname = isset($obj-&gt;nickname) ? $obj-&gt;nickname : '';
+        $user-&gt;openid = $obj-&gt;openid;
+        $user-&gt;sex = isset($obj-&gt;sex) ? $obj-&gt;sex : 0;
+        $user-&gt;province = isset($obj-&gt;province) ? $obj-&gt;province : '';
+        $user-&gt;city = isset($obj-&gt;city) ? $obj-&gt;city : '';
+        $user-&gt;country = isset($obj-&gt;country) ? $obj-&gt;country : '';
+        $user-&gt;headimgurl = isset($obj-&gt;headimgurl) ? $obj-&gt;headimgurl : '';
+        $user-&gt;subscribe = $obj-&gt;subscribe;
+        $user-&gt;unionid = isset($obj-&gt;unionid) ? $obj-&gt;unionid : null;
+        $user-&gt;save();
+        return $user;
+    }
+
+    /**
+     * 更新
+     * @param $user
+     * @return mixed
+     * @throws \Exception
+     */
+    public function updateWxUser($obj)
+    {
+        $this-&gt;nickname = isset($obj-&gt;nickname) ? $obj-&gt;nickname : '';
+        $this-&gt;openid = $obj-&gt;openid;
+        $this-&gt;sex = isset($obj-&gt;sex) ? $obj-&gt;sex : 0;
+        $this-&gt;province = isset($obj-&gt;province) ? $obj-&gt;province : '';
+        $this-&gt;city = isset($obj-&gt;city) ? $obj-&gt;city : '';
+        $this-&gt;country = isset($obj-&gt;country) ? $obj-&gt;country : '';
+        $this-&gt;headimgurl = isset($obj-&gt;headimgurl) ? $obj-&gt;headimgurl : '';
+        $this-&gt;subscribe = $obj-&gt;subscribe;
+        $this-&gt;unionid = isset($obj-&gt;unionid) ? $obj-&gt;unionid : null;
+        $this-&gt;save();
+    }
+}
+</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all();
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>

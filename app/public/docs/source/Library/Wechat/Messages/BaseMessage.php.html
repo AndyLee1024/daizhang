@@ -1,0 +1,186 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../../../../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../../../../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../../../../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../../../../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+/**
+ * BaseMessage.php
+ *
+ * Part of Overtrue\Wechat.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @author    overtrue &lt;i@overtrue.me&gt;
+ * @copyright 2015 overtrue &lt;i@overtrue.me&gt;
+ * @link      https://github.com/overtrue
+ * @link      http://overtrue.me
+ */
+
+namespace Overtrue\Wechat\Messages;
+
+use Overtrue\Wechat\Utils\MagicAttributes;
+use Overtrue\Wechat\Utils\XML;
+
+/**
+ * 消息基类
+ *
+ * @property string      $from
+ * @property string      $to
+ * @property string      $staff
+ *
+ * @method BaseMessage to($to)
+ * @method BaseMessage from($from)
+ * @method BaseMessage staff($staff)
+ * @method array       toStaff()
+ * @method array       toReply()
+ * @method array       toBroadcast()
+ */
+abstract class BaseMessage extends MagicAttributes
+{
+
+    /**
+     * 允许的属性
+     *
+     * @var array
+     */
+    protected $properties = array();
+
+    /**
+     * 基础属性
+     *
+     * @var array
+     */
+    protected $baseProperties = array(
+                                 'from',
+                                 'to',
+                                 'to_group',
+                                 'to_all',
+                                 'staff',
+                                );
+
+    /**
+     * 生成用于主动推送的数据
+     *
+     * @return array
+     */
+    public function buildForStaff()
+    {
+        if (!method_exists($this, 'toStaff')) {
+            throw new \Exception(__CLASS__.'未实现此方法：toStaff()');
+        }
+
+        $base = array(
+                 'touser'  =&gt; $this-&gt;to,
+                 'msgtype' =&gt; $this-&gt;getDefaultMessageType(),
+                );
+        if (!empty($this-&gt;staff)) {
+            $base['customservice'] = array('kf_account' =&gt; $this-&gt;staff);
+        }
+
+        return array_merge($base, $this-&gt;toStaff());
+    }
+
+    /**
+     * 生成用于回复的数据
+     *
+     * @return array
+     */
+    public function buildForReply()
+    {
+        if (!method_exists($this, 'toReply')) {
+            throw new \Exception(__CLASS__.'未实现此方法：toReply()');
+        }
+
+        $base = array(
+                 'ToUserName'   =&gt; $this-&gt;to,
+                 'FromUserName' =&gt; $this-&gt;from,
+                 'CreateTime'   =&gt; time(),
+                 'MsgType'      =&gt; $this-&gt;getDefaultMessageType(),
+                );
+
+        return XML::build(array_merge($base, $this-&gt;toReply()));
+    }
+
+    /**
+     * 生成群发的数据
+     *
+     * @return array
+     */
+    public function buildForBroadcast()
+    {
+        if (!method_exists($this, 'toBroadcast')) {
+            throw new \Exception(__CLASS__.'未实现此方法：toBroadcast()');
+        }
+
+        //TODO
+    }
+
+    /**
+     * 获取默认的消息类型名称
+     *
+     * @return string
+     */
+    public function getDefaultMessageType()
+    {
+        $class = explode('\\', get_class($this));
+
+        return strtolower(array_pop($class));
+    }
+
+    /**
+     * 验证
+     *
+     * @param string $attribute
+     * @param mixed  $value
+     *
+     * @return bool
+     */
+    protected function validate($attribute, $value)
+    {
+        $properties = array_merge($this-&gt;baseProperties, $this-&gt;properties);
+
+        return in_array($attribute, $properties, true);
+    }
+}
+</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all();
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>

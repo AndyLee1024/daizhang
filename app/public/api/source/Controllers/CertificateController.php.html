@@ -1,0 +1,306 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
+use App\CustomerCompany;
+use Illuminate\Support\Facades\Validator;
+use Input;
+use Auth;
+use Session;
+use Config;
+use App\Http\Requests;
+use App\Certificate;
+use App\Http\Controllers\BaseController;
+
+/**
+ * 证件上传
+ * @package App\Http\Controllers
+ * @version 1.0
+ * @author  AndyLee &lt;root@lostman.org&gt;
+ */
+class CertificateController extends BaseController
+{
+    /**
+     * 下载证件
+     * @param Request $request
+     * @return redirect
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getDownloadCertificate(Request $request)
+    {
+        $url = $request-&gt;get('url');
+        $url_info = parse_url($url);
+
+        /**
+         * TODO 防止尝试下载别的公司文件
+         */
+        if(!file_exists(public_path($url_info['path']))){
+            return \App::abort(404);
+        }
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename='.basename(public_path($url_info['path'])));
+        header('Content-Transfer-Encoding: binary');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize(public_path($url_info['path'])));
+
+    }
+    /**
+     * 列出证件
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getCertificates()
+    {
+        $result = [];
+
+        $certs = Certificate::where('company_id', Session::get('customer_id'))-&gt;get();
+
+        $type = Config::get('customer.certificate');
+
+        foreach($type as $k =&gt; $v){
+
+            foreach($certs as $cert){
+                if($cert-&gt;certificate_type == $k){
+                    $result[$k][] = $cert-&gt;toArray();
+                }
+            }
+        }
+
+
+        return view('customer.certificate.index')-&gt;with('result', $result);
+    }
+
+    /**
+     * 增加证件
+     * @return \Illuminate\View\View
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getCreateCertificate()
+    {
+        return view('customer.certificate.create');
+    }
+
+    /**
+     * 增加证件操作
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function postCreateCertificate(Request $request)
+    {
+        /**
+         * 处理验证类型，要求传入的证照类型必须与配置文件相同
+         */
+        $type = '';
+
+        $cert_config = Config::get('customer.certificate');
+        $count = count($cert_config);
+        $i = 0;
+        foreach($cert_config as $k =&gt;$v){
+            if($i+1 === $count) {
+                $type = $type.$k;
+            }else{
+                $type = $type.$k.',';
+            }
+            $i++;
+        }
+
+        $input = $request-&gt;only('name', 'type', 'number', 'remarks', 'path');
+        $rules = [
+
+            'name' =&gt; 'required',
+            'type' =&gt; 'required|in:'.$type,
+            'path' =&gt; 'required'
+        ];
+
+        $v = Validator::make($input, $rules);
+        if($v-&gt;fails()){
+            Session::flash('error', $v-&gt;messages()-&gt;first());
+            return redirect()-&gt;back();
+        }
+
+        $certificate = new Certificate();
+        $certificate-&gt;company_id = Session::get('customer_id');
+        $certificate-&gt;name = $input['name'];
+        $certificate-&gt;operator_id = Auth::user()-&gt;id;
+        $certificate-&gt;certificate_type = $input['type'];
+        $certificate-&gt;certificate_number = $input['number'];
+        $certificate-&gt;certificate_path = serialize($input['path']);
+        $certificate-&gt;remarks = $input['remarks'];
+        $certificate-&gt;save();
+
+        Session::flash('success', '增加证照完成');
+
+        return redirect()-&gt;to(action('CertificateController@getCertificates', Session::get('customer_id')));
+
+
+    }
+
+    /**
+     * 获取证照详细信息
+     * @param string $id
+     * @para, string $Pid 证件id
+     * @return view
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getCertificateDetail($id, $pid)
+    {
+        $map = [
+            'id' =&gt;        $pid,
+            'company_id' =&gt; Session::get('customer_id')
+        ];
+
+        try{
+            $cert = Certificate::where($map)-&gt;firstOrFail();
+        }catch (ModelNotFoundException $e){
+            Session::flash('error', '纪录不存在！');
+            return redirect()-&gt;back();
+        }
+
+        return view('customer.certificate.detail')-&gt;with('cert', $cert);
+    }
+
+    /**
+     * 删除证件
+     * @return mixed
+     * @param Request $request
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getDeleteCertificate(Request $request)
+    {
+        $input = $request-&gt;only('certificate_id');
+
+        $map = [
+            'id'         =&gt; $input['certificate_id'],
+            'company_id' =&gt; Session::get('customer_id')
+        ];
+
+        $certificate = Certificate::where($map)-&gt;first();
+        if(!$certificate){
+            Session::flash('error', '记录不存在,无法删除!');
+            return redirect()-&gt;back();
+        }
+
+        //TODO 删除完成之后是否要删除文件呢?
+        $certificate-&gt;delete();
+        Session::flash('success', '删除证件成功');
+        return redirect()-&gt;back();
+    }
+
+    /**
+     * 上传证件
+     * @param Request $request
+     * @return mixed
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function postUploadCertificate(Request $request)
+    {
+        $input = $request-&gt;file('file');
+
+        $param = $request-&gt;only('name', 'id');
+
+        $rules = array(
+            'file' =&gt; 'image|max:3000',
+        );
+
+        $validation = \Validator::make([
+            'file' =&gt; $input,
+        ], $rules);
+
+        if ($validation-&gt;fails()) {
+            return \Response::make($validation-&gt;errors-&gt;first(), 400);
+        }
+
+        $extension = $input-&gt;getClientOriginalExtension();
+
+        /**
+         * 获取公司信息
+         */
+        $customer = CustomerCompany::find(Session::get('customer_id'));
+
+        /**
+         * 设置存储目录
+         * 存储目录结构 ＝  uploads / sha1加密的公司id /客户公司uuid
+         */
+
+        $directory = public_path('uploads') . '/'.sha1(Session::get('company_id')).'/'.$customer-&gt;uuid;
+        $filename = sha1(time() . time()) . &quot;.{$extension}&quot;;
+
+        $upload_success = $input-&gt;move($directory, $filename);
+
+        $message = [
+            'file_path' =&gt; asset('uploads/'.sha1(Session::get('company_id')).'/'.$customer-&gt;uuid).'/'.$filename
+        ];
+
+        /**
+         * 用户相关证件一键上传
+         */
+        if(!empty($param['name']) and !empty($param['id'])){
+            $param['company_id'] = Session::get('customer_id');
+            try{
+                $certificate = Certificate::where($param)-&gt;firstOrFail();
+            }catch (ModelNotFoundException $e){
+                return \Response::json(['state'=&gt;'denied'], 200);
+            }
+
+            $certificate-&gt;certificate_path = serialize([$message['file_path']]);
+            $certificate-&gt;save();
+
+        }
+
+        if ($upload_success) {
+            $message['status'] = 'success';
+            return \Response::json($message, 200);
+        } else {
+            $message['status'] = 'error';
+            return \Response::json($message, 400);
+        }
+    }
+}
+</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all();
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>

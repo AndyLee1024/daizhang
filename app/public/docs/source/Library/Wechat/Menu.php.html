@@ -1,0 +1,159 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../../../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../../../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../../../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../../../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+/**
+ * Menu.php
+ *
+ * Part of Overtrue\Wechat.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @author    overtrue &lt;i@overtrue.me&gt;
+ * @copyright 2015 overtrue &lt;i@overtrue.me&gt;
+ * @link      https://github.com/overtrue
+ * @link      http://overtrue.me
+ */
+
+namespace Overtrue\Wechat;
+
+use Closure;
+
+/**
+ * 菜单
+ *
+ * @property array $sub_button
+ */
+class Menu
+{
+    const API_CREATE = 'https://api.weixin.qq.com/cgi-bin/menu/create';
+    const API_GET    = 'https://api.weixin.qq.com/cgi-bin/menu/get';
+    const API_DELETE = 'https://api.weixin.qq.com/cgi-bin/menu/delete';
+
+    /**
+     * Http对象
+     *
+     * @var Http
+     */
+    protected $http;
+
+    /**
+     * constructor
+     *
+     * @param string $appId
+     * @param string $appSecret
+     */
+    public function __construct($appId, $appSecret)
+    {
+        $this-&gt;http = new Http(new AccessToken($appId, $appSecret));
+    }
+
+    /**
+     * 设置菜单
+     *
+     * @return bool
+     */
+    public function set($menus)
+    {
+        if ($menus instanceof Closure) {
+            $menus = $menus($this);
+        }
+
+        if (!is_array($menus)) {
+            throw new Exception('子菜单必须是数组或者匿名函数返回数组', 1);
+        }
+
+        $menus = $this-&gt;extractMenus($menus);
+
+        $this-&gt;http-&gt;jsonPost(self::API_CREATE, array('button' =&gt; $menus));
+
+        return true;
+    }
+
+    /**
+     * 获取菜单
+     *
+     * @return array
+     */
+    public function get()
+    {
+        $menus = $this-&gt;http-&gt;get(self::API_GET);
+
+        return empty($menus['menu']['button']) ? array() : $menus['menu']['button'];
+    }
+
+    /**
+     * 删除菜单
+     *
+     * @return bool
+     */
+    public function delete()
+    {
+        $this-&gt;http-&gt;get(self::API_DELETE);
+
+        return true;
+    }
+
+    /**
+     * 转menu为数组
+     *
+     * @param array $menus
+     *
+     * @return array
+     */
+    protected function extractMenus(array $menus)
+    {
+        foreach ($menus as $key =&gt; $menu) {
+            $menus[$key] = $menu-&gt;toArray();
+
+            if ($menu-&gt;sub_button) {
+                $menus[$key]['sub_button'] = $this-&gt;extractMenus($menu-&gt;sub_button);
+            }
+        }
+
+        return $menus;
+    }
+}
+</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all();
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>

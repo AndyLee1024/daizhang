@@ -1,0 +1,117 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+
+namespace App\Http\Controllers;
+
+use Auth;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
+use App\UserNexus;
+use App\Http\Requests;
+use App\Http\Controllers\BaseController;
+
+/**
+ * 代账公司设置
+ * @description 需要中间件进行保护 要求必须有Session::has('company_id')
+ * @package App\Http\Controllers
+ * @version 1.0
+ * @author  AndyLee &lt;root@lostman.org&gt;
+ */
+class CompanyController extends BaseController
+{
+    /**
+     * 获取代账公司信息
+     * @return mixed
+     * @Param integer $id
+     * @param Request $request
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getCompanyInfo(Request $request, $id)
+    {
+
+        $company_id = $request-&gt;session()-&gt;get('company_id');
+
+        try{
+
+            $nexus = UserNexus::whereRaw('user_id =? and operator_id = ?',
+                [$company_id, Auth::user()-&gt;id]
+            )-&gt;firstOrFail();
+
+        }catch (ModelNotFoundException $e){
+            $request-&gt;session()-&gt;flash('error', '当前纪录不存在!');
+            return redirect()-&gt;back();
+        }
+
+        $users = UserNexus::where('user_id', $company_id)-&gt;get();
+
+        return view('user.company')-&gt;with('nexus', $nexus)
+            -&gt;with('users', $users)
+            -&gt;with('count', $users-&gt;count())
+            -&gt;with('company', $nexus-&gt;company);
+        
+    }
+
+    /**
+     * 列出公司成员
+     * @param string $id 公司id
+     * @return view
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getMember($id)
+    {
+        return view('user.user_list');
+    }
+
+    /**
+     * 创建邀请链接
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getInvite()
+    {
+        return view('user.invite');
+    }
+}
+</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all();
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>

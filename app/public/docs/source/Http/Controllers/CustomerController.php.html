@@ -1,0 +1,629 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../../../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../../../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../../../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../../../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+
+namespace App\Http\Controllers;
+
+use App;
+use Auth;
+use Cache;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Input;
+use Session;
+use Config;
+use Redirect;
+use Validator;
+use App\Contact;
+use App\Partner;
+use Ramsey\Uuid\Uuid;
+use App\Http\Requests;
+use App\Certificate;
+use Overtrue\Pinyin\Pinyin;
+use App\Library\Requests as R;
+use App\CustomerCompany as Company;
+
+/**
+ * 客户模块
+ * @package App\Http\Controllers
+ * @version 1.0
+ * @author  AndyLee &lt;root@lostman.org&gt;
+ */
+class CustomerController extends BaseController
+{
+    /**
+     * 列出客户
+     * @param Request $request
+     * @return $this
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getIndex(Request $request)
+    {
+
+        $map = [
+            'user_id' =&gt; Session::get('company_id')
+        ];
+
+        $companies = Company::where($map)-&gt;get();
+
+        return view('customer.index.list')-&gt;with('companies', $companies);
+    }
+
+    /**
+     * 客户首字母排序
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getOrderCustomer($alpha)
+    {
+
+
+        $map = [
+            'user_id' =&gt; Session::get('company_id'),
+            'order' =&gt; $alpha
+        ];
+
+        $companies = Company::where($map)-&gt;get();
+
+        return view('customer.index.list')-&gt;with('companies', $companies);
+
+    }
+
+    /**
+     * 创建客户页面
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getCreate()
+    {
+        /**
+         * 判断工商局状态
+         */
+        $input = Input::Only('mode');
+        if ($input['mode'] === 'off') {
+            return view('customer.index.create')-&gt;with('mode', 'off');
+        } else {
+            $url = &quot;http://www.jsgsj.gov.cn:58888/province/&quot;;
+            $requests = new R();
+            $cookie = $requests-&gt;getRequestCookie($url);
+
+            /**
+             * 工商局系统出错
+             */
+            if (empty($cookie)) {
+                return view('customer.index.create')-&gt;with('mode', 'off');
+            }
+
+            /**
+             * 下载验证码图片
+             */
+
+            $verify_url = &quot;http://www.jsgsj.gov.cn:58888/province/rand_img.jsp?type=7&quot;;
+
+            Cache::forget(Auth::user()-&gt;id . '_session');
+
+            Cache::put(Auth::user()-&gt;id . '_session', $cookie, 10);
+
+
+            $image = 'captcha/' . sha1(Auth::user()-&gt;id);
+
+            $requests-&gt;saveImage($verify_url, $image . '.png', $cookie);
+
+            return view('customer.index.create');
+        }
+
+
+    }
+
+
+
+    /**
+     * 创建客户(入库)
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function postCompanyDetail()
+    {
+        /**
+         * full_name 公司全称
+         * name 公司简称
+         * leader 法人
+         * registion_type 注册类型
+         * address 详细地址
+         * registed_funds 注册资本
+         * register_time 经营期限开始
+         * end_time 经营期限结束
+         * register_number 工商注册号
+         * registed_funds_type 注册资本类型
+         * scope 经营范围
+         * bookkeeper 财务负责人 一般取当前操作员
+         * contact 联系人
+         * mobile 手机
+         * partners 股东信息
+         */
+        $input = Input::Only('full_name', 'name', 'registion_type', 'address',
+            'registed_funds', 'register_time', 'end_time', 'register_number', 'scope', 'import_partners',
+            'bookkeeper', 'contact', 'mobile', 'partners', 'registed_funds_type', 'leader');
+
+        $rules = [
+            'full_name' =&gt; 'required',
+            'name' =&gt; 'required',
+            'registion_type' =&gt; 'required',
+            'address' =&gt; 'required',
+            'registed_funds' =&gt; 'required',
+            'register_time' =&gt; 'date',
+            'end_time'      =&gt; 'date'
+        ];
+
+        $v = Validator::make($input, $rules);
+        if ($v-&gt;fails()) {
+            Session::flash('error', $v-&gt;messages()-&gt;first());
+            return Redirect::to(action('CustomerController@getCreate'));
+        }
+
+        /**
+         * 处理注册资本
+         * 如&quot;2000.818万美元&quot;; 将返回2000 818
+         */
+        preg_match_all(&quot;/[x80-xff]+/&quot;, $input['registed_funds'], $match);
+        $uuid = Uuid::uuid1();
+
+        $company = new Company();
+        $company-&gt;full_name = trim($input['full_name']);
+        $company-&gt;user_id = Session::get('company_id');
+        $company-&gt;uuid = $uuid-&gt;toString();
+        $company-&gt;bookkeeper = Auth::user()-&gt;id;
+        $company-&gt;name = trim($input['name']);
+        $company-&gt;location = trim($input['address']);
+        $company-&gt;registion_type = $input['registion_type'];
+        $company-&gt;create_time = time();
+
+        /**
+         * 处理公司简称首字母
+         */
+
+        $first_word = mb_substr($input['name'], 0, 1, 'utf-8');
+
+        $pinyin = App::make('pinyin');
+
+        $order = $pinyin-&gt;letter($first_word);
+
+        $company-&gt;order = $order;
+
+        if (isset($match[0][1])) {
+            $company-&gt;registed_funds = $match[0][0] . '.' . $match[0][1];
+        } else {
+            $company-&gt;registed_funds = $match[0][0];
+        }
+        if (!empty($input['register_time'])) {
+            $company-&gt;register_time = strtotime($input['register_time']);
+        }
+        if (!empty($input['end_time'])) {
+            $company-&gt;end_time = strtotime($input['end_time']);
+        }
+        if (!empty($input['register_number'])) {
+            $company-&gt;register_number = $input['register_number'];
+        }
+        if (!empty($input['scope'])) {
+            $company-&gt;scope = $input['scope'];
+        }
+        if (!empty($input['leader'])) {
+            $company-&gt;leader = $input['leader'];
+        }
+        if (!empty($input['registed_funds_type'])) {
+            $company-&gt;funds_type = $input['registed_funds_type'];
+        } else {
+            $company-&gt;funds_type = &quot;人民币&quot;;
+        }
+
+        $company-&gt;operator_id = Auth::user()-&gt;id;
+        $company-&gt;save();
+
+        /**
+         * 如果存在联系人就加入公司联系人列表
+         */
+        if (!empty($input['contact']) and !empty($input['mobile'])) {
+            $contact = new Contact();
+            $contact-&gt;company_id = $company-&gt;id;
+            $contact-&gt;operator_id = Auth::user()-&gt;id;
+            $contact-&gt;name = trim($input['contact']);
+            $contact-&gt;mobile = trim($input['mobile']);
+            $contact-&gt;is_default = 1;
+            $contact-&gt;save();
+        }
+
+        /**
+         * 如果股东信息存在就加入公司股东表
+         */
+        if (!empty($input['partners']) and $input['import_partners'] == 1) {
+            $partners = unserialize($input['partners']);
+
+            /**
+             * 循环获取股东
+             */
+            foreach ($partners as $k) {
+
+                $partner = new Partner();
+                $partner-&gt;company_id = $company-&gt;id;
+                $partner-&gt;operator_id = Auth::user()-&gt;id;
+                $partner-&gt;partner_type = $k['C1'] ? $k['C1'] : '境内中国公民';
+                $partner-&gt;name = $k['C2'];
+                $partner-&gt;certificate = $k['C3'];
+                $partner-&gt;certificate_number = $k['C4'] ? $k['C4'] : '';
+                if ($k['RN'] === 1) {
+                    $post = '董事长';
+                } else {
+                    $post = '董事';
+                }
+                $partner-&gt;post = $post;
+                $partner-&gt;save();
+
+            }
+        }
+
+        /**
+         * 初始化证照信息
+         */
+
+        $certs = Config::get('customer.certificate');
+
+        foreach($certs as $k =&gt; $v){
+            foreach($v as $m){
+
+                $certificate = new Certificate();
+                $certificate-&gt;company_id = $company-&gt;id;
+                $certificate-&gt;operator_id = Auth::user()-&gt;id;
+                $certificate-&gt;certificate_type = $k;
+                $certificate-&gt;certificate_number = '';
+                $certificate-&gt;certificate_path = '';
+//                $certificate-&gt;remarks = $m;
+                $certificate-&gt;name = $m;
+                $certificate-&gt;save();
+
+            }
+        }
+
+
+
+        Session::flash('success', '创建客户公司完成');
+
+        return Redirect::to(action('CustomerController@getIndex'));
+
+    }
+
+    /**
+     * 手工录入
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getWrite()
+    {
+        return view('customer.index.write');
+    }
+
+
+    /**
+     * 从工商获取公司详细信息
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getCompanyDetail()
+    {
+        $input = Input::Only(&quot;org&quot;, &quot;id&quot;, &quot;seq_id&quot;, &quot;name&quot;);
+        //TODO 数据验证
+
+        $url = 'http://www.jsgsj.gov.cn:58888/ecipplatform/fieiServlet.json?fieiQYJBXX=true';
+        $cookie = Cache::get(Auth::user()-&gt;id . '_session');
+
+        $input['specificQuery'] = 'basicInfo';
+        $requests = new R();
+        $result = $requests-&gt;postRequest($url, $input, $cookie);
+
+        /**
+         * 获取合伙人信息
+         */
+        $params = [
+            &quot;CORP_ORG&quot; =&gt; $input[&quot;org&quot;],
+            &quot;CORP_ID&quot; =&gt; $input[&quot;id&quot;],
+            &quot;CORP_SEQ_ID&quot; =&gt; $input[&quot;seq_id&quot;],
+            &quot;specificQuery&quot; =&gt; &quot;investmentInfor&quot;,
+            &quot;showRecordLine&quot; =&gt; 1,
+            &quot;pageNo&quot; =&gt; 1,
+            &quot;pageSize&quot; =&gt; 5
+        ];
+
+        $url = &quot;http://www.jsgsj.gov.cn:58888/ecipplatform/ciServlet.json?ciEnter=true&quot;;
+
+        $mates = $requests-&gt;postRequest($url, $params, $cookie);
+
+        $result_array = json_decode($result, true);
+        $mates_array = json_decode($mates, true);
+        $result_array['company_name'] = $input['name'];
+
+        $req = array_merge($result_array, $mates_array);
+
+        return view('customer.index.auto_write')-&gt;with('req', $req);
+
+    }
+
+    /**
+     * 处理录入公司操作
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function postMainProcess()
+    {
+        $input = Input::Only('company_name', 'name', 'mode', 'new_company', 'captcha');
+
+        $rules = [
+
+            'company_name' =&gt; 'required',
+            'name' =&gt; 'required',
+
+        ];
+
+        $validator = Validator::make($input, $rules);
+
+        if ($validator-&gt;fails()) {
+            Session::flash('error', $validator-&gt;messages()-&gt;first());
+
+            return redirect(action('CustomerController@getCreate'));
+        }
+
+        /**
+         * 手动录入
+         */
+        if ($input['mode'] == 'off') {
+            /**
+             * 直接跳到手动录入
+             */
+            if ($input['new_company'] == 1) {
+                $input['company_name'] = $input['company_name'] . '(筹)';
+            }
+            return view('customer.index.write')-&gt;with('input', $input);
+        } else {
+            /**
+             * 开始查询公司信息
+             */
+
+            $info['name'] = $input['company_name'];
+            $info['verifyCode'] = $input['captcha'];
+
+
+            $cookie = Cache::get(Auth::user()-&gt;id . '_session');
+
+
+            $url = &quot;http://www.jsgsj.gov.cn:58888/province/infoQueryServlet.json?queryCinfo=true&quot;;
+
+            $requests = new R();
+
+            $req = $requests-&gt;postRequest($url, $info, $cookie);
+
+            /**
+             * 重新加工一下代码
+             */
+            $company_list = json_decode($req, true);
+
+            $result = [];
+
+            /**
+             * 判断服务器返回状态
+             */
+            if ($company_list[0]['COUNT'] === '&gt;&gt; 您查询的信息多于5条记录，请输入更精确的查询条件 &lt;&lt;') {
+                $message = &quot;您查询的信息多于5条记录，请输入更精确的查询条件&quot;;
+                return view('customer.index.alert')-&gt;with('message', $message);
+            } elseif ($company_list[0]['TIPS'] === '验证码填写错误，请重新填写！') {
+                $message = &quot;验证码填写错误，请重新填写！&quot;;
+                return view('customer.index.alert')-&gt;with('message', $message);
+            } else {
+                $result['message_code'] = 1;
+                $result['message'] = '拉取数据成功';
+                $result['body'] = $company_list[0];
+                return view('customer.index.company_list')-&gt;with('result', $result)-&gt;with('input', $input);
+            }
+
+        }
+    }
+
+    /**
+     * 设置客户公司
+     * Session company_id 为代帐公司ID
+     * Session customer_id 为客户ID
+     * @param string uuid 公司的唯一识别码
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getSetCustomerCompany($uuid)
+    {
+
+        $map = [
+            'uuid' =&gt; $uuid,
+            'user_id' =&gt; Session::get('company_id')
+        ];
+
+        try {
+            $company = Company::where($map)-&gt;firstOrFail();
+        } catch (\ModelNotFoundException $e) {
+            Session::flash('error', '您访问的公司不存在!');
+            return Redirect::to(action('CustomerController@getIndex'));
+        }
+
+        Session::forget('customer_id');
+        Session::put('customer_id', $company-&gt;id);
+
+        Session::flash('success', '设置客户公司成功');
+        return Redirect::to(action('CustomerController@getCustomerCompanyInfo', Session::get('customer_id')));
+
+    }
+
+    /**
+     * 列出客户公司信息
+     * @param integer $id
+     * @return mixed
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getCustomerCompanyInfo($id)
+    {
+
+//       dd( action('PartnerController@getPartner' , 12));
+
+        $contact = Contact::where([
+            'company_id' =&gt; Session::get('customer_id'),
+            'is_default' =&gt; 1
+        ])-&gt;first();
+
+        $type = Config::get('customer.certificate');
+
+        $result = [];
+
+        /**
+         * 查询不同的证件上传情况
+         */
+        foreach($type as $k =&gt; $v){
+
+            $record = Certificate::where([
+                'company_id'       =&gt; Session::get('customer_id'),
+                'certificate_type' =&gt; $k
+            ])-&gt;first();
+
+            if($record){
+                $result[$k] = 'exist';
+            }else{
+                $result[$k] = 'empty';
+            }
+        }
+
+        /**
+         * 获取代办事项
+         */
+        $todo = App\Task::where([
+            'company_id' =&gt; Session::get('customer_id'),
+            'is_finish'  =&gt; 0
+        ])-&gt;take(10)-&gt;get();
+
+        $company = Company::find(Session::get('customer_id'));
+        return view('customer.index.detail')-&gt;with('contact', $contact)
+            -&gt;with('result', $result)
+            -&gt;with('todo', $todo)
+            -&gt;with('company', $company);
+    }
+
+    /**
+     * 修改公司信息
+     * @param integer $id
+     * @return mixed
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getModifyCompany($id)
+    {
+        $company = Company::where([
+            'id'    =&gt; $id,
+            'user_id' =&gt; Session::get('company_id')
+        ])-&gt;first();
+
+        if(empty($company)){
+            Session::flash('error', '公司不存在,无法编辑');
+            return redirect()-&gt;back();
+        }
+
+        return view('customer.index.modify_company')-&gt;with('company', $company);
+    }
+
+    /**
+     * 修改公司信息操作
+     * @param Request $request
+     * @return mixed
+     * @param integer $id
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function postModifyCompany(Request $request, $id){
+        $company = Company::where([
+            'id'    =&gt; $id,
+            'user_id' =&gt; Session::get('company_id')
+        ])-&gt;first();
+
+        if(empty($company)){
+            Session::flash('error', '公司不存在,无法编辑');
+            return redirect()-&gt;back();
+        }
+
+        $input = $request-&gt;only('full_name', 'name', 'leader', 'address', 'registion_type',
+            'registed_funds', 'registed_funds_type', 'register_time', 'end_time', 'register_number', 'scope');
+
+        $rules = [
+            'full_name' =&gt; 'required',
+            'name' =&gt; 'required',
+            'registion_type' =&gt; 'required',
+            'address' =&gt; 'required',
+            'registed_funds' =&gt; 'required',
+            'register_time' =&gt; 'date',
+            'end_time'      =&gt; 'date'
+        ];
+
+        $v = Validator::make($input, $rules);
+        if($v-&gt;fails()){
+            Session::flush('error', $v-&gt;messages()-&gt;first());
+            return redirect()-&gt;back();
+        }
+
+        $company-&gt;full_name = $input['full_name'];
+        $company-&gt;name = $input['name'];
+        $company-&gt;leader = $input['leader'];
+        $company-&gt;location = $input['address'];
+        $company-&gt;registion_type = $input['registion_type'];
+        $company-&gt;registed_funds = $input['registed_funds'];
+        $company-&gt;funds_type = $input['registed_funds_type'];
+        if(!empty($input['register_time'])){
+            $company-&gt;register_time = strtotime($input['register_time']);
+        }
+        if(!empty($input['end_time'])){
+            $company-&gt;end_time = strtotime($input['end_time']);
+        }
+        $company-&gt;register_number = $input['register_number'];
+        $company-&gt;scope = $input['scope'];
+        $company-&gt;save();
+
+        Session::flash('success', '更新公司信息成功');
+
+        return redirect()-&gt;to(action('CustomerController@getCustomerCompanyInfo', Session::get('customer_id')));
+
+    }
+
+
+}
+</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all();
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>

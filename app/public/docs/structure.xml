@@ -1,0 +1,1312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project title="API Documentation" version="2.8.5">
+  <partials/>
+  <file path="Library/Wechat/Messages/News.php" generated-path="Library.Wechat.Messages.News.html" hash="09986c0682e5aec7189bfff68b9a4783" package="Default">
+    <docblock line="0">
+      <description>News.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJzNVEtrFEEQvs+vqENgdsNmVwUvJlmjMUJAYzAGD0ZCp7cm0zg7M3T3ZA0xoOAjCIIH9WAwKgT05OPig4C/xp38Dbt7evYxG1eSIKQuM1X9VXXVV9/MxPnYj53a6KgDozCHLVHVPhh3nnAJkQfX1pBLnuDSTaQ+kVV7fDniIH0ELwkCoFG8ztmqL4GEDQgYxVAgsNCLeJNIFoUViAMkKrbGsGXyrsxOz8wtzOhSHgtQxYiEFhHQYEJytpJIbECLSV+dMAEiSjhFdVED8w6mSCJ91YWyyPYIE2wqf682sW5g3ebOnDp9djg2YOEdMOZLGYtztdqqaiFZqdKoWcvRByAVsKeWAtQcJyRNFDFRXRcoXLqKQpBVFOOOkyhOpoNIJByVZzfR3v6VvnqSfttKH3w2tWhAhDALArwrMWwIuKjYtHWcDcfRjZhsbarC1530/gfr5cGpNcKBcE7WbaRmnjGPJFJN9wiT2BQwmYFK5fGBuun3vfbTd739tR8/an/6WbwpJpw0TcOzqmRWuIjhKBMeGlB/P8mKUpASVki1dEDnlvpLlQ1wI0tTZvpdjhPhl0a0XMbqZpKKRds5tNlLDWrcRDf/NuTu6/TN+/5VHDSkufue3aGl8DijilJWozgj88CeqA9LSBJSVF+nvbfcA9TW2WT2oleZH206BdqaJC5lCzesVMDVOW65Alm4bIsclsb9F2/Tree/fygyP2YEpi+/7O89HMqAjBYk8bxScfoR9TdiNMBBdWpT/xkk1Ie+7YP6mWT7L5KT17p1u1OtD1AwVzIZoGu9yXpWdaxuwpWhmQ0UlLNYj+b2ZPaEh+cnPHA7XjdfhYfnxYx2U7t5Krz8j9yDlWL3nXHlhkrHZhzr53xmI+ZeuTxcGe3tnfbus0Mo4zrGwfrJUsaNIyvj0jGVsXhEZcwzuvjflDGQ7V7ICJ2OklCaOal+K3VFMnhjniPcTo85egDckdim8weueXR2</source>
+  </file>
+  <file path="Library/Wechat/Messages/Text.php" generated-path="Library.Wechat.Messages.Text.html" hash="a07810f8706139fd695aea13ff7ae4db" package="Default">
+    <docblock line="0">
+      <description>Text.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJytUktrFEEQvs+vqMPCPog7KngxyboYIgi+MIKXXHp7anYaZ7uH7ppdlxBQEAyC4EG9JCSXgB4E9SJC/o47+RtWz87EJS8ULBh6uuqrqq++rpVbWZIFYacTQAee4HPq+juU10fCEpgYHo7Rks1x8ynKRFC3Ct8xFihBiPM0BWmyqVXDhEDoCFIlUTsEpWNjR4KU0UuQpSjYN1Y4KfPu3V1bf7Cx7kvFKkX2CYKJcBApR1YNcsIIJooSjigHzuRWIjeKsGbQFzklzILNVBxhRfXr/+4IeyXsD7nrV6/duBybKv0MSkuIMnczDIdMIR90pRmFNfocJAMXajEgDAItRugywaxPSbh5H50TQ3TLQa198fF1sfel+LFTvPxaj5dZk3HeFLweeggNaTShprK6TIVz5ZMBf6gjB7dZ36pysBUEnlpZ3VsHZt/3ixefqlvt7I+FBWGtmFaesDy5M6H0D9CoSCh0sDpHtpoVj2Z7+UyX4/cHxc67Xz+PZm8+z6cpPnw7Pnp1uq9Fyq0+r3U+4PXhrdLS7w2Q2SARx612Gd2aY9kWC7ROvLU1iUVpwmrvIsAith7Hwxt+2a70KtfSJXntM0GWwx/bF4gy292fHb79T6I8xiyd/qsoa38/6Mks28Fv55E82Q==</source>
+  </file>
+  <file path="Http/Controllers/Weixin/HomeController.php" generated-path="Http.Controllers.Weixin.HomeController.html" hash="78936e4575c31f174996d0dd4f37656e" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJx1jrsOwjAMRXd/hecOLcwgKGIBiYkBli4RtSAijUPsQhHi3wkPCZBgO7461r3DcdgFAG8akmA2hJMQqplqqKbsNbJzFKVak+2sHwC08sd48+BbWtKhJVF5xa3unjT3odUnroyztVF+va4snVJVkWWAGU6dEcEZN/SuuOdlWrs3299zHsIxgWWP/bz3uE3q5og48fV5QYTDyKylY9HG+JzjdpS0AjY/CpE6JV8Lfmy4AFzhBixRbk8=</source>
+  </file>
+  <file path="Library/Wechat/Messages/NewsItem.php" generated-path="Library.Wechat.Messages.NewsItem.html" hash="0bff12d795bee1242fda86e10e48366f" package="Default">
+    <docblock line="0">
+      <description>NewsItem.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJyFkc9KAzEQxu95ijkI1VK6KnixVYtSoeA/8OClIGl2thvMbkIy27WI4M038CIInjx79OLbWPAtzG53VUTtXDL55jeTj0l3x8SGBc0mgyYcYe4GhEm70KCUTrgl0BEcT9CSzXB4hiLm1K7K+9oCxQhRphQIbaZWjmMCnoagpMDUIcg00jbhJHXaAqOQe20iMS/7DgZ7/aPTfjEqkgq9xgly7iCUjqwcZYQh5JJiX5EOnM6sQP9QiLWDHs8o9i586MojdGWvztsJbpfYl7n11bWN/1kl0wsoIyYybjMIxt5CNmoLnQQ1/QvpwW+zPBAwlvIEneHe9Y8VDg/ROT5G12H1/t/uX2d3t++PL2WrUNy5zz8BvCRMQwe7foFVK7tirHi7bC/Cj3h+mN08Vbda7E24BW4tn1ZKUJ7GakJRbHjJp8a7k+hga04uz9G/okGSFDZaC6gQnbDSFJ+/kDVSnGdWLeQWMysdds0+ADL2zeI=</source>
+  </file>
+  <file path="Contact.php" generated-path="Contact.html" hash="791ab5ba92f7333d9bda7700eaa45997" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJwljEEKQjEMBfc5RRbCP8RXRNSFC29Q+MQ0oJC20aSgiHe36NvOzFtv7WoAlYq4EQvuzGaA7oIn1V5ulULSgYIu5JKO2u5daqRzy6JDZCV33LcaxIHyDKnZ8UfhDThmjxbCIRlX40QFNzhxK0b1tfC/82mGD3wBM0gv6w==</source>
+  </file>
+  <file path="CustomerCompany.php" generated-path="CustomerCompany.html" hash="49c88961a931816214c43b7a728fade0" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJzVU89rE0EUvu9fMYfCboJl8dpobZoo5FAVoreFZbrz0gzMzozzAxNE8GBBD9aDiKJ4sIKnUj0ItQbz12TT9r9wdjPGpj9OevEdduG9733fe9/bvXZD9mUQcJyDljgD1JSyEQRWA+owZnPKsYGkjQ3exBqSm0w8sMBNsiEIsMZZXNdKKZRJbuEME9BJe91xxfV6gOpoTSohQZkhyukACKLEZeMgY1hr1LLaiBxUS+QS8yGCgQFONKpkgkcBchHH1cvRGMiMY1hyQzFA11GYVW0UdOj0KpDdZDRDPcszQwVHaAtMG3rYMtMS3ODMRLUKOKMuQ4GxiiNfXll52AcFkaceppSEV5xin+rlVUpqy6u+TnVKZsSuftXle1Rpx96oiB9fPI6b5h4edA02Vke1czN4mT7WG046Ch3WkS+OErrnH5GZQaXRZdTR8c5BMX5T/HxVPH9R7O9Onx0UXw4nP3Zmmcno0/G3z8X2XvHy+9G7p8V4ezJ6O90bT5+MTnY//OZYk1jhHC25G6sOmWf9jNURfTK+cElt8yZj97nElKxTxiLPdH5ff/USNPe9xHrTfdu8q4zT/pcCDrfA0ummd5uddnr7ziV9l9z1DNjtEIVbCnOSGmEwCxfv+teOn3w8PHq/P3399V+ZngnLzf/tebXCqR+o/Lx/AVgGkqo=</source>
+  </file>
+  <file path="Task.php" generated-path="Task.html" hash="c1d8700ef08c0247ca28024a191c4e6a" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJwdjkFKA0EQRfd1iloEArPI6DoxJhAXgu5cDoRyukiG9HS1XTViEC+QC7hykZ13yHVMzmGn/+bz4PP/n93HbQQI1LNGahmXMU4BBmV89H7ou0DGzYqMXkm5efDyNnCw5lkc+xysqwqwwr/T6Xw4Xn6P55/vKy9y1442pa7wOyftJODt5KYwDbaVhLgMbv/EjLMkYgsvaj2FiaTNPMdqaD2p4gvpDvnDODjFsgyfgFl1XSwmMW6NHY7yT894h+NW+khhvzZxMp7CF/wDOyFOjA==</source>
+  </file>
+  <file path="Http/Controllers/Auth/PasswordController.php" generated-path="Http.Controllers.Auth.PasswordController.html" hash="30608eedaf727d9d61094343791d625c" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJy1UktLxDAQvudXzEHYB7j7A1bUVRC9iXgRCpJtRxtMkzgz2a6o/9007doF8aZzGeb1ffM6OQt1UMrpBjnoEmEdQnEtEopL74S8tUhcrKPUK6Ui/xK/0IyjvcqJN9bGxjgtWFz56CotxruMVNwho/CtZm49VZyQS5sM2HtGKMCdoKsYRpd6V5BkOc/q4/jPpMf7bgJyl4fE/8I3sN7XhqEc504WpYt4x2ZjEZ48Qa1dZY17hrDvkHKHhK8RWXhASlmQ9s+ggU0TUrGQNgLiwbjSxio5OrIN1nprPC3gwccJJQ7CFPIDDO6C9TTk9ggdst8ikUkY2r1Bg1L7dJw3H6E1XHcc0qJ+WRzMNl+qrLuf+Hn4/pT9LWEOl4TpYVLrDttxzsO9OBbtSlwMFfvCc0KJ5GDrTTX4llmHuLGmhKfoyu4B4fExobFQLGU6yxn9P3Vy1A17fNqYqrLYasLp5Llb7WS2yjmf6lN9AXey9RE=</source>
+  </file>
+  <file path="Exceptions/Handler.php" generated-path="Exceptions.Handler.html" hash="94fc2839d1cdb4b9d87ba3dd06671fa8" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJyVUsFOAjEQve9XzIEDEiJ30CgaDcaLUW6uh7I7wCbdaW2nhI3x350tyy6Cxths0nb63uu8t724smubJKRK9FZlCFNr07tthpYLQ36SJMEjtIVJ3D5oHcqCFGN6bwLlqj46YKUzRblGB8p31KYmiplW3sMeg1tGyk+ByUcCMkaDQZxhAFPQhWcwS+A1Cq/BA1cWvdQUg1+boHMgw7BAcGiNY8zPG4W90PVGSW/OqaqpjOJsnWHMBA+93BA/RzZcwusOJSN9qcqloSq9NaU1hMTpjNk+oiPUXQCx2O7G42h4GFXexP+RreYe40CbFSjqnB33PV8XHuRTsHJYu7Xikw14CbBj+br0Ir25agg3YeVJrYaAnJ3EYJVTpbhqWwXoYXvqkIMj2Jgi/x5TWOgig2WgLHJ2Kfc7kR6eReBHm1sjJfdJW+NxwxDcJEI+f8iE8vr9HIQBBYkvqczm8ydRFPPk8VdPB2+0/hvpM74HlNcDPbdb/S+FH/R2DfwRTW2jv79yCP8K6Yh7ENdn8gUsWyX4</source>
+  </file>
+  <file path="Library/Wechat/Menu.php" generated-path="Library.Wechat.Menu.html" hash="528b4dd67ab2cb395e743976c78fce69" package="Default">
+    <docblock line="0">
+      <description>Menu.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJylVVtvG0UUft9fcZAsrR3FNkXiJWncRMFApBYiGqkPIbLG42PvkPXMdmY2ToQi8UBFH+jloa2KQIhKfSwtPAGt0vwZNnX/BTOzu76sL2rFvOzuzJnvfN+57eUrURB59ZUVD1bgGvK4Zr/Bfe4SqUF04csjlFrG+PUNpAHRtez4UyFBBwjdOAyBiuhEsl6ggfAOhIwiVwiMd4XsE80EX4UoRGL2jhgO3L2rO9vNL643LVSXhWj2iIYBUdBhSkvWjjV2YMB0YE6YAiViSdE46mDOYJPEOjAszBIZR7jMNvP3Wh8bzmxM7qMPL3283DZk/BDcCrSO1Fq93jMU4naNin49t55jaQwnsIxB3fM46aOKiGFdCOG658UmFNuhULFE85UlYHjvl+TOw1xdJEVkrp0AkZKcQEnF7ZaJihbcwdOQKOVy5n3rWRpUcKVha3entf1Vc2uvCRvg5yJIxGoDZMeM127edFpoj1XbjNf7BqBOJRKN/noB57Pmnt14d5we6hmQT5pXm+9FpoMhOjIOyIXGrhX43NxPXvwz/PNJtpMfbB4R6U6zjbp7mvhppLaKStbzLJ7jKGOqhSwCRkSSPtg65D0okSja6Sw+u44mfnrad9w2TWB6g1Nb/dBqjZyVU7jViasVdyfNol0lW/HVhmVt4sZNw1hxZfuyRSkqtScOkc8DqqTRP53ROnz++s3Z87zApsWai7Hk0BYiXCpCoSFvU6SKhFkXshPT80oTTtEMjqy+KxOGTl1quJG9lJ3ajPgE+Rz3A6ZargNy30U8HUgxcFFqHlOMLNWyn/x+PxWbnN96++TVxeMXFw//ePPq+4vbj4bf3Up+PE/u30l+ODObw/MHyc+/pqf+Klyaz2RMOs0NHmtJqL6WKkiJrXvzMlhtfKME3xVKlxWG3bW1cYeupq1d9tO29mGjAbnICbAsP3aALEzv3b+Se4+Wpte5Wppf073lmVIs6E4VWcuxGDMm5tDFfqTznO379uEf7OdKDypwJRNfgTVYZLVIbnL7t7c/Pf1/1ZyOmVnBi3Wmk+x9M3P2zKr69++XaYnNnzTZiHdhePf8jQbcSNRUWU6CFmWaHzMSGoza1vx3S4d4MqrA+U27b20O8tatNrTYSnM4ERO7RvOg2hj/tYqQRdh9f2zrHyxrtSnU9SnQ03nNm0UwdZYn6tT7Dx2cvEE=</source>
+  </file>
+  <file path="Http/Controllers/CompanyController.php" generated-path="Http.Controllers.CompanyController.html" hash="511167cc139b1d660c84540d1589297c" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJy1U1FPE0EQfr9fsSZN7toU0NeCBUSIJIIG45M1Znu3bTded8/dPSghJEBCBCOgIQoJ+EBUYoxATIgQGuif6ZX2X7i3d22vWPQF9+X2Zr6Z+ebbmYFBp+BoGoFFxB1oIjDsOJkHQjiZEUoEo7aNGO/XNJdLlysK/eo2bttuERMoUOY+FDALOcqM2vSVi4jITFAL2ZNUjFGXWKMlEzkCU/JHoCoyhWQMF4HTL/2UIzaJSi5vm6LAq+YIycw9yaL9Lzn3JRIaSIBq+XP9eN9b/uFtnNYPLy7PD33rkIW4ybDiBhq7C/X9xerpQWPruFr+Va/s1PfeViufam++AOmo/VzyKsuNvXJtd/UJ4lyGpFIFyA3dpEUHktkX2NLjKqvU8CXMd2eoANPy4pe803tb/UMpKmUADBNr9iFCYIBRKoZsykURkl7K8mkJ62s1M2JDzsFIULad+7/WNrvXBKgkELE46BRem9OAPIqvfxKgvn7ibXyMPkO1sldbPGr6hxgSLiOgiEvIahkfQwaLABOB8rJWDLc9jvKEEwFiLLi03GFXf2tKIfvU13GzNjZBziWmGoU8EmGn4yRHjatVkj6TuIqc04JE8sTacwDutrA9aR4MixHvScu8nePS3w4XbDaSTCUk/g7IXK19SKVmCoihKThj6HIFmCo1CCCxAHUQg4IGJjCoJztS+edZhGBS7XEq5SfxiWHreQdemnKYcfGIjUFsG1Ge8yYUZgEY3TccxFB8rrOLbkLk5DQVDB0xRpmeBLp3vumtrl2efffOP1RP17yDbW/32y1fn2iqcEQYsjBDpvATZeW4GxHYfOQ9/Oa6ydfSTlaOaBK+T7TXsOA0RqHgvSFcl+AZLGQL6o38ROoS7+DbxCgiPkZdumNMKaNoYXrS6t+IXwcOWDTL+nBlaZIPZYjsn7ey5b0+CzavtvLOe799ZZW4YJjk/ckGASqybBEdbm7DJlAxK6cvskrXy64ezMZcNEeiW4M7XvmssbRQPzppbF7U1r/eHNVxMo0FMv7NEytgm+S89huNH3WR</source>
+  </file>
+  <file path="Http/Controllers/TaskController.php" generated-path="Http.Controllers.TaskController.html" hash="88c9fe9e320680dd52faf9203530b661" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJzNV01v2zYYvutXcIABSYGdNFen8dJ1DTag24C22CUODEaiYzaSqJGUYyPIdWuLBShQDNuwbmuBHXZZLztsaNB/E6fov9hLypKoDyfxGgzjxSL5fjx8Px7SNz+MR7FlRTgkIsYeQbfiuP+JlHH/NoskZ0FAuNiwrETAViJHG/rr0yBIQhphSfofY4n3sCD9OwH7KiGR7H/GfBJ8zuQ2SyL/zsQjsaQsShW/xAH1sWS8Zkf7vEfAhJDppkLyAIuDYmbKiMqyAbf/EeAp5jVX95M4Zlz2t7GHfSL694kQGqG1trJioRV0dno6e/Ly7auXb59+reZbEJkDvN/sTQuM4QNMoPXVG3qOIVSMI3Qr8qd3CUE3OWNyK2BChjhaZXy/B2JrlhdgIZA6ZGEQkYkkkS9QsWQdWQiGRqfGCpo9+n72zevZm2ezxycp2mwnc32RZy25pn/jZC+gHhomkaeyhPaJVHDuUiEdV0ukvtVohThGm2gnX1DDhuDyAfVtNdnsoXkwu12w5NgeC2McTdW+2y7rGVsNeomQLEwNu7neLqQoByMB5iAAnABJQe52D0eEE0ehdDs9ZcY15DmRCY/QmJLDwvyqMrJKI59MbNA5pHLk2GpN2G3DA9hRJo6tehp+mp2+riQgxhyHaF6mqMXTj3x7DiSkE+JXdGgkyT5UQIv615fO25xA0asIOVVMbeWplmUaxYkKaibV6emVNDADxRT2FQPraddFZLUdFVn9caWoYn2O/2VsYxC8huCyKJiasW0jG0PPy4Gk6YyTEHOoSDPoLZ4ERNSbsTCjm9FWXignvl1pPsODlvNVnpr7bAxectrudkN8AD2mj9Gew5gnUg06dFrjTm+IaSAc1z0qec1bfAi0B+VAOGdclQNowPUjgGFBCbQpV+xjmDXqDA4DB/KkEtwDWnYMseMKPQDyiBxqdjDF9F6nJ5nPdKxUOvSBdoz47dbk50QH0os5rqY0T57hIktn3UFhqO7D5MOaIosJV9lJNdU13e0qtCpG1C9l5wMSxnLqZGCMOtitpqs4ARCklgHjQnLJ1HezicW56PQEHpMSJVfrQSSeB0uq5s//guZ/kVLA+aOnsye/NnFOXgspSzh2+SbdMi4zMHpBRN3FXPTqW/DfyPBNjHIBAS0krfdnoW0aUTG6OgvRIXIKAsIP8QS6Ld89suplkFZW842QlmRZp+mloEbptbDMc0Erm0+GS94MDdqZ18x1drCS5G7lJJJPj2qmMnJpeHZo7vqCbwMBOhUCO/aw9EbIaX4foxZx657yQhcxiwRRDf1QQKXv2HPCHHhgTXN4Zx36Zr6aknpatWd/n8z++GH2/Pf2u59/Of/zu/NnJ2dvnpd6VaMrn1sRedq2VAyGur7Q5iZab8BYl0M3NhZJpSIZm9h2BQQJBFnooayrSchd6MiEs37hURfR05Lxr4U/DXRKIBVqNFCU3j0v3v3423KvySWp6P255h4J2XiZF8+S9HH5n4x//S9jKcq4nC4UVeSTGk8szxHL8sN/ww31exzQEVlqvWvvkmPr2PoH7JEBew==</source>
+  </file>
+  <file path="Library/Wechat/Utils/Arr.php" generated-path="Library.Wechat.Utils.Arr.html" hash="ef974d3e93f8c2374d16343571b20138" package="Default">
+    <docblock line="0">
+      <description>Arr.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="link" line="0" description="https://github.com/laravel/framework/blob/4.2/src/Illuminate/Support/Arr.php" link="https://github.com/laravel/framework/blob/4.2/src/Illuminate/Support/Arr.php"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>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</source>
+  </file>
+  <file path="Console/Kernel.php" generated-path="Console.Kernel.html" hash="f765a5cb28aa6dd9019bbcb01a121b62" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <markers>
+      <todo line="31">Need to add cron config example: * * * * * php /project_path/baiyu-daizhang/app/artisan schedule:run 1&gt;&gt; /dev/null 2&gt;&amp;1</todo>
+    </markers>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJyVU0tv1DAQvudXzKFiHyKNyjGFhbJVpQrUHrY3glZee3ZjcGzLjxWh6n/vOJtEZStocQ6O7O8x/jx+/9HWNss0a9BbxhEurK2WRnuj8DzLoke4Vio2UrOAw0a14jWKqKTeDb8EPsJemagFC9LokfYFnUYFzEO/clh4Rl1Fa40L1RXjTKBP/K3cvQj7agiTccW8h94KfwXU4sgvu8+ARjGfdzPM4a6mg7sgPdPATdOwxLHO7KVAAZsWWhMdMGuV5N2RTnvmIPBpz2jfOdb2K0U3k0RAHkjjZJT9AN8OGBrVk7RpPiCqa+2tdFiW3VHevoBe1sh/Lluu8LNU6pWkFaWS4DcmSP6n03fK8CieS9xKjRAopScZTPyQFfi+CZ7FYpljDRXxuh4COBmURgWHIToNeyPFX6LdRs1TPWMV01FvlJt1nPsxlaK4u728hRskfjDAhADuTLr81GnUNqyxCksqYPjomUBBpj/IdG1ZqIsNk23MBZO/a6Z3BSVTsL6HBtvSRQ1niwUUAveFjkrBu8Wbs2ysYywwX/RZTic8XWjO043mG7qjyWyEp5EvyFK1F2F6eBZlucMwnZD9aZANrjv6uqOvD/TZ+b8NPTVD55Trrh3+0zDRO6f1QCfDRHzIHrJHyjJoGQ==</source>
+  </file>
+  <file path="Library/Wechat/Card.php" generated-path="Library.Wechat.Card.html" hash="0aa65602870a3a92d8cd012b5e6b3244" package="Default">
+    <docblock line="0">
+      <description>Card.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>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</source>
+  </file>
+  <file path="Library/Wechat/Messages/MpNews.php" generated-path="Library.Wechat.Messages.MpNews.html" hash="daeb78ce52a41653ea5fe9d99a975db2" package="Default">
+    <docblock line="0">
+      <description>Image.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJytUs9rE0EUvu9f8Q6BJCUmKngxbUwtEQJNFXPwEgiT3Zfs4P4YZmaThhJQECyC4sH20Eq8BBTBWBFEqfavMRtv/gvObnZjfrTRQ99ld958773v++at32Im03JraxqsQdkmLcwGCQjP9wiX4Dbhbhu55B7WHqBuEpmNru+4HKSJ0PQsC3SXdTltmRKIY4BFdXQEAnWaLreJpK6TAWYhUbk2xU5Yt13eKu1US0GrJrVQ5YiEDhFgUCE5bXgSDehQaaobKkC4HtdRDTIwZlAknjQVCxVuxBHWaTH+z9pYCGF/yV2/eu3GaqxFnYcQhiklEzdzuZai4DWyumvnYvQ5SAWc6aUAOU1ziI2CEcV6wcJaBYVQZou8Fps/GhyNjs/8w6f+l33/8cdYIeMuU6VdCCxxWpCw0aCkTo1wgm4RIaDCdrAjAHclOoaA28rlqL+2p2kBwXBGEGrOp77/6G10ipPFNuFAOCfdKJMLv2q4RD14hkTEg6KAjQkylYypJNP5pTG/hmfjH8PKlOz8OEY4secllZdAHKXHnclWztPyGmrB1N45erBZENan4jbpELM3qVCRCLbnSkGg3JTRWs1Qz0zHxyKCiEaHpfkw21tSOH71xt9/+fPr6ejZu8mb+Qcn49MnF8g4x90FGdKtStJsphYFzDZITbNxJG3mqNdPwkbhIsg8PFYeFETexLnMqtL00m16tTWj4/5o8PySrLmPzOouWSNN7nZA6YdaaVdHFoBT9frW9ma1Wq9nk/7r96Nhf/zixP8w8A+/+Z8Pfn8/mjZLRgIm7P9hc7iG/+1yZbJTl2fyjDk9raf9AWd4rck=</source>
+  </file>
+  <file path="Library/Wechat/Message.php" generated-path="Library.Wechat.Message.html" hash="1221fd10015d062c15570e6070e84fad" package="Default">
+    <docblock line="0">
+      <description>Message.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJylVE1v00AQvftXLFElO1VJAIlL0kKr4qJITVs1gXKItNra43hVf2l3nbSqcuBWiSsSB1D/Aa24cKAS/BlS6L9g1h9pnEIvrJTYmvf2zduZWa8+T/zEaC4vG2SZdEFKNoSGDpEssseEIrFHdkcglEhhcACOz1SjgLdiQZQPxEuDgDhxciL40FeERS4JuAORBMIjLxYhUzyOVkgSAMPYiMM427fd2bR3eraW8ngAGGOKjJkkLpdK8MNUgUvGXPmIcElknAoHMJELpYN1liofXeCKC49kla+X740QnmW0W3NPHj1+ej834NERyZavVCJbzeYQLaSHDScOmyX7L0wkzmkhoWkYEQtBJgxdL5SwbRgplqITjVjA3Q0xTEOIlH3sQKJrhXDRlOuvZ9dvLzM1J2BSll0yTg1DZ85oepXUX1+upufvilgzezpxJBXp22/6uds1Yio4VmZ7Du10N17aJcpDzFCBX+9ir0p4FGN3q3Dnhb07g7kLcQXuvup1Nks4TCV3KvCOfdCbOYtgLCtof39jp7dl7+e+BYukB+LOftrp291yP+UKwqqDPZpl0fkTWuRYLOD07OP06ltexunF+c/vZRlLwnrCBAuJHs5oSJbUSQKLDAEqFREJ+TG4lSYk6SFeCtyLl8HBKxM5utEkZEdgZUroTULgtVq6UfVsz2mugIt7xHrggscjcC1KN7c3ej1KG2arZTbQjorTJAGRC9Xr9bmdeilfxGOCp/7nwFk1Wwi8SMV0kb42ZJ5mehOzVm/P9CbG7HUpLNhrpDab72LAB4NCSg4GtYqZcmnfVEAS4PWwTGKuEBN/qTOOhSuteZAJwU4s86GmULOO/5pdnrV9a6govj5o6c0qrE/udPvm8/vrT5e/L37cfLi4v88h4EfGXQAzU1gDJobyf4eAUocFQS+LWkW6lVx6cRAKac2n+AURVIvQokL5/OiRwvrksQW1WTUmxh8h2cvR</source>
+  </file>
+  <file path="Library/Wechat/Server.php" generated-path="Library.Wechat.Server.html" hash="5c4d3d7911377b0ef7859f42d8392895" package="Default">
+    <docblock line="0">
+      <description>Server.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>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</source>
+  </file>
+  <file path="Library/Wechat/Crypt.php" generated-path="Library.Wechat.Crypt.html" hash="de988f63f5b5adf5f8ad789ffd3424ce" package="Default">
+    <docblock line="0">
+      <description>Crypt.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>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</source>
+  </file>
+  <file path="Library/Wechat/Auth.php" generated-path="Library.Wechat.Auth.html" hash="25dd398522c05ab71183b0659aee7966" package="Default">
+    <docblock line="0">
+      <description>Auth.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>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</source>
+  </file>
+  <file path="Library/Wechat/AccessToken.php" generated-path="Library.Wechat.AccessToken.html" hash="2d9f23c2a7f49c3fd90a2eac70559779" package="Default">
+    <docblock line="0">
+      <description>AccessToken.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJydVU1P2zAYvudX+ICUFpVmH+JCoQOxjiEmQKLSDttUua7bWKRJsB1KhZC47LDDtsPQNO0XcNmB06SNv1N1+xd77ThfbVqJ+ZLk9fM+ft4vZ/NZ6IaWs7pqoVW0QwgVoh2cUr+uzEhbjzGXKOijo3PKJY/o29eUuFjWzfaLgCPpUtSPPA+RIBxzNnAlwn4PeYxQX1DE/H7Ah1iywK+h0KMYbOeMjrTfq/3d1uFJS1H1mUfBhiUaYYF6TEjOupGkPTRi0oUdJpAIIk4oHNSjiYJtHEkXVMAKjEa0ybaT9/qQNjUsE/fk0eP15ViP+adIL1fKUGw4zgAkRN06CYZOgi5BAjDHBQDHsnw8pCLEoHomhQ0ryfzk/e3k7vrv9ffpzW2+DJqAeFiIgvXSstSB2lktIPh1A677z813Yt4+xxypNPoDY3L0M+SBpERldgWH4X6vsYBQUMKp/C/SE+06Tzy9/zL58W1697uMdRcTly4iJWpznlDGiXqoRO22SN7kw8fp/fXDSbXEAzpGW8hO+2AUzwvWBezoc+3kYAftHO/rVxL4QqqvTvvooHXY2Wu1FUvSfjhkQMQumF8/O9NdSAZsrct8p0iYRaIJeURkwGcDCTHHQxOK6YDFeyf5HjARR12YbRh5n6ihRp1OelglpqvlXKva5zJmgLWiBnmtqXHasJV24TwkpjCQpKdmYDrrhsmHa0V3kRFSjdFXCwqNBJWSLkiQ5jFFXRo/kJgzNXZBwLHMrbSRy3X9+fRz8vlru6ypIfaI+6UtOCNoQKVmqMxKYX1UMXJ031Rze2qZI/KQLN1GrGlcuNMR/CXQev1pFmlWVF3WXKUbBZApaxE0V96ssDlgLnsZSM3cHAiMhVOZzsmebidBvf7GRmHcGll4JWmY4V5rQo4rhdylSmoFc1qUSgqoogh+gSWjUjMktYLc2SLpw3SLClCFOcfjyhwgt2zgZz3b5LFpqlRb6hLf/HbexUhc6jbg2JcdOQ6prdxs4jEKBnDswZNhz17mX23Mx6kuQDPXL+G1Us2VKQWlFVLouDT5BNaSdJU6m3oK5ZSW0HC+sQvX9rvMTi9CxqnoMLCW0aYtVEZTjPMq/UpvqyvrHy1YpUk=</source>
+  </file>
+  <file path="User.php" generated-path="User.html" hash="ffe51282d9a74c67cd5056be688a31c3" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJydU8lu2zAQvfMr5hBAjpFG97hbmvaQAl3QBTnERUCJI4sot5Kj2kaRf++Qlu3CidGiBKQhRvPevHmknr4IfRDCSYspyBbhMoSZEENCuDZmsNpJwvnlQH15oSPdSpKNwdmjRR9lSksfVZpfSfcJE9I286D+yjuKsqX0KD3IBAepLeBvTIedM9Vh7ijX69xLJpy/Mf7HwN3n77xCw560hrHwNWEEXBE6laB8Am2DQculRxWfHe0vfgnglUUcYB9iWEOurafTEmEKX3oENQqGjW3MpKBZA3OBzfLOx+It5uVPGSFR1G4xpuoSQ/SELTH6ZMP0DComi3c+YJTkY6pGAWFojG6ZQ7JY6AbXkvYOFkiv1jerbNDkZFnitTotiM2QeUWkITpIaLqLi2WPESfVcnVXGmlVncEe+eR5p2OiyemsoO+FqOvt/Jvd6IAknqYZCBNPLQlk5NHzWfGjFy4Pc75D7KHFCBmjXO9y9bj7w4tOGzPacVvl34Q1VmilNnkTxqOpvs0Y+g8CcdWaQTFxF73dH1KV4O3nD++h89H+v9ZeK4WuKN0JY5GRL6dt2GDy39FlqeJe/AaXq0h7</source>
+  </file>
+  <file path="Providers/AppServiceProvider.php" generated-path="Providers.AppServiceProvider.html" hash="a70b0b57c5eb00a2bf1e3dfbc4cbf180" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJytTjsOwjAM3XMKj9CBHgAkPhsbomuXNDUQKU2sOKlAqHcnpO1SiQ0vT/L77vb0ICGs7JBJKoQjUX3xrtctet4KERnhbEzstJUB6yoSOR/qCn2vFc7KJFRGMn/tCwrwGdC2DIu/eAtIVxZFRijg5Fzg4CWBtC+QREYrGbSzwKOVN5N0dhw8hugt9E6306/MSLFJZrhFq3JAk6JX60yNtbl61A5iOeSKd80hTf/7Dj8l/94yiA9l9XZW</source>
+  </file>
+  <file path="Library/Wechat/Http.php" generated-path="Library.Wechat.Http.html" hash="5bce3ec69c94b8cad41a6c32f880d075" package="Default">
+    <docblock line="0">
+      <description>Http.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJyNVttu20YQfddXTAPDJA1HcoP2RY5sF4batAhswxf0wTaENbWSWFNcdrm0bDgGgqR9aIvUKOKiFwRFg6JAUCBO8tAmvX5NKNt/0dnlRaRIOuaDJO7OnDlzZmdWN+fdnlupTU1VYApuCeFW5Tuo1xXCBbAOLO9RLrhPtz6mZo+IarT9PuMgehQ6vm2DydwDbnV7AojTBtsyqeNRsJwO430iLOZMg2tTgmt7Fh0ov9sfLjaX1poSqmPZFNeIgAHxoG15gls7vqBtGFiihzuWBx7zuUkxUJvGDBaIL3rIAh8WcYSb1kL8u9qnc8psRO7GzNvvXm5rW84uqKeHanj1Wq2LFPydqsn6tdi6wBINU1hoUKtUHNKnnkuQ9ZiEs5WK7+VWtzaEZXtbsgqAMsjvRduiDpqXW3+0tryEcFEFF/oUFWlD39pH8T7xmLPCPKFP+NyehgmXcNL3oAGEc3KgG7jEXFmc1JqhqJs28UIGQPcFddppOpXDSkWmrWLKZwoE26VO9BKvLewRDrKSTjdaqqlvlzNBTVncCeU2m0OTvM+fvRy+uFcEucOYXQYoPTGXDrE9msc9++dh8PT7sxd/F8EuErNHy3BNuZkHNFE6LIkpGB+HVFrDe6ZJPW9dphllm43g72CrYAc5piwDtFoJoh6aYzIO9pehzA9DZ3wmZEtcn4tNIlsLfYljUuzZdOD5aP/6XJcKtaQbUE/UjzGRMRa3Xk+TMMLto1zm56f/nf17GhaJqFitwjMQyhCegqso4MUMQ9sr5V3GMTj+5vz3l69f3X396rdb6+srNfmxdvbjZ8VnK0sVO0ZtDL/+NTj+BZ02Vm+XmEY9ByEsHq/gp6/Q7oPmOtyBleW19TE/1WmQtGMUIji+N/z2eYlp3KbB538Ep/cv7n5x8fjPcf6cCp87kcsd1SaUXK42p5/6dDQfokQaWAW7U69jAlcfGpkyWR3Q06UyUnuqjFLdagN0KaHLvIiANq8ZeFq1SQ2Pp3ypaumz1dCqadDRyY1Kr5BHOQgumO+6lOvRojFbKWIoZ0aOYJTipiZ3tW3Ek6O3OCTHIc/kdddIeqhQ2ETMkYRpSik6YyMsJkz7rjjQk3ibWpsIom0b4+xFj7MBOHjPNvdNqiLp2vDRg+DLx8EPT4bf/Rw8fBD8daIZxflg++PIF7K+8nap19tU3rr5wNNKlHQOtRoMeuFlTiHRBW9vIqfTHrGttsKEcL74nE5DeG5xykqf6JaX+JnUpVOrubq6vNpaWl5qwluNhromWnhRiRblnHE9p0PUETnehWnLKJaH80dPBNjUEFimjhrD5CTMqLDF29nIqWplrPtet6BeGdVHdqi/tuHsOmzgaLMZhxTtsnpf2zwsInq0DdeqBbGmi9MqVSp1SBrxGEj8oDEH2oyGDR3BqwW2q5VVqLS34grG0cpG/cXTk+GjZ+fP75+dPLl8roetWDJmCe96JWNV/aN60+VNbFsfNbtEK5qMydCLLcMhYygpZ3KjKDvRbDbAieb5O/g2QnjHMLInJDtMLp1dvi3QRHJv4d9M3pIJtcKKhp8KK5liRpzZbL5MIVpcpKPK/xgxtfE=</source>
+  </file>
+  <file path="Http/routes.php" generated-path="Http.routes.html" hash="dae90986111947e95046e705def39fc9" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <markers>
+      <todo line="35">需要filter保护</todo>
+    </markers>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>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</source>
+  </file>
+  <file path="Console/Commands/Inspire.php" generated-path="Console.Commands.Inspire.html" hash="b4b9d3f23cb6c09a16cb2d4c70bcd1e7" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJydkctqwzAQRff6ilkEYgfq7OM+aVMaKDSLLgNFkSexQJZUSyouJf/ekez0YbIo1WZAV/fOmdH5la0tY5o36CwXCDfWbm6NdkYh1abhunIlY8EhrJQKjdTc4/hFOdbvTdAV99LozUo7K1up95QiFHcO+hsE7DxSOgwh7IMBnflslirM4LlGiGRAKji5p+hAPrMDT4roGagmezG4jubrN96C87HzcDVP1bbGo/BYweQ78gKmsqeaEuYJjFEzqNCJVto44T8a/3DH1nfSWcXfaUyQx23Ba6DnJ2iWHYrg8U8raJGm09DIDqvfLGGrpIBd0CJB1ORWmOVJ7P8hnomvpTu7jPGofbZ+WL8snx6Lry9dLBJllheDlJfJe2AH9gkdorYD</source>
+  </file>
+  <file path="Library/Wechat/MenuItem.php" generated-path="Library.Wechat.MenuItem.html" hash="efe377f751992269d83acd30d982b109" package="Default">
+    <docblock line="0">
+      <description>MenuItem.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJyVVNtOE0EYvt+n+EkadtvUrph4QwFRggmJqIkxXohpprvT7oTd2c3MLKUhJF5INAqRCyEmGiIPIHpnDAFexi3lLZzZQ7cHWnRutv0P3//9x7l7gRNoZqmkQQlWMQ1XBPYqSgax6CliAvwGPNnATLAQr73AloNEJVU/9BkIB0MjdF2w/KDNSNMRgKgNLrEw5RgIbfjMQ4L4tAyBi5GUbRDciv0erSwtP362rKAaxMVShgS0EAebcMFIPRTYhhYRjtQQDtwPmYVlIBtnDBZRKBzJQj4/5QhzZDH7XfHwQmyWk7tze+buZFuX0HWInyNEwGdNsykphPWK5XtmZn2NpTTsw5IGpqZR5GEeIMl6qIRVTQv5iHTtuSAuX1tFTWLdF2kJeDU2XXJ9HjIsHdN+dT9+jfYOro5/Z7UImB9IuDYgxlAbCjys1ySA8GlMxnIR570uA94UmNpSMBhM29I0lVEcRL0SRCdHf84/RLuHScRUnGkXA8SQB6phtAkFlfEYlWgH41QZ9VRtxt8grMsxktNFLTU/UKtZPpUeoSWMOE45wYR5oHICyzlMKinGMFsJqHwFNUa3FtREGboC0MsJ4WJV6zNSkFPzCQRMTw+6Ka2eBu53Iw0w8viZe7EvunpcgliOkXgPqtSz1Hroaj/02RFlTG4dq+T0kLl69VqLOsNofVSVIHvYJqhG7DHopgnUTxAmUKu5xCNyM2+g2Iv1Xzxt3EChKyZDy88Q6vbAv/6GKZ++ySjmfonP9si4d0/OL89Oou/7k8Y9XbFkvfiwDcMiZLS3axOnOoUwMqzhoY0HK9XJc8oFohaWNzm9B8MT1jOd7/004noMZD6APkV4Lc4n5zCMKhzmt4DKu728aeFAETf0Xomii52r49PO5x+dg5+Xp2867w67r3ei3Ytofy96eyaF3YtP0ZejRCuXZ+Z6LgN7lh8vtW0Zr76FS2scO1XHtLLz6zR6/+2GVvYuYiE7ljd2yxj2Gbk0kv6DvBFJYnlK/ecmt3z5Km9a9Z/KkvsWsxJsa38BoqZVbg==</source>
+  </file>
+  <file path="Library/Wechat/Notice.php" generated-path="Library.Wechat.Notice.html" hash="aa839d164dc7b16ab2f3fd1992f4875d" package="Default">
+    <docblock line="0">
+      <description>Notice.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>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</source>
+  </file>
+  <file path="Library/Wechat/Cache.php" generated-path="Library.Wechat.Cache.html" hash="f7f8baf42b4f00b7296d654f62a6501f" package="Default">
+    <docblock line="0">
+      <description>Cache.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJytVl1rG0cUfd9fMQUR7bqKpARMQY4dG9cxgdIEu1CXNiyj1ZV28Gp3mZ21pQZDH9qmLTguLYS4H5CCQ/tSm4JpH5z213Qj+V90ZjQjrVZaSZTMi7Qzd+6959wzd+bO3dANjcrSkoGW0CZ2XCiLCSS/H2LKUNBEDw6AMhrDJx+C42JWVsv3AoqYC6gZex5ygrBLSctlCPsN5BEH/AgQ8ZsBbWNGAr+EQg8wnzsgcCj3vXd/c+v93S3hqkk84HOYoUMcoQaJGCX1mEEDHRLm8hUSoSiIqQM8UAN0Bus4Zi7Pgo9A5YjukHX9v9yGNWk2Su529dbybFuP+PtIDpexMKpVKi2eQlwvO0G7oq2nWHLDlC9uUDEMH7chCjHPOkPhiqE57736Pvn9+eufjpNvfpGbHA9H0aAUxmPDEO6lqRhD82dP/r36M/n6uPfqM7WiDdYPMEWCPr+lpiryN6QBA0cwWggpNElnJcd38uVp8sXL5PS3aY4d7Hm47kGO64jxUjuo4Ijsd4ExoHlh+hdXycmzNxBmOydM//yf3t/n8/kKMcVtxZjmJp9mlUpc5wrnwvcdIW1k207gcxexw0ztYhUVi5a0fjzYy0dBCPnm2tBiWAqxeDQB4frqef/8rPfD53MqMw5hH7qZlTbpcNZQ4QB7MWTWiM9kZh5pAiNtmIkzAo6P+y8pX6XRPo7mndvVahYxaSIzAq9Zq6VFYaUsxKDAYurLsttxBNQWEW1MKe5O2V2SCdktYNykFZmWtTL0pkiUkBqYYZ7WwM1YPDmKYr2oPlbXNKQphtAJCYWGjVlRGAq4poXeToG/iZar1RKqVPb29mooeXKSPL1Ct6pV1Pv1u9c/XiYnF9c/v+CF7F9cTvi3Vowxut4SzdAOYyZExcBnkal0wxHLvnCPG8g6WCVeEkqwRz7lEwKPZWW5ZS4NDpHPe+5Wx4FQ1NEsbjgO8C7DAtj39bk/+6N/+bI4xuVCssw9yYvKsgFNHHtspvJaI+Upc15Zn188E0dMaWmwmqE2raXtqUocbZ8rxu35YkTg8QsvE0Hedasot6apnHXeUhHQ4dci14L4sNCNG8jUCo/9kQqkqchmJB65YVIY43Clr4/TUn+EhlK/q5flkXmEaorctKujaWdQ6lkFyaeaRLbu+KYu7yDo4P+AFx5VT0w978qdcpvXU5OvXlyfng2UmxWs8lAPAm+mGPmbRusxKz9GuxmYsS/eCflHeEwvDmaOi8zhSUUFyOmVTcylNYsH8drIIyF9N865VXRhUMHlDzsP6DRm1IWcvif40TD1lolLIV1vbSMUPdnrhTKVxSJg5vSi/wWm9QbAbC8M5ulfHMDY8+Pb40Uba1bIM5+BaXwZSWYQam/dSDYWBu3QbhBqWuV37+9sbX7wYOcje3fr4cbOBv9bbjeWzbF3Tll1tQHgI+M//tHWmg==</source>
+  </file>
+  <file path="Events/Event.php" generated-path="Events.Event.html" hash="d8615d26a69cf8d9986e440611fb5769" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJyzsS/IKODiykvMTS0uSExOVXAsKIhxLUvNKym25uJKTCouKUpMLlFIzkksLlYAi3NVcykAgb4+Vy0XAJLBE5A=</source>
+  </file>
+  <file path="Library/Wechat/Messages/Link.php" generated-path="Library.Wechat.Messages.Link.html" hash="243e831c02b6ed8abc41906380cf4f40" package="Default">
+    <docblock line="0">
+      <description>Link.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJyFkr9OwzAQxnc/xQ1IhapqAImFFqhARUIqfyQGli6uc20sXNuyLy0VQoKNiYWdDTEiFkbehki8BU6aCISA3pLc558/fzmnvWMTy6J6nUEdelKfN/MeivaEOwIzhOMJOnIp9s9QJJya5fK+cUAJwjBVCoSxMydHCQHXMSgpUHsEqYfGjTlJoxtgFfKgTSROi329g73u0Wk3txpKhUHjBFPuIZaenBykhDFMJSVhRXrwJnUCw0ExVgk6PKUkpAhlyozQlp3qvTnG7QL7Cre+urbxP6vCDKCohMj6zSgahQjpoCnMOKroX8gAfvMKQMSY5mP0lofUP0bYP0Tv+Qh9i1Wz/7h/y+4es9fb7Oa5+jzrjA37ZpDPQ49gSRhNqKlwF4p7X1wZ4EVQYw+7Yb6lM7tkLI9WuOdVh/eXh+z6qewqsTPhDrhzfFYqUfEMJxOK/AKWyhASPWzNyeU5+lfVSJLCWmMBFaMXTtr831jIpk4tYFZa7Ip9AgXG0CA=</source>
+  </file>
+  <file path="CompanyCycleBill.php" generated-path="CompanyCycleBill.html" hash="2a350e115ba96a99c235374eafa0619a" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJyVUk1vEzEQvftXjCqkTaKSELi1TQm0HDj0wrWpIseZbqzaXmN7oRHKEYlLu+IAp0oVQqo4FMGhEm0P7a/ZVfgXtXc3fAh66FzsmXnzZt5o1h7riSZEUYlWU4bwROtVQlKL8FyIVHJFHQ42qaMjanHwTCQvU1RusJWMUXhgp9Ui0IL87WmenefvvxRHx/Ozk/zgQ4j2tUk0GjcFyfdxDCYVWMUp26Nx2az0X6GxPFHQbT8ofZq6SWIAtrhiCazJ8LRfUxX3Y0m5aLNErntghzBBrYWNRGqqphtTJvApFwJw36EaWyinJG8IeOt0yseP5JA5P809r0kg9CBiVf2QBYLhyDPYyGsrq4K+YC2YH/7Is4/F6dXPTxeV0iLL5tffF/m+QZcaBdYZruI6WjdNR4Iz2E0Vc0FnjO6F38UmWma4DqFGswRWowbju9CIujKCXs9POuH2/npYX/MPSLC651LxLSuO3i2t/krO/mZ6dBem/Ovn/PLkdrLuwzuxXZz9l2oBqZOz2zbljw/tP/upq6kxdDqUaGJsaGr8aa6s/K5Z3o6so8YNx96PliPlD6P67zQXXWfkBsc089w=</source>
+  </file>
+  <file path="Library/Wechat/Exception.php" generated-path="Library.Wechat.Exception.html" hash="aaaf7e4097377c3f7204da8df639e5bf" package="Default">
+    <docblock line="0">
+      <description>Exception.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJy1WltTG0cWfudXdKW8ZezFRhfExbmsd2PvrjfZOLU4tbuVpChZGkBlIamkUWJXKlUCLBBXQSzA2LK5mItig4QDBiEJ9GOi7hk95S/s6enRaCQGpse10YMLz/T5+pzT597z0Z9Cg6GW9qtXW9BVdPuhRwiJvmDgOn2IlGdfusMiCvaju98JYTEcFb75t+AZdIvX1dd/DYaROCig/qjfjzzB0KOwb2BQRO6AF/l9HiEQEZAv0B8MD7kpbhsK+QU3PPvOJ3yv0H1+59PbX/TeplD9Pr8Az9wi+t4dQV5fRAz77kdFwYu+94mD8MYXQZFgNOwRYCOvUOPgpjsqDgIX8AuqPKKPfDdrf18fEj5RltWZc9jsrovX+n2BB0j5DYpiKHKjvX0AWIjev+4JDrXXVhushIU6LFjQ3tIScA8JkZAbuG5S4YctLVFQhaZ0BFL/BZSjPYAFHr87EtEtER6KQsDbtK7lh5YWykEoHBQFD1XYJSEcDoYj6GPkDofdj1pb0Hm/y9fsl9lfH3+CLkv7Ram4Ih0P4/Lyb6VpsrtBlg7l3BEuxXByXo7FpcwMji3jsRk5t3C57QJYm4qqwAICeTtCEnN4cuVCqg6bzabwo1DNHuHkotvjESKRPjH4QAgAM38OhXoFT1gQq6llOZejTCYWgbHGZatkIfFrbETPuZzdkNIrJJfCuWMNRHr2mOy+ktayJLbNoMjKppSeIk9zeG4LXuF0ppIvkOE9fPIEFuP4TqW0hJNH8t6olMqQ2U2cfGUqkaMmUSU/g+cSZH+BQo3vyrlh6W0Rv5wyRXAaIdwNCYE7t4DthgNay4KktVcJObdJ+Uwc/VaaYELho19wfJ/sZzRZVMGZyPBv/LBSXNTeahuZMtlhKObrnyonT8jieKV4yCmsywjHEkLn+Qh4YxvvJU0Rusxk8XlNMboNuThMkOEcpxw9hlw8P5Umxq1IY7cZ4ci53erKviUcuyHO9lh1fd4SjqFDSKWfpYVNkM4SlKFngH+fcQzyKga+rbxp8vrqcBnHZ3BpBOfzeHdJ2tmiHrGfIY+TjAk8tmzKh6Hx64NSEzv6cKRfRnlLT0D4UnhL4K0R5phyeZykV8CLf7cwZTf0OzmZxjMLfPZqN/a76YnqT9lK/jVZ2DNFMPQ7SwjGXqcg4LkZON/qQhkXtkxxDH2P4Xx2+798IA5Dx2MgX/3rc04QY69j5zKRIOkdOGhTEOMctDun4hS2OXTrMHQ2DcTKMTmMk0UjFJ/VOQzttgnKytE7DM24CZDfBoxTSSMavzEYmrc8/hpnn1WOJxhm5aQMXs/yvimgoZ0HaU3dR6tsM3qnoYmHhf6wEBlkIc0UwtDAg1B0+Lw4sSSvZUwRDK1bj8CnXaehgbPqVcsM8EoePcHTcTz35pvoQ/iR1RIuJZVTpWtMdzE22OQIh984jc+f1dcKG6YIhgfObYAuw/PGiTGp+Ni8JnJpR80omFtqSCbk9np6eD9yTXlDgtfn7gPjUPI7P4CmO+hLxWCABSjWiZjR1nPBe9AaekhNCJ4wadf1VVKpgPfm9UUHj+3ZdX2MihAKgQb5SJ2NpA3xgROioxEiojRwnLSuRlq88UxfywMCmcmagnQ2gmg2xMdCVxMLWgLg27y7kVwJ0Mg8QNt1TYRKqUTFi6kcOmvR24l8GIcWnFWyrJ42Ll1poapUu8kROTaKVwrSWoykcmR6+NrZpr6S34XVZ8tgObclFcdIuoATh3LugDydNWVaM9AG+2JcmxJrJlpPfjyUTp2uqumYvDX8t9v3WEA2JXQ0En55t5eX0tlI+fd7977s5STtaCSF5oCkDqEjYVMBU3JXIznePMHJKaCV9osX03boFNXkgNC7SD8XTMk1dVFFUWtTXAcyMSe9pjTWZLJWHI/FcfaYE0HTHSVP71hFcJ2vApaJwOCg0asuz4HNm0Jp6tCzYQlBUwhZHa+uP4VcSrLvLCHUFZJMyuW990Co29OTU9qoWkfo1B2rNDH+3jhahFYnIz/tktQp+H916cASTreRmVlC0EI269xZF28FoT7xwYnnuFhQ+wKlNbOE46rL8hJvzFjXRn0mwGbLrHBjZTSOD8vZfKWcJaljUxzD0o+ysVA2pe1upAUlVMdVX6vkJ0GQixE6dW5L2d59itMZ1Xk5sndn0wRYIW9q4U0RnOcjcPLQYYTA0yR26Wfy26/Iy7l/9N79ov0///ychRyuGtbWVTfJlQJIXCmvgVug+271hghBHYDX3uCxZdpPFJ4Ai+qS3s++Qlrd28ZqCvRpWHCLwqfusBcxE8czaziRZw7za8wkDdp1s0xcjtN9lXhBt8lOk4UDklhs3lJ6nseFFOcGENc0w2fXEUqx1gY5mk3olf8i1nPBUSCHDWR8zRrISnETNNtWyafwxuNKYbb64iWbTkqThyQ23Cqf7MjvVn+NDePEanV544ppzu7RsaLNClDvF4i8GAXrb6uXarXxJChFzhXhSGiafTcsZabgVTX2jBGYiu/URSDYE49kcKz0O25m120mbefAzX+vzcCQuxsPlhleG0m/BhSIKDi7RlbzbfjoF3n9jXSShcIAb7xlF1Km2D3nOknfGSdBXvCA2mPVVuloeDVfTcVUd0i/xok9KbVCq3Ildpsy4dINHFmV05BKFYNlob+uXOYa6jqlVOeQtbseEBivEz/jtwuqxB5wbOGhWBeMA7Cny4ryomF/H72a7RMfhQQEeqPXp0NBep/a1/ju/xx7oJ03HAAht3or6RFbfYHv3H6flz5ifa6Jj/fo2+PdU0iOLCi30dyfzbKBID7Ngkr0vMrvHpPFZaWApu7AKPHRJo4fod5bn/F4nsMwtHgEvx/JR/sQqfDGIq3IeNxRSu3THuZ9nLKnp168bbLYyhyQeYMpQre+4w358OSKPHoC3kNmE8AD62ZZ4NbuVig+NLOnS7AjUydtY5M5Gr3TtdvV432c3MPZp9LJ/DVNZmqH5dHqGqSbXfUiR6Fn0l7IqEt/Qc6St8Yl8AGsX0jeae/QjeCUwQUzFM3iQu4wGL4ohC+2OArkaIqD2XWSnpEPtkA3GtyD/j5o64PRgIkFU7x6e6Yg4fwc0zIrVlrrUEh4GPGJgtccssMQErxDCWP6Ora1UoyzetRug0QsT72F4Kef+YKXkKmdmzg5eRPPzeov2ejfzLWSR1caJVe49QuBAXHQnFnXOcyyUTMUARAnGEd1Zhmff4RzhDewud8vDLj9yDMIx+iBU4TSytIZdBrxcLZvaFWUpD/xK/rzqZ2SRxC8PMfU1WRJGwd4NKm/8de0yr4RgqhsDmprbDxUO488iojCEFK+jzHDAGerM7ZJ0itsws5R71JaeyOtPD2Knx9w0PbQC3tKXZt0qGMOxVv5RtUMwsEg5HJaepOjhzm5RsmTOYgbHORORn7P53kgiFb27bis+3yHzI/j+Yx8esyCFcvJUA/JB5scUC49FF4Ys47QqUdgH7Jw03ZdVpP0ZKW0qppjiRZzHLTdelrpYJW8mGv6isWKSnsuQMN7BZzLW0CjpXkdjVcbDpWqFhK4t3OopgyRnKQn5Owp3hgn5Rg5KEqz45WTWWhwXLY/aBdrZHEPr79kyzjAa0aurFcLCJ2b0JRcjlfXikoVvg172djgEMIlB7pTY11t+pXanlUrbMs7t9imHGAdNbXHyM4a5H05t17DYBMJpgAWZyF8mSO69MLfuWXlUFS/gCKk+mLdGmmXntRyWHJ069XAOtgaF2fVYOdRQ08DQ3BWhRQtd9MZphh2wUBLz3hC3n4F+6kLlKE1HpthTJhv5LSdPcHzWec5QafqG6w3w9MF+NeCLp2q9VfKL8A+a9LOMp5oQV2ch4JclVNX7XEgq5ZfXcrgwpIl+3B26K2SOvt+hgVtjmkdQ3CddWrLduZULVx1tHdHeHsKx0r3hQFfgAfmyofso1qkfBut/K6imxFBQN9oH97euNHX5wkGImI46hFri+qLlVoa0c+YAwPo0pAQibgHhObXPqiU4HeJ9iy1d+3sj1D0vt/nQf3RgEf5+Fe3WWsNro1Roo/RNfsVRvaDJlNtEbwVhkLio9ZL9CPqa5+wr4O/Vii/vYL+VF94AxktqamiEfKDr9l3zN/+UHv44we6lSCeEBAbVNTMNehYWfpjy48t/wO6tqsB</source>
+  </file>
+  <file path="Partner.php" generated-path="Partner.html" hash="fa72c9a78d1b619611e29a8f297dc75a" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJwljLEKwkAQRPv9ii2ElPmAKCJoYSH4AQdhvQwoXO7W7B4o4r97xGmmePNmu9e7EmWZYSoRfFAdiKqBzynV+ZHFEY7ichNDOKXyrMgeLmVCasOYxIyvsnjGwng58mS8UvoQt/T9WroUR3RMvGlfCbzjLpZZJb9H/evWDfSlH0xLMPM=</source>
+  </file>
+  <file path="Http/Middleware/CompanyFilter.php" generated-path="Http.Middleware.CompanyFilter.html" hash="6ec557488d68883d32b9b4187159464d" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJzFU02P0zAQvedXDFKlJFXLShx3aQGVrZbDgsSVrCrXmTYWiWNsp+0K9YLYI+IIWvED9gB73ht/hvLxL7ATJ02XCnHDFzvxe/PmjWfuPxCJ8DxOMlSCUIRHQkQnWovolMVxiksi8cjzCoUwSnNV2C/7YWGjQuk8QznKM0H4ORAF7lhhnqRpkTFONEaPiSZTojA6TvNXBXIdneYxpk9zPc4LHh+vKArNcm6kaEpUE2jMUo3Se+2BWQfdbrlDF04IN8kB4cA4zY3IHCSawErfdZAa+VAQSTKAqJVN6e95hQfoOOYfDGfYIDiuttcSdSE5ZGyFsft5UO6imKaMwqzg1HqBpEwyqOP36gpW8cKSUzmzi80aZH+ocJ6ZKgX3QhgMwPfDLc6uNlApoxWE/eHMFC4JfJQyl34P/O9vrn5ef/314frH5dvNxefN+5tvN+82Xz5uPl3d8cOjnYDOk8SYSaTahpsS+jJowdbNqZMRAQN4sRPBZ7EPgyHs89DbRZrekJM98MbJHHXg06oDLDBs+GemQeqzludwqyyOY5Jz/XN4uExQmjcwKdsSMan0MzkmLN2xBpRomkCwvymhg+Ftpf/yANsXcEb7QyOpJ8T02wInmmVorNutzduCFVmUN83VguHSSqnEjLkpuRtok3xNaqP3mhaF3hLtY/Vagiz+B7W/k1xhypFpBsS5W3tr7zebp3oY</source>
+  </file>
+  <file path="Http/Requests/Request.php" generated-path="Http.Requests.Request.html" hash="e0c79ab779d5dd0d4484e35f4d87f535" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJxNyjEKhEAMQNE+p8gNPIDCso1oaz1NdgwozGSiyYAg3n2Ftdjf/te9dFEAocymFBnfqmFw1zDxVtncWoBqjGNKNa9CzqEvVWbytchP9mXPj74xfcx3io4xkRk+A/lwltnwD8MJeNc0cMEXQkYwKg==</source>
+  </file>
+  <file path="Company.php" generated-path="Company.html" hash="61d879299a4f44eb7d743f9164db73f9" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJwdjzFuAkEMRXufwkUkpC1YqCEJK6BAIjfYxtm1ADE7HsZeFIQoUyd3SJsDIOU62XtkMm6+nvT1v//8OewDgKeONVDDWIUwA+iVceNc3x08GdcrMnol5Xrt5NSzt/pFWnbJWBYFYIG/P1/D/XN4/x4+7v+8SFlH2uW4zGeOehCP0/EkM/W2l4hY+fayZcZ5FLGFE7WO/Fji7inZSmgcqeJSukD+gvxm7FvFXA5XwHRlmSVEMW6MW3xIrzrGRxylEVFHM7jBHxGbTPU=</source>
+  </file>
+  <file path="Library/Wechat/Messages/Location.php" generated-path="Library.Wechat.Messages.Location.html" hash="9fd52643f1e373f83bdb726e51ec5395" package="Default">
+    <docblock line="0">
+      <description>Location.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJydU01rFEEQvc+vqENgN0vYUcGLibooKwjxA3PwkktvT81OY2/30N2zmyUEsiIYxGjEiKAYPSh6i15CIOCvyXTIv7Cnd2b9SOKidZmZqlf13rzqXriaJmkQNhoBNGBRUmKYFM0iBz51lygDMoY7fVRGZbh8H2lCTLMs35AKTIIQZ5wDlelQsW5igIgIOKMoNAITsVQ9P3cOUo7E5foMB75v8eb19u2ldjEqZhxdjhgYEA0R00axTmYwggEziaswDVpmiqIjirBS0CKZSZwKF7LUCAusVb03e3jFw36Ku3Du/MW/YzkTD8BHYkyqL4Vh10nIOk0qe2GFPgXpgL/McoAwCATpoU6JU/2Hhcu3UGvSRT0fBJk+WW6vUEwL11y93E/+bst+eGz3Nuxot/r9VMnUNQ6h8Et0YYZKYVAYz0450XqyVsAVV4k0XHM7KNmD1SAo5HuGIhzLtx27/rn8qpKtPlFAlCLDMhP6p2M3SIslzZRCGGq4PEbWx9CzosaJqc1Nw0gxFaMp4Th9Eukgn4KanT/hxtH2e7uxdbh/kD/5Mnbevvp6dPDodxuyjjvu7hYI6o02csmQOK7P+urqhNMkSg5AuMM/2W69Zt88tK/3Dvc37faufTrKn784Xh8dv/xun30aE9acrKJ77Qxx+dud/OPmP4i7hykf/p84T3W6uLXgB/oUYn4=</source>
+  </file>
+  <file path="Http/Controllers/ContactController.php" generated-path="Http.Controllers.ContactController.html" hash="7e2c92ea76f69fe31642809ce23dc56f" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJztWFtvG0UUft9fMUiWvI6c2yObJiQ0ragEVEolXpJQTXbHySp768xsLkrzAAgpVKoogpJWpCJFRcoDWECRWiWk/JnYcf4FZ2Yv3ps3TqlBLeyL17vnzDlzzne++exL73grnqI42CbMwzpBM5638B7n3sJl1+HUtSxC2YSi+Axe+XxlQt5dczyfB7c3CGOm6wRf5ohhUqKHrz7Clmlg7tLgq1hZLIqj93GoOXLLJ4yzcHHL8m3TwZwszGKOlzAjC1csF0wcvvCBaxDrQ5dfdX3HuLKhE4/L6KNDQwoaQq3mD+2dZ2gYdT755vTp0cnhYfvgcevRrng3DftbxcvFW5QGa3ADq6HxkTH5HcOGXYrQjGNsvk8IukRdl09bLuM2dkZcujwFZqOKbmHGULi17pqIbHDiGAy9CzvoPla2FAXBJTMWF2T9+U+tL5/HKUePo/hl4aXlqPz0/CXL1FHDd3RRE7RMeJiTWpMGW4E5XBUbe2gSzccPxFXVXdvDzuZN06iiyamos5oGC6lV3WfctQkVb2v1tKPrESr6HHkKoGga9JKqteEp04itFye6KehBbgzyCNPUtPUVQokqsgM/EbY2ocQelHCfOmjNJOvddEbCZUZMxyAbVXBbN/kKvA9Xr9a7kWpB9O1c/TvNF6fHzbOjB53mk3wXPEyxjUyHo4pphAgLOhbtLG3kgVW8yrXZ2CTM3zY3iPHqWnyD8FnSwL4VNxuyrMss+ut62DPhUH9ZPCQbHN9zupkILhMAbnCp0bPjDWjidXoVm5Yq8++iZRvpmOsrSC2ef1QhtUysONsGTCcAglDqUkBDtdP8pXV8/+T53dbPD1p7B9VElATKaMhkAsBLwBtqMhmlHxQny1cvK14B1BsuJVhst7s+ZnGw7Faj5zBq7KYRgAHyGZvoYcXwGum1n6BDmZXGJ/IG2UWy9Wa+rsOjoOIF49Xeude6832y+iWV7zG3rZ3vWkeH+YkdzKRdhp5w0otSy9lJl77VngyU2QnCMuogN+SBYfmOKqY45aH98rTXtOuOtalWhVIQTRX+4tN2l0xLPiE2DK64oXBHV1mytxXqW4TlyUeuJsgFnG750HeYlbSFjFNqEWaQsrk9R5bJhjb68fj82PDbi1vjY9uV0du+Y4KK0KLBjGarHu0hvW6wH7msvO3lnvBL0l9lDbYbSyBNs/EqEJ2saT2sR6JAZgOGfQ0oEAIxtdYvmwkXUG4MZA1TJYNSBp0s5rRInWlaH4wGyTtkHcXgyJ/cw1NdhgPrEoYr8k1oBnDOKoYiD4EVMA1KOB9Ap0BQDE8JyCQMJYIKDYO+J0xDIBQaSwwkbAN4FJqGA5Awjkai0Dyi0n64tP3sqHVn/3wWLe51nnhO//i28+KrEtEDc0Sl8CmSNBkrXeijrDIaDBmDDjAbm7Hk0aXmyUueAg3SxXd8YCd1x6BkR/vruyfHe7HsqMfljB+91UOK9DW2kj8KB7N0MkX6RTF7HGO2rHpOZSdEdqp4xIKfcxeqT+vJr53ff6yj9qcH7d8et/e+aD/67OzhvU7zz7Pd5kvUpy/Qz6QP2wDUEswRsnvI/UrC5B9S/ILM+sT+G3d+lxzQsV+4idfuROauGmg+tZr7I2E6y3cQZr7s1zmAYbFWzBNvFiGeV7Vuvco4cLCM2reASRufI2LSxn0ImbTDuWImbd6XoEm75ERNERiSwkbCIdAz9SxD52XOYOHwL55hA4B0COz8b879s4dl/3fFoq78QIvPwlen7maJRbo/TP8j6u51ILP0Osk/iSbReLZaF5mV3f320/sBIjN/FGXrNtjapUJt92JyQ+LzIvSWGbb/Ce1vwTqktG3lLwS9krQ=</source>
+  </file>
+  <file path="Certificate.php" generated-path="Certificate.html" hash="778ba31d6723db3fecc87dce54fa09b2" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJxFzDEKwkAQheF+TjGFkDIHiCKiFhbeYCGMmycGNrtjZgKKeHeXNL7mNR//dq8PJcoywVQi+KDaES0GvqS0TGMWRziJy00M4ZzKc0H2cC0DUoUxiRkfMft4H2O1jJcjD8aroA9xXduup3NxRMfAm9pL4B03sUwq+d3Hf8Kajr70A/dFNAE=</source>
+  </file>
+  <file path="Library/Wechat/Messages/Video.php" generated-path="Library.Wechat.Messages.Video.html" hash="eabe9cfe703eb5d0a21934e08948fb22" package="Default">
+    <docblock line="0">
+      <description>Video.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJy1VVtrE0EUft9fcR4CuVCzKvhiL8ZLhYJVsVJfCmWye5Id3Bszs4mhFCyIFEFQ0CexQhHqU60vIhT9NSZp/4Uzs7vJ5m6Kzkuy53znzPnOd87u0o3QCQ2zVDKgBJvUxqCsDKCfHxImIKjBgwYywSLceoKWQ0Q5cd8NGAgHoRa5LlhB2GK07gggvg0utdDnCNSvBcwjggb+AoQuEmlrUGzquHtrt1fvb6yqVDXqorQRAU3CwaZcMFqNBNrQpMKRHsqBBxGzUF5kY1pBhUTCkVXIEyQ1whKtpP/LHq5oWL+4q5evXJuOdan/FPRxhAj5ddOsyxKiatkKPDNFj0FKYCaXBJiG4RMPeUhk1UMt3FpHzkkd+aKRNv/s6OX54dvO9/3O3teUXsiCUMa1QPXDr0OuoRQa7xJUuDje5aFNyTa1x3tt5BajodJoQmYn8qrbmSSmYbmE83heAJ8J9G0Ot6S4CS1jxzBUXzQ1dUrQ/nbQeX6UPKXGSoMwIIyRVmIx9a+sQKCl1M8lxVDksBwjCzF00snrPuQXZqAypGdiU+YzgYONmgEvLo706Oz4V/fn8eAgaE+vXyFhxBvUdc0eBjEUEfNjdQb7GlXlYsp99S1FHHR8IU1T1JidXtE5tXWXVjiKmyJZx0KmF73rUyLqJFfr0EVt3Z3Ksn2yd/7x8P+y1KrMx3JYyAtz7b771Nl/8/vHafvVl1jRzvuT7umLCWTGrMIwmWBDkFqtMEwjm2B0Q/L6vZGH5ZW/2aFkhfoGGZa0SXumz3V/REaiU8+MBNndHEyQ8czIMaRglsKAZ2qa4oi3OF3o9oeD9ufX/0joRxi6rRGhc0x+UQL1bZ3+PsxvziN5HLIeD3ks3LyyxSkeZ0dnrrmJ4+9ktb+A8OqMyhabx+xu2sxU1l3jD7IcesE=</source>
+  </file>
+  <file path="Library/Wechat/Alias.php" generated-path="Library.Wechat.Alias.html" hash="455fd9aaf2b81289485669c4ec70bc10" package="Default">
+    <docblock line="0">
+      <description>Alias.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJydl0tv1DAQx+/5FEaqtNtVtQtIXPqipRRUKOWxPC4rIW8y2Vhk48h2uq2qHnkIUdEDBw5cuCAkDpXoAUEPfJq0fAz8SLbZkjYxPuwmzn9+M55xYnv+ehzETqfVclALLYcE87bqQPr+AWYCUR/d3wQmWAK9Z+AGWLSzx7coQyIA5CdhiFwabzMyCATCkYdC4kLEAZHIp2yIBaHRDIpDwLJvk8BI262vraxudFcVyichyD4s0Ahz5BEuGOknAjw0IiKQTwhHnCbMBenIgzyCJZyIQEYhG81iRPNkKb9uD2FRy06Du3r5yrWLtSGJXiDdAiFiPtvpDGQISb/t0mEnV5copbDAkoKO40R4CDzGMuozKZxz8px3b95Fx5/20ref0zff0v09beiGmHNTDmfHcZQLLVethYwwPfiZ/vqQvjw8OTzKnuSCpU3MEGYMb2c9Hf0fMyrAVUnlQpbERVNYeQCOFoy6aeQXtYaJf1nmvVHsX1hEjfEYs0H2elo2U5u6gplXg6pl9amrWy7Eagbm6HLqqaw++jajSVyMuBxtZPWxa0M8gGqskdXH3uGNyf5yrJTVZ94Dj+DqUI3MBhslNWaCltlR1wQMx+TzqVpmQ+Z8ombnkY2sPviGfD8n4BeCea9XNLCccUU/VW5s5966/FZajUMZ2PCpq1eZsY9KfmZgU+SEE9cmSdrAwsEGjLhVkpTB//HNa1CHb/kmPIYtYTUGZWDDZzjiPrDahc4NLHw8JR5Qm0JrAxsHVO6PrBwoAwsHDx+tyG1S4Qta7iCT1ed2gUlIJTeTWXAF9v3qZcTIbLCU1VhIjaw+9gkLJ1fScqySWUD5RGLPhXKrxG5QoWZOFTWTWRVM8FoFEzZfqC4McSRDqVihxzKLvSUNKasO2MiqsdNz/2zLjz8epPtf0h/fT47eHx9+TV+9+/P7ddnOvE9pWLExZzCQZyBgsmsB+TjkUOJP+8hPDUVc0pfnr5zlJ5GrFjqUM5vTWrUzHiPxUfMSh9CfnS04ni4oVJMHOcBugJqZMj87yPOauVYZndInl7OmqukHz7WwaVQzmZ1MZVG460zc/hOXTIgq2anRrmN+d52/s4Poow==</source>
+  </file>
+  <file path="Jobs/Job.php" generated-path="Jobs.Job.html" hash="c934074552b8d3eb185de6b8755a3627" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJy1kcFOBCEMQO98RTPHTdz9AE2M3vRiNvE4lw5UwXQAKWgm6r9bZie6H6C9kJTyHm2vrrPPxkScSTJagpucx/s0yaUxTQjumNscIlYab5uMx0aNcGLSa5ykFrQVLKMI6CPzYUDjsFuPz4s/ixMPfuxdJv8j2VSPPgi8pAkm1CmcOswlvQVHAgiWovbOwMliDSlCTZC5zw/jotnnYKF6rBtNWeKxkAO0JSkKmSE9wZJa6RbZq5BAkaFCiJab09r3UL1SNv2G+v2EtaQkFfeS4bXP5iEO+gEHgyPGZYA1CZ44U4GZqk9O9md97g5mPfumz1b7Zb4B3yCWCQ==</source>
+  </file>
+  <file path="Library/Wechat/Js.php" generated-path="Library.Wechat.Js.html" hash="4527e795c10eecfe575985b181719f72" package="Default">
+    <docblock line="0">
+      <description>Js.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJytV1tPG0cUfvevGEWItZFjN6nyYmIMIqkKQQTVRH0okTVej+2B9e6yMwtB1G+p1D5QIpW2UlSpSh+qPjT08tI2LfTPxDj5Fz1z2WXWuzYQug8wlzPnfOebcxnfrfldP1eemcmhGbTMSmKG5GQNBxx5bfRwhwQ8CMnGx8TuYl7S2x94AeJdgtqh4yDb8/cC2ulyhN0WcqhNXEYQddte0MOcem4R+Q7BsLZDya48t7K0eH+1fl+oalOHwBrmaBcz1KKMB7QZctJCu5R3YYcyxLwwsAkYapEIwTwOeRdQwOdpjOgunY/GpR6Zk2Ln4G6/d+vOZFmHultIfl3OfVYplzsAIWyWbK9XjqQzJEHQ0AUC5VzOxT3CfAyoRyiczeVCllrdeMSpwzaW6w9XZ7P3AwdO6qsanB6//vcFWq7X7z2Q5mwHMwY3mNvP5QQqKSc+kH11NDz6aemenkfL8zs4QIJrt6OXyvK/H3ic2IL+Kez7S63ZMQoZsQPC30lpXR5NK17EdpcMfvnrzW8vsvTK7XFqbbGZgfXkq8EXB48+Wrk60FASLhZtz2UcLawtNdaXFh/cX0dVZEUBgn1a2iX0CXVL29syTuwOvdmkbplTe4vwcodwNarxPZ9UNxmcsNJApY0gtLkXjEL1cYB7Gqy+lPF7dfNatE9hE3ISUtW1RTKiRiM2llfqisbRgjyzrzTANyUS8OaclJML1Tgw0iJKhRaJrnlETN6U1uRCOZDXqoEUlHQ/Rc+bL/8YHH4j4334/Onbzw6GJ8dnX/86/PtpNls4CPAemoI7YyM7Tc9zAEuLNMNO9tYm89xRreBIGLia6E+l9okcA8Nt2skbMIraJnjdxg4jMG8Sjo2psAtTkfSpS2C0465hewt3iGBXMQmhVYd1DNCI3swXDL6bouRWFRf5eDn+LInHQtU5Da2YISMwWkjKiGFaxDSovI5MNnokAEQSRjHhQlFjsjbZgk9XoOQrFIKnQkEnh/g07YqaGhLVsVIhrugDeW2tgCqR4cnBo8JlcPLD4J/DOIb+/+gRLI2JnovDBm50UbqyIPm5fPiMBkxEnE45FY0JRVpBUZ+fzN0mUzVsYlpc5Nm6VJFPxfYW2RMVNe6gu+qlIStlQ9m1SmYZMgKkXEbwykDwbkF3Su+f60yUq8RRU+S8XI1UMDOmjXJlVrCEJqp8AxFGnHalct4rMoLZUCJzOJmago5klsUc5sVeAYnXQUbhLmqsRQNQweA5NiBaV1R8P4RxXgwWbJswtu5tETerKZhJGSsKCAsdSZ9QqXwxbGcd0V4zISkcjZR8YumLfmwskSc+hXGDutbjLG0RoaMqZhOS/Xg2NsiHL08Hzw4m9114DozZcT3XJiN71OXSX07hFchxz79OSUgVeQFGXCA8vova/vk0NqmXUvkmDquvqiY19a9i9BV4bSZaibKhz6hJLRqY51bFSuKkCceY1MxJBYnxyDGZUAgl2l1UQoxgkH1lUpeTwWwp7HOJYpDV76RLdR7onienWXIxeNW54mmWLJBrRYzPSa6zpFh0y5aB07z9vCYlunLzrotSbSGzPacKkLA0NhWOvj/7/NllEiLREa6TE+Mz7d36zFUIy26brItv5W+YDai6r3X1p6UqQAJLctifjpVKKT3uT4N+WIC//Rvj2+vxKbxCxv5KuSwxy2wiKUwldJbHOs5UQTF+85jxIkQmvw/GOnCli5NFZwQfbUOvizGO9rNkS5Xoo61+yg9QX6nYYRAQl+cvePC8fX549t2rwctvhz//+PrP36/llq6J2aEWunSbtvJWgN1Ww4pR9XP/AZW0A6c=</source>
+  </file>
+  <file path="Http/Controllers/CompanyBillController.php" generated-path="Http.Controllers.CompanyBillController.html" hash="580f8ca3a83a5141a4d7b291803d36ae" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <markers>
+      <todo line="185">不存在短信模板，需要增加模板才可发送。</todo>
+      <todo line="201">页面显示常用项目</todo>
+    </markers>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>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</source>
+  </file>
+  <file path="Library/Wechat/Messages/Image.php" generated-path="Library.Wechat.Messages.Image.html" hash="ed2efd294adf296205b3345260bb050c" package="Default">
+    <docblock line="0">
+      <description>Image.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJytUl1rE0EUfd9fcR8C+SBmVfDFtDEqFQJWxT74UpDJ7t3s4H4xM5sYSqEFwSoIfdCnYgsi6FOtCKIU+2uaxP4LZ2Z3Yj7aQKH3ZXfunHvvOWfu0p3ETyy7UrGgAq2QdLCmEqDPTwgTEHvwuItMsBTXn6HjE1HLrx/EDISP4KVBAE6c9Bnt+AJI5EJAHYw4Ao28mIVE0DiqQhIgkbkuxZ6ue9i6v/JobUW18miAMkcE9AgHl3LBaDsV6EKPCl/eUA48TpmDcpCLhkGTpMKXLGTEOUdYok3zXwuxoWH/yd28fuPWYmxAoxegwxci4bdtuyMppO2aE4e2QZ+DlMCJXhJgW1ZEQuQJkaxnLFxfRc6l2bxuGfMHeyejN6+HP3eG29+MvITFiazrg/Ij6kAhRJeS59TV7Z2AcJ49GuBLgZHL4Z50OO9tbViWIqf7q5Azvu8Pt77kJ5NsdgkDwhjp5xlbf+VsgY56gkJOgyKH5QxZKhomxXJ9bszfw5PRn8Ozgx+nv3czQYOj7bOPn6TE2dkJYSScltdyZ0EMRcqiTOk0x7QtN00uYOSoFQNdXzJtyhqzkVXIKKg1utbgKO6KfL8mdFTH440iFfloXVrX2c05uaP3B8Od3dNfx4O3XzO5ww9Ho+NXF8g4x+oZGSJeE8TzSrMCJhuUxlkTRar8KcJy4yLEFHosXBXk1phcdVFpee62vNiZwd7+4PO7K3LmKSZB/7LOtC7lzGq2BldpzKb1D+OvlXQ=</source>
+  </file>
+  <file path="Library/Wechat/Semantic.php" generated-path="Library.Wechat.Semantic.html" hash="27b7cb1e05a23f193665fcf16c8c0844" package="Default">
+    <docblock line="0">
+      <description>Semantic.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJx9VE1PGzEQve+v8AEpm2hJ2kq98JGS0lREqigiVL0gRcaZZF127cX2EiLKtVJvPfAHqh7aS4V6pL+nCH5Gx443hOzCXOLMPL95fh7vxqsszoJWoxGQBulDSoXhrGlzxKX2qDJEjsj7U1BG5XD4EVhMTdOX30pFTAxklCcJYTKbKj6ODaFiSBLOQGggXIykSqnhUkQkS4Bi7pTDxO1719vu7va7lmrEE8AcNWRCNRlybRQ/yg0MyYSbGCtcEy1zxQAbDaFQsEVzE6MKDOk1kg2+VaybKbQd7F7ci2fPXz6NTbg4Ji5iYzK91mqNUUJ+1GQybRXoCiQCF7gQ0AoCQVPQGUXVSxauB0GuS9nDD4Yn+vA1HWPdX8vd1e9/119vv325+/nDkbKEaj2/reA8CKwCh7bRIDso5ubq+u7Pd58pClunVLmqT7Tcb6akAWatXrHHWC/x3fy9vL381XtTxWbvSYwf46NZ1ht6QiaFNqSz1xv0u5397R2ySWqFwTTjzQnwMy6aJyfOZ+2PZxdIeDbFBVUsrpXlOWKVMyPVssKMKpp6jV7N47U+MAXm4VHyIxxknG/B7ASTwWDeLJzRRQtb627P+YwBY8VO7Wrb4fC0hRtLZesBVgW+CXs1oV10GAOtD+QxiKo+9RnJRcmKh7PyhBdzDccwnUi17ApVik7J57k7jBoYS8VBVwLv6SQ+69ItoORcCYJT/aS5JzmoaVgoiha7Rr7RjB/dcn/Deslxp0rPAQEpR831qdnlZntuQFQJ9QoQjVCeZgl+esJaVItI6BrUF0XWqznw2vhw3m5hJKrgdT/eNrxtdh7QunBhXFbbn7QUe1KbUEMyWluzr2p7v9s56HqnBimoMYTej8gbV7+fnIvgPwyNwro=</source>
+  </file>
+  <file path="BankAccount.php" generated-path="BankAccount.html" hash="175ca052f396201818893f5ca30efe7c" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJyFUD1PwzAQ3f0rbkCKlKGBOQVaVAYkmGCjqLrER1PVsYN9rqgQOwMbAxNDF8QPQPQXUZV/geOWARZu8X2853vvuodN1QihsSbXYEnQb5pcCO8ITpTy9UQj03CAjAU6Gh4rc+NJ8/DMSFL5/7hzc80DUsTkwrdZmgpI4evpY714XL+/rh6Wq7fF58tz2+2F/VMcRwmxnpF1E6Nhr7Mba/RcGQvQ13J+SgRdawz3lHFco+4YOz4IsEyUCp2DI9TTflkarxnolklLB1G0uBMQIsvi0xr4rTEOW51tpHBRESCznRQ+zIErZHCV8UpCQVB7Dr4lsAEZEtfZ0n7YvRlaQGtxvu1stjbWMJUtcSfSYB8uExklyBFycpX/hYW7KgqwpDR1g3o+KoK/EW4MJrm4F98o1Jdf</source>
+  </file>
+  <file path="Library/Wechat/Utils/Bag.php" generated-path="Library.Wechat.Utils.Bag.html" hash="8f9ade2bc380f131887c7922d88d6883" package="Default">
+    <docblock line="0">
+      <description>Bag.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <markers>
+      <todo line="19">适时开放,为了兼容低版本PHP不得不放弃。。。</todo>
+    </markers>
+    <source>eJy9mE9vE0cUwO/+FFMphyRy47ZSLzaBpIFSECSIJOKCtJqsx/bA7o41M5s/jZAiWqpWauBChVQqLhU9VRG9FBrS5MPUduDEV+ibmV3bu+vZtQPCipz1zJuZ33vz/tnnLrRb7VJldraEZtFXuDmnPiL96QbmErEGWtkkXPKQ3L5F3BaWc9H014wj2SKoEXoecll7h9NmSyIc1JFHXRIIgmjQYNzHkrKgjNoewTC2ScmWXnftytKl5dVLaqsG9QiMYYm2sEB1KiSnG6EkdbRFZQtmqECChdwlcFCdxAQLOJQtoIAXixjROboQP8/55LwWG8B98dnnX+bLejS4i/SrJWVbVCuVJiCEG3Mu8yux9AhJEBzaCwQqpVKAfSLaGKhTJry9LqknaqVSKCxzt6+urizXSpUKUiJXBQtWCafYo9/iDY/UYHxt5eJK9e3e/d6Tv7tHe73Hx+XOq8PO4Q/dB0fdg386/z48/enH3m9/3vjmRufVfvf4CbyDUPfou//27ps/ffoVSTiWjC82m5w0sSQ1PbzIOd6J58xQAmAgtOi6RAgzsMTCQJr52KW6L593H7w8/ev1u6OfuwfPTh++6Lza6xw+7Ryf9PZfvjk4efvkoPfweffR790/7r87+rX3y4vT1993jx6ZKW1I18NCKOdE1Acv8kkgRUkZfgigrAf6AOZjRjkzPKyJHgBzljNGLu2WzKRSRL1m0UUscfQcDy1sYo6w4ohGKvp/mzNJXOXBU3VYhOaNzPRMLbOpIBLVR2zcxhz7yKfb/U3ANr39A2Oh5GnhBoQcRGLgqlhDjuOyAIIodOV06vwZvWDXLIfXlAquT89HQtNaasacV9NC9zLAN4kMeYAwhD2VxBdpcB7NZ42SwoQdptM80eIhLBvGdcKbJMdy+nyjyZkJfXWGMWEaFDIbwW4LRQaGvDV1l+yg+fNoahN7IZkZkh0yNNz2tBIsx2K1vlSkYtYK2k42M6wxVCfg5z4NCNpqEUitJi+LNnFpg4L3EBMziGxDZhVzo82lcm7Q1EpYzLXBmJdrrRYWWjfLnUK0VqtNpf/gcsv6wBn0yTwKoI7kuBynZJOYgkO5kNr1MqpEJ+mgyUXVe9icjxORpLQaP8EFWSofq9CAaocM1BSBijqP4D2FNISd5c24Eqy3aYHrda2AYkfaK8f2kWSainw6P+jr9WQApNTVXiJGeUkqZLJ6rEIm/Wh6ZAL5w+nR9yqtSIMzX3dmZ9WlTho49OSZY6U50DTaCplonTjOBzvk6O6zvubQPCrNx1XcEuqMxxrkAcdimdxkI31z8rj79FmiGk9eYCRbNHU5twzmFgDDcQe6FwuFMVQBhup+bBSqF61WSaB67+lhpAKmxMFnoHIcyVa1WIF9YnwbzoIg2Sa6Wr0zNEKiI2IWaAnTOKPEQWw3fshyDdoXmLZgJZGEBSebfZJyGcsMBMapYyNIwmBclmHJka1S1iiQQLKrcuESX0h0eok/FNBlJTNgAXwjTew/vs36XziqVVc9FsAYmSkfAglMsLSyvrzmLK/cvL54zYIWLUgkJbXaSnUZaiDWXTHa2EEjmrlxu73iuuA4BXk1wu5L2ZgXhaDNQAC3rouQjVINrL3J/xCV3HGKanl+755V6FbUhjOOAqZ+EjEXYvrv97yXwibScagQY11Mv1+36bEOMQrAMf9k4DY6Ffij6SKs4YJtI4Nv3Q7ZbjNua2uKS6++dkdILK1JdJzyW+i8rNGAg/KtlpCZ3IPN8lVlNPM4jiOnJMf3ZbMw8uYJ9JrYk83qS/qcmHcMj44Ei5164puZ3MnM8vVgyOJpDWgDxQl+pMKWHxLiKEloazQerbf52UZo7zSuiuX7uOnkBcMsv2w3RfIyR1oDXUiUlXi0mvj54F7pf0S1i1k=</source>
+  </file>
+  <file path="CompanyAccount.php" generated-path="CompanyAccount.html" hash="4e54b1327ecc48a7ed392b6a11c18797" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJyFkLFOwzAQhnc/xQ1IkTK0MKdAI8qABBNsFFXX+GgqHDvY54oKMTBQscEjwMKEYEGCFyrlMXDcMsDCLfbd/b/1/e5s12UthMaKXI0FQV7XmRDeEewp5auxRqZ+DxmH6Ki/q8y5J839AyNJZf/rDs0p90gRkwvPinaaCkhhfvM8v/v4env6vH2fv84WD9eLl8fF/azZdQPGGY4iSewnZN3YaNhorccePZfGAuRaTveJoGON4a4yjivULWNHW0HWFoVC52DHVDXqaV4UxmsGumDS0kHEF5cCQjUZfmM200jaVApHJQEy2/HQhz1wiQyuNF5JGBJUnkN0CWxAhotrrWw/7u4ELaC1OF1N2vGsrWEqGuNatMEmHCcyIsgBcnKS/ZWFr1UUZEmxzDTAZSiXZOJKfANDmZpc</source>
+  </file>
+  <file path="Library/Wechat/Messages/BaseMessage.php" generated-path="Library.Wechat.Messages.BaseMessage.html" hash="5b620ed4e1b81507c1d1f418ee8b584e" package="Default">
+    <docblock line="0">
+      <description>BaseMessage.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <markers>
+      <todo line="112"></todo>
+    </markers>
+    <source>eJytVltrG0cUft9fMQXBroxqtYW+OLHrxHGgYMehVmihKmK0ml0N2d1ZZmYli2CwoYXQ1k4KSShpcSgYYgJ1HAptGpf+muzKfupf6NnZi+6yMJ4XiZ3vXOY735w51z/zm75WnpvT0By6iQVZJ0Jgm8zHn5H6ehdziZiFNlqESx6Q6pfEbGI5n27fZhzJJkFW4DjIZH6HU7spEfYayKEm8QRB1LMYd7GkzCsh3yEQBrUoaSu7tc9XVu9srsauLOoQ+IYlamOBGlRITuuBJA3UprIJO1QgwQJuEgjUIFkGyziQTcgCFktzRNfpcvZ/3iVLCtZL7pOPPv50Otah3n2kVlNKXyyUyzakENTnTeaWM/QYJAD7fAGgrGkedonwMWQ9RGE1JVtc07RAjG7fk9QR1XVsU/OGTLkA7GToV+tr4CqtZvTnw2j3dfjiXffNacaUz5kPhh0UU+vZSd4FizN3yrZkUzaFxJaVuXcJFKLRryMkmQEOipO249CGSmAiREUwkkADIMw57iRpQJhNBZsC+IL4Tmca4CZnuGFiIRWorOE6nBSbEpkOFmIgJ7IlidcQaKg22gNNi32pCsRrDoXf7Z4dv+0+/zZ8cxDtvEw/Z7vLLcyTLNIvZfULVEtixsIvpKxTItBigjSK10ajQJV/27lkiDoc7O5oGA1dtPS4bnppBqBkM8JqNmeBPysYO85MUKWdGZBjmO0+eRE9fNx9cvT+3f77t6fh90fR/tH5zi5UNHp6Eu0dD9PNiQy4N47xoA4NEfqkZ8adENUD6jSge+bChfUgT5FayPggkWmNbEErFHCPoAGW4oMrE71Y7MPHSzY5ayMPGmt1dcskfhzGqNVW1m5sbtZq83r066vw+KC7fxL9fhg9+zv64+l//zzPb44Op888bWv5XyWPKaKAdKAhcR2hxSWkUvxwSbIxXOuusGXHJ3of0CbyFrFw4Mj0ZlUAYBRHrftyU8wQ15cdI/WStIZhNlTiX+tmICRzIcMWvEb6N/lJ9PtWDZsmCzzZn1HiaywT/ZWtuYTbxFAxSr1jp1Sm9ttT1RT+chAe7l2djvL+NruOlMmV6ShN4LI6qrB7UKU78FiCli4U021oPT18Dx23pHH4FU6wJBWae5fwd5zSkL4u7IrSqVqXE+uwaOBlXlhQlTKm6Sel8EIB/XsYPvrp6qQz8PKhmeWTm12ZhPoSmSCjcrmycWtjAjtn+3+Fj56dn/58dnwYs6MmIBh/woMfwsd73ZcnE5hKJpqpVE0o/hBdhWRUWIQBwXdgRDX0alUvxcY1tZOQVxwjEEhBMoe1CU8F4jPfSNxNVsP5qx/PXu8OH8rHHLvZlFbA2XQytO/SLXj8UaGFnYBM4KXOmDNhasiJAXvagKtl9CKVUq8j7IwOM9k9SC7A4CSS34ue2RjiqFdLWspAfL/PSzwn5xRua/8DQEDpiA==</source>
+  </file>
+  <file path="Http/Controllers/TaxController.php" generated-path="Http.Controllers.TaxController.html" hash="c557d86ee2f1b7aff79a6653be915715" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJy9Vs1u20YQvvMptoGBpQzLrg+90LESx0HQADkEaXoIZEPYkiNpC5LL7i5tCYEPRYEgCNK0h7aX5pJDgJzaAj30FPRlKid5i87uUuJKYhijbsuDRM3OfDPzzc/q6rViXARBzjJQBYuBHBTF0adaF0eHItdSpClItRcEpQJyj2UKpkeflzyxH3tWepNpuAuSi+r3QanH9cntXIM8YWktuc8zqDTR1X02cT9up2mZ8RwVnPt78FUJSteah6XSIgN5KLKC5VPCFKleax3f0kQdp0wpgj7qZAhMNOSJIjeYglocPAwIPjubm/abbJK3z/6YfffTm1fPZk9e/PXni/Ovf52fXJegS5mTjE8gWQgLJllGKudkQ7qXxTFDWoQkB3kyvQNArkoh9PVUKJ2xfFvIUa/S3LHfRflFymMyLPNYc5GTEWjM4g5XOlz10LEGLnzzbMQVQftzfqJoyPMknBt0ewqUQtSw0+0hcEjjitoBT2ins1dDKc2kRqAcTsnRvHjh3EO3F0tAYTJg2rdCet2bM1zY+Tq86gvU8dskihzkLSkyI/9MS56PQrpLMizVmPoQhW26JTeuD0MX91btZcsGhcYeS0wmaNk/9oRDgc7jMQnn2NhjG4nuILsLHWucscLYLgnNQ7ERLYtkv0da+Hb8Wbq31kG84w/g+HVrABqmbOQgErTG7DKmwysPsiudJV2fApueZhNMDxsuik7HILHimDA6HXKJDejVwDx8GEJW6GlozDqdh2thYPyxsGSbMiHqKoKn1O1VDKL2xfhrgarV2tF8FlvgBDYF06KKzqy5KDLRGiCzDN8fB7bawGxYE8ZqJbapWzFvfvj9/MnL2bc/0hYknGOuxgPNLZbSUgttJ9JDpQ+6GUXY7u4nremUpc3DLHLMAz93W+syKoUal3yAo6VLhYYftygn/OK6pkmbiGkxUewEGoM1TPePXbWdqhYHUrLpqvYZpAoaWrUGwGZ+v3VQv61tFGYsBhJO8OI0uxKlnnl1dZxwOK07bxudbeOKhgnFXjrleoxnaKfoFvEBKm/eJTX75en54+/9DrrofdR4h13ukipQ8ZbtUBxyvI7T6fpl5d1TPC9KvTSZIkcTqqcFYOJuey3t7Ka1e+mV+w/X7QLjuC7uzmaNjLX5+TUW5t03r2aPH3nyncU7bk5HQt/ljH23T2g1aHRlk5rk+3R5Co2Fma3Lbe+PPrC+7SSsjf9uw/hZzflwrh1XHYf/z1QhcgVR9KVCdvsU/3oqNgKK5FNHWrUMbXObVjBewVaHqjKOUZ8eX2Qmmxl226mZ4KXN9T/yu7ox/yt6n//2L9F7FpwFfwO7/Imq</source>
+  </file>
+  <file path="Library/Wechat/Messages/Voice.php" generated-path="Library.Wechat.Messages.Voice.html" hash="3eacce9e5964a113d488ca5e83be827a" package="Default">
+    <docblock line="0">
+      <description>Voice.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJytU1trE0EUft9fcR4KSUqaqOCLaWNVKhS8YaC+BMJ0d5Id3N0ZZmZTQyko+FAEQbw8Ce2DgiLYVgQRSv01TVL/hWdmd2OSZgOFzsvuntt3mbPLN4UvnOriogOLsMGZSysmAPb7EZEaeBsedqnUMqbNJ9T1ia6k6btcgvYptOMgAJeLnmQdXwOJPAhwUKQosKjNZUg041EZREAJxrqMbtm+e+t31h401syoNgsoxoiGLaLAY0pLthlr6sEW0z5mmALFY+lSBPJoxmCVxNpHFnh4yhGW2Wr2Xglp3Zb9J3ftytXr82sDFj0Fe3ythbpRrXaQQrxZcXlYzapnVGLh2CwsqDpOREKqBEHWUxY271OlSIeqmuPEalbaYwRz6cX0Px393f85+LU7eHGYSReSC2zqgfEq6sBCaHpazLPQbkCUSi4U6DNNI0/BbXQ/xXW2HccQt/PNQYwfe4PnX9KvLLjaJRKIlKSXRqr2idiauuZ6FlIajCpYSSqLhYxJoVQ7D/Pt7enJu1kwzZkm5OGGqUNT410eoR+xq7mcxhBEknDkFhFi3cvPNagrqZ4EjzdxrXHbI9fsM7RaI7BiMq481lqyPdvJBDwLZoeX6pY2OhXhP2D1zWqt2a6dc+LODv4MTw7ODr/jMsxXJ4j2pytwciyjZCfmCgsTXmZGjgpF9S2d/qJj112eULlU7xqodFC2CuakTGxxntbh+/3B7pvT38f9V1+TxR98OBoev8xRNWNHp1Rp3tCk3S5OSxofUBxFs1OwGgqwUs+rmKgeWWEaxs3AWHlea+lcNncLEmf6H/f6n19fkjOPqQh6F3Vm40LO2GVfv1Rjdpx/mxTyTA==</source>
+  </file>
+  <file path="Library/Wechat/QRCode.php" generated-path="Library.Wechat.QRCode.html" hash="21bb1cadd8c3cf50e9f0e9b563dc28c8" package="Default">
+    <docblock line="0">
+      <description>QRCode.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJydV1tvE0cUft9fMbUibEcbX7iGmATcxBEWhCR2CoJSrSbrsT1kvbuZ2Y1JQySoWglUKC9QqlJQK1VtVZUWVahNQ1D/TOy0T/yFzmXX3l17E5p5yWbmnG/O5Ttnjs+ctZu2kh0dVcAoWKxMWzWU4TtAbCxA4gCrDubXEHGIi65fQXoTOhnveNYiwGkiUHcNA+iWvU5wo+kAaNaAgXVkUgSwWbdICzrYMlVgGwiyvTWM2kLvYnm6dKla4lB1bCC2Bx3QhhTUMHUIXnYdVANt7DTZCaaAWi7REbuI2ehZcA66TpNZwZbl2QjO4HP+d6aFpoRY37ijufyJ/WUNbK4AsZqOY9OJbLbBTHCXM7rVyvrSQySZYACLCWQVxYQtRG3IrI6EsKAoLh3Yvf6Bgw16/X3YYOdeUna37++9frX37R2BqBuQUi9Ryoai8MuFIF+joLP9aO/RT+UZ739/+9waJICH1Gx4W1nx1yaWg3Qe5RFo2+VaIQaQIp0g51CgVaHqAeuWSR0wU7wKJsH4yeO5XCGwXWVkKGmLJW26WJkB3poEycWK2EkWQHBls6Dz4LvO3a1BhIq2VJpbmK8UK1d7COIoDMEQdrdedZ/8MQxhdr5SulyqBGy4WJ4rL4VxGEL35dbuX5/tg6BVlyphhKWANT2Eva8/7bx4svfLD7tbv3ceftJ9/LJzeycYtOJCWZuulIpLJY7mMxPaONNG+CY2M6urgqB6A48tYzO7SnidZFnwoYOShQhS9fz8FemZj9SyY4Bo02pLsOQgPQQicXXHIlF22JDAlscPj17xZ9UgwTwaucusibDeYuq8ewBN612WknBqQDUtdDYUP7kjvGOMTQk5L4k+xQdFJIQn4hOWi2wOOCyzFajJYU5j0wEjlDVAdBkavFeEhRi8S0zAqnxfh1njRKw9pAJIUS979OkZxOjc/eZ25/sfGX12t7bzOb7e7tzde/pr594Dj1kPf+4++q17/05+bMwXuNfDxHWQwlRjPoRuBkeOBH0CUyAX3ToDJFo6YKEM9LqNWHQpMuoTE9ECKYRlBd4FtM65Kb41XEv2ZTYBMljf/D8X8Io78BJGrOAtihKWZYKQELieCqhOBZ1PF/oqXn49fskKTAkbVU9FBXXI3EjHsUz2pXdm2UBliSN008YEMTpbZo0ekoMOatkWgcR3XBRdCJhFxmTP/xBmRpzg31vbx47uvnnw77Pnue7jV53nn8eFuZ96Hmfmzho0eiakDwx2hAi956Aff/7oRl2JTUfn7tPO62353ByQFGE+GNEhqUUENvwPthL8nHmXmAAJe7Z6avZGY3zlcr5cm/k4lyfHq4vtuRV3+oKeUENKrAdzjfzp8WOnjp/MHzuRPxqWsGxkSlRLoBq5K/Ta6eLctVVSHs+Zy+XV8ZukGNaRIdCojIHAH8/lEm937gelWEdwTbzqIs2zQhAYqOwmNqUR7guYAPmeyuYhCccDkxLhizLq4ETLyUH1KcRBBH0kXGx2//niz87DLw/Iq/9WOVhfGZyEpG37Osaf0ZSnHuOadMZ/njOJs1J6csNT20zE9ou/n3VefHUYF6KHfA7nQ2tM+lgl7utlzWqbhgVrvqdqHzHGaX6s2a7DX3cHmQ5N9TRUedhAwUOZ/lA041MrC/cd4wKFC5f6zodr2hcos180EYFlyzIAf4b8bjmkHfPzQ3Xk3jTdrxHvRekbrAaNUwOGsIY6rNPFNO2I0HuTUgzcujWof4rZLAnLxvlAPx7hAyXHZ7/xzrPPFP8o6jqidMlaQWYqOJmpA0NYqLePiPDR3qsQesT9lZSea5wxstwDcdlXg/82FRrBNycIwaOZHoYRNJLPS/2AD8w+0oUPk+E2m/yIOdXCLBqhuKrhsKaHTiQeUXhcGVlSIuBjUzeoZS5Y1En1u4j8uaD6NvTLZFP5D2Yh0tw=</source>
+  </file>
+  <file path="Library/Wechat/Utils/Http.php" generated-path="Library.Wechat.Utils.Http.html" hash="751d275dd18167a52fb3f1b5463af695" package="Default">
+    <docblock line="0">
+      <description>Http.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>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</source>
+  </file>
+  <file path="Http/Middleware/WeixinAuth.php" generated-path="Http.Middleware.WeixinAuth.html" hash="003408e8f94a5e6c26843523d0087097" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJyFU11v2jAUfc+vuKuQEhCsCDpQYWPrJk3lYao0NPESaTLOTWMpOJ4/IB3iv8+xQ0i7jvkhie8959xz7Zv3H0UmAk62qAShCHdCxPdai/gbS5Ic90TiPAiM8pl1+UOhnLv9l7xQpspWm2Wemy3jRGO8MkIUUsdfCSUJqniFSrGCe9zDDqWWBuM10ozo+M7o7PWMLxQENCdKwRpZyXiFDg4B2HXd67k39OCecOsUCAfGaWFdPILEXwaVfltDTshPgkiyBYhbdl2z3z0eOjXxL0LdLHQ4luesRG0khy0rMamD1+4tzCZnFFLDqba9Q+YsRif5PjzT6zrOIfASdnWIEMsEPkC4L0ejDU5G9N1wOiUbmmI4P8MUUmuhwqXjyQ2mdDS5TcgwHY9xmo6nExxSckNvKR1aVkvdHqMlcdxDdaKRL9c/6XVbFfbuwi24vsXZLCMquvLhqxaSpRC9qeFdODRxp2K8his8WFTPQrLfGHGT530IFVdEsJ8bojBsSTbUFcods7PpLVcVLlhuWEueFlXRlsJg8Yg6cpHBohDIWfKS2TTsR302s4zPTw8Wu0wuMi8dwOvKiuzQf0eN4ReiR8Dc/hv/VBssjEjsFP9P5tmuuUphdBR6obB/kmxRz7R60N20NlNcI4/BMfgD3/U+NQ==</source>
+  </file>
+  <file path="Http/Controllers/BaseController.php" generated-path="Http.Controllers.BaseController.html" hash="618a237c1ab0e4e200d025cbd482ba51" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJy1kM1KAzEUhfd5irsQ+oO2um6p/RFRceXC1UDJZK6dYCaJyY0/SMG1LyF9hG4VH0frY5iMoBbq0ru6CV/OOTn9fVtaxjSv0FsuEEbWZkdENpsYTc4ohc73GAse4VipUEnNCbNDE3TBSRqdjYPPDmR8TKJEf2LyiP9Nn3Ml11f0Z3gV0FOy6bbbDNrw9vS8Wjy8P75+LBer5Uu6GsZ0l3y2OWANXMcl6sJeZ7c+80ClcQAjXdydIkLfGUNDZTxVXHeMmw0i1v32nCjuPYy5xx/hfzXmuSfHBYHY4Ax4S6gLD7/C3DOIk7pd73sbNlWZWBtyJQVcBC1S5TCdCqOjaxDUbNXEl2aaLSql3xlUsigU3nCHzUb6SKPVq5E5mzP2CYbGwKw=</source>
+  </file>
+  <file path="Library/Wechat/Input.php" generated-path="Library.Wechat.Input.html" hash="0b2c05c43d91efa4f889b01cc4ae6a3a" package="Default">
+    <docblock line="0">
+      <description>Input.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJx9kUFLAzEQhe/5FXPooV1kVwUvbdGiVCmILbTipbCku7O7wWwSkklrKf3vZretFhXnkuTNl+Qxb3hnKsOSKGIQwUQZT3EjQHuecUugC5iu0ZL1uHzDrOIUH9uP2gJVCIWXEjJttlaUFQFXOUiRoXIIQhXa1pyEVhdgJPKgrQVu2nvPk4fxy3zcPFUIiUHjBBvuIBeOrFh5whw2gqrQEQ6c9jbD8FGOJwcj7qkKLkLpo0cYitFpH9d422Lf5q4vr27+Z6VQ79BWRWRcP0nKYMGv4kzXyYn+gwzg2VsBSBhTvEZneHD9Y4QDxrz7pS5fSUi3vOdl6GeSO3eIBPCDUOUOQoftGGu+bCNrKgoTUWFePiNtj1LSrsavQg4hHpU1AUCafpHdXkvsDnzDcouK+v1zhlvLt2mNtsRuJ30aLy6gk86m80WvN2gv7tmefQLkhLd/</source>
+  </file>
+  <file path="Http/Controllers/Auth/AuthController.php" generated-path="Http.Controllers.Auth.AuthController.html" hash="856056e8b171909e0e51a5a86f4f3ad4" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>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</source>
+  </file>
+  <file path="UserNexus.php" generated-path="UserNexus.html" hash="d7a33190397da44eb914f78f4988d835" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJyNj7FKBDEQhvs8xRRCdkGf4LwTUQsLtbJbOOayIxvITmJmAidy735JrhDBwilCYP7/+5Lbu7QkYxhXkoSO4D6ljTFFCJ5DKKtnVJoeUfGAQtNTiJ+FWKeXOFOoQRdQBN6F8isdiwAdlXgW6HvzbaBOylHJKc1wVTGBYAu2CvKeW8VWSk+VQ/AOPgo79ZHBxTUhfw1j315IbTJpyVxRi5eb3YLyxjTY+uzp4dKw12D93M4uqddx09unv0UtNYz/EbRv/tBjoowafxtO5gxNc2pM</source>
+  </file>
+  <file path="Library/Wechat/Utils/XML.php" generated-path="Library.Wechat.Utils.XML.html" hash="d04fa76f9fb2e962108ead4d4cb3c583" package="Default">
+    <docblock line="0">
+      <description>XML.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJytVltvG0UUfvevOFihXkeWDZV4ie1cWoKESFOkgKiURNZkdxwP3Zt2Z3ORY6lUKUIRqfLQgsRDKEWoPNBCJKQ2F/5N1s4bf4Ezs7vxeHedRsA+ZL0z37nMOd/5Jo0Zt+MWapOTBZiEe3cWquIT5NenxOPgtOHuBvW4F9CVL6jeIbwab3/keMA7FNqBaYLuuNseW+9wILYBJtOp7VNgdtvxLMKZY1fANSnBtQ1GN6Xdwse35xeX5oWrNjMprhEOm8QHg/ncY2sBpwZsMt7BHeaD7wSeTjGQQZMMZknAO5gFPk6cIzTYbPK7atFpCRsmd/O99z+4Gmsy+z7Ip8O560/VauuYQrBW1R2rlqBzkAhUfCGgVijYxKK+SzDrVAlXPufM9OsFpe4Qvv4lfPR6cHT699m3gye/np887h/uhqcn528eX7z4uX94IFDSr24S35df3UJBxJdexBN5uvjrt/7+8/M3J/2nfwxOd+OtBDHrEo9YIEpsr8PElmVKo+g7jfUoDzwbiOeR7XixJt9usIZNRitsro4UsHXRZEDfPtWE07KEdSMjfCYMwgk0wWcWEgEBLdMhRisKKy0qUFqSm5jOvEktavNSBVlyC79bi3dvfzj32RzsDBduLcwtfrJUrhcuY7A2aMxvOWtfUp1rMmIZbtyAdcpbsmjJWrPZzAlWVtIdSZma7akpUQNvg5ixj/oltDdMIC6XRESAXl6HBmffDZ59ld8Xi20h7ePY2MD+/qsxnfMch0P/2fHF3sPBw+PwYH8MjnFqCU/hy+8Hfz4Pz54OftgNXx68zYxw7inujw77D16Mi4AJj0S4dH+fbkdsFDGli2HANMlGGHgly9YCZhraKLUqw09ZGGwwcqqkLMs64LJ4q+vyoLg+gjUk0ijJpTSXY57JqdCkfTnDnVbsNgKpLBUPyiIlegcia0DRm8BSQXMaJpBiAU27G7pcXkWnxa6A95or+EPieyvFYn3EojcaMDml4DwqqFYCnK3IYz6VEwNsihWfsZ7ZpJbLkwrADJYQpqAIXbnQUxKSKiPybnRld3oxZDqDqSbjJnp6854Vj1slap94GeUcm2KjFnsWLjPziLBx4zh48mP/m4PGO8tSX5bf9VdXp69WzPgdfv0ofHX8n7msi+NpsdM00RJvLm7ytlYaTVN0MLYbd7r+3l74+/HF0U/RFOJJr3MnZLXnGheCxzYIp5nzpWQzf5L+b8XWZH5lVYhT9B4dYRkj7Ww4o9KrmFFmG3TrLVMqwMsRcjXn8ogM07Oak+F17pK4q7KleN8jzfMbK4+pXCpDBuReFuJPjmDnyj4z/qW0j+FL7twPZVuR5sx/GEIMmoqeK0KQ00tFb9N9jMlhBxb1mK4JaIYdMiLmgmRNIgrlY0akykKeM5osbURckaY4z9WSLc5TjURTuFM0M5OtwmV5np0dUMZKLOUfIA6RktzL8UHDMcor8wVq4j/0492qNZRpzUiXeElEAWPtE1vXrEQtKoV6b+SMjCL3vcI/ceDPBg==</source>
+  </file>
+  <file path="Http/Controllers/PasswordController.php" generated-path="Http.Controllers.PasswordController.html" hash="40a967a17f430f11b725a1fc730f0b82" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>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</source>
+  </file>
+  <file path="Http/Middleware/Authenticate.php" generated-path="Http.Middleware.Authenticate.html" hash="604c6ca4fc45f1fb87e849dbe08daa24" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJx9UstOIzEQvPsr+oCUmQjIIu2N5aUcgMNe0O5tJOT1dDJGHtvYbYhA+fdtzyOEicAXv6qrq7r715VvvBBWthi9VAg33ld3RL76reva4KsMeC5EighL42LKt3y5Nya12krCauksBakoVjeJmuo2yVBziDIyRshPaEkrRop3AbwW83m3wxz+NAgdHnTrDbaMlKSdPR0AI+76RYYeOLwsut0HR6gIaziSnIeTTviXATkvSLD4CittCANoG0lahQc5vAyyhUFPz7j7C0gpWHhxeqIg/TNawSpZlXXD46NyzB+SoqIn6njKDtzbz+uIGh1PLvMXXIzi88f2wMKdtNwGkJaFK8clX0PA54SRvjJQ7fWm6+RDj+e0Q+RBxNBaRljc0NR1qzf4ve2mE1mM/MfjrPR8U/d6BcVeBU4u1zmoKMs9zA43UDL0SW4OMXkNMgNPMBcfi9lfm3ld0G9Yn86O4eePs/L8U9gW0PAUf8NV68CjVZSjulmmXBi31nY2JRMfJyEmTF0FdjbKsc1b8R+DNPnC</source>
+  </file>
+  <file path="Library/Wechat/Color.php" generated-path="Library.Wechat.Color.html" hash="5be13847d9df9c00e0830d0316e82807" package="Default">
+    <docblock line="0">
+      <description>Color.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJx9VE1vEzEQve+vmEOkfCjdbYEi1JTQqioiUgWVUokDoMr1OlkrG3tre5tWVe9waW9w4VIQEjcEF8QPCgr/grH3o5ukrS+765l58+b5eTefJVHiBa2WBy3YkbFUvt0A971PlAE5gFcnTBmVsrevGY2I8fPwc6nARAwGaRwDlcmZ4sPIABEhxJwyoRlwMZBqTAyXog1JzAjunXA2cXV7vZ3dl/1dCzXgMcM9YmBCNIRcG8WPUsNCmHATYYRr0DJVlGGjkBUMtkhqImSBS+YcYZNvFe/+mHVd2g25B6tr6/fnxlyMwK3ImERvBMEQKaRHPpXjoMi+JRMTK1iYEHieIGOmE4KsFyTseIXm/758nn349ffy2/TqqyuiMdE6Owrv3PMsvEu1qwUvsNP0x5/Zz+t8pwhsnRDlovlG4J6JkoZRq2PNcuws4e0QGrG7AV34LkRqgzkklUIb2N7vHe71+gfwFOqFeiTh/oTxUy7842MnIiUqDIbMUDujri+TcmAqpQYlWCCVEEXGYO0hhlAjSdIL7471GVXMzNNPj9CbaFlBrSnh8LBs1sjg2pXSpqs5zxBw1awRV7p2NMAZBRrZSt6wL9uUMq0P5IiJ25CanUUUJ1+O4nTOy/LMiyVZZpe/p1cfM8NM33+aXX9fVAcbpUoAUYqc3Tt2jDdMN5bGG7Eze3SljyfZfZ8/KMcqALzYgL8KWPcf3gBkylhtKlJVJs9mrsRzD5UJ6JY95IYJmsWDjY3CUZXe+ZBVgJUu2qlRZhSztOd2yuEbNtaEFP9FDce4nRNrl/2bFVVKRMV0GltqrijrWRZUCM5Pu9LVNs/SKSDe1HNF37XhyeNHq6vNDgq6BiGe2hJKMe5iaWcu86L8Ku1z4f0HtgGxuA==</source>
+  </file>
+  <file path="Http/Controllers/Controller.php" generated-path="Http.Controllers.Controller.html" hash="0f49000392fb6c7673f46c42ce502e43" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJxtjsEKwkAMRO/5inyAf6AgVhH12IOnvaTbYBe22bXJgiD+u+3JWs1pCDPzZrPNXQYQ6lkzecZdzu5klt0+iQ0pRh50DVCU8Rxj6YOQsTumIi1ZSOKqou4QxrD5jvWSmtG+cNepWJDbrBJJsSLlz+cnNENcKYZvyVrzvbDatI0atYG8oY+kijMKP4ylXaLgCTjexPsevsJ/9S94AwvubMY=</source>
+  </file>
+  <file path="Http/Middleware/RedirectIfAuthenticated.php" generated-path="Http.Middleware.RedirectIfAuthenticated.html" hash="6ed8948fe120a09c61cddd1b77a868be" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJx9Uk1vwjAMvfdX+IBEi8b4AewLcRgcdkE7VkJZ6q7R0jRLHECa+O9L0hRVoM2XKPHze892Hp51o7NMsRatZhxhpXW5IdLlm6gqiUdmcJllziKsZWdduIXLVkrXCsUIy3WnyDBOtlw5aspXx0zlS7hk1sIOK2GQ07YOSVQkuK+psp8MfCxms3jCDN4bhFgKotUSWw9lJDp1nwAD7uXATA9ML4t4atORl8EKJswLef0r/rVBLwwMFB6hFpLQgFCWmOJ4o6GZYS0kPz3jJWeQnFFw6MSVA/chBYfaKR58w37PO89vHKe8J4o8RQT37YeYUCPs/Cmk4HEwHxLnmxY2TPmNAFPeOO/89D/B4LdDS381UI7WFJe66/FeNlXeVKQte4TCE1133YoT/t92E03mA//d8G16vuvuRQ35aALzJ94g/8qLYoQJkeRN+k35dDEtlhdEGtUIGMUuJophoufsFxif2Bw=</source>
+  </file>
+  <file path="Http/Controllers/BankAccountController.php" generated-path="Http.Controllers.BankAccountController.html" hash="d91f44a3f80fea19dbd1db0cddded821" package="App\Http\Controllers">
+    <docblock line="0">
+      <description>银行账户控制器</description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="App\Http\Controllers"/>
+      <tag name="version" line="0" description="1.0"/>
+      <tag name="author" line="0" description="AndyLee" link="mailto:root@lostman.org"/>
+    </docblock>
+    <markers>
+      <todo line="193">账户类型</todo>
+    </markers>
+    <source>eJztWE1v3EQYvvtXDFIkb6IkC9dNsyQkjUCCRqKol24VTezZrBWvx50Zb7JCOQAHQimoEgiIWqCRKsil5UNVC/TQPxOb5l/wzvhr1vY6QUmlVto97I49zzvzfj7zzl562+/5RnNmxkAz6OSbJy8Ob794/Eu0/zT6+tdw/0l4cCQnlnxsbeMtgpZ9v/OuEH5nhXqCUdcljCvAAAYO9dBb82+qZxyIHmUILXv28H1C0CVGqVhyKRd97M1TttUGWNPwcJ9wWLx65QXDCDhMwVoL8QhA72Bve9myaOCJ+OV7rhv0HQ8L0lnFAm9iTjqXXXozIJ7ofEBt4l6hYg3w9uVdi/gC1CwJqp0/JCDDk1WvEs4zZKZcAuGF15rOoB8n+XNpp6uB71MmOmvYwjbhnWvYdWwsKCDTMKy4mHOk2Zkv91KDYY3fF5FdQTxbzurWGR8bCD5Kb/mZQeH+9+Hn/+iJlM4sMSIC5qG+s0vs7GWiWp1mCtlUv36w6ToW6gaeJcOItojQ1G1MK1Csk/xMbcLkhutwgRZ1u1qtnR5hpGFatO9jb7jh2OZsGvFWC1aFqYAL2idMzk1Pz7Xly+mFbOnEmIFDdnLsvNxv3vFssmuCyI4jeg1Tbs9h+VyZZJk9o+y8u+GzWud1tEy6Bnurr4tz5gojsHKdS2vstpSwOda64+ePom//Pntq+JjhPnI8QbYgAaccG1XKnttooAinO9SNhr2Kdgs2zB9UbuEYXMysLoR/na1hx1XL5BmzZ2Fh9VCjmpHQFJke3SBLxy6UJeQRYYwyyCNT98Lx88Pok9+O//oqfPhDeO/I1PbTosWI7TBiQTTn2ptAHnoiJ3GSH6fbSK2aa+elgd5YrK2NM6odfXoU/XkY3fsi+vGzk4M7cTZEDx/EhpxP85qs7Kvo5uWYGCgLMhnWlOP9k4MHZXcXMjQ5E9AUiwfFrE5tKIhBdlxQDvsALCdxUa1ZuSMEK2dHx/MDmb8pYq5NPXeou8hkZAsICyINpxjbkKe1fKuYbJNhz+rJRwszO5kbiaHp96iXCchfbNsM8kMOfUYHjmepacsRQ/kr6I6XrR8wNxtrcoz0MdvmMl9yS1jgEg6WXB/dPzUELbal4M0A4gBMbzSbIzDdnCJ0BJgbWgtT1sbj+o0zH5wGVA46y4rKg5XAssXSwTFMubrgusTjyUIJC5sZ6Ibu/gG4PutjWq0+3iaNOLtmk9hoZStZZjDX7gJD8sZZ2UNKQKfIoe3hkgu6DuNACucijQmlv8qUnqudRyXOqetZXd9YGA9XdarJ5LVbKSUrQkOrEh4LTMiigE8ppFIsoS1NJCWySnjKDBo+I4tKAckQurWSMCqBkiE0oCKM8YYCMxStlGQxXiDhjaJQSieVglxA37hhQRHpMa6VwAPS0E+AYorywLKSAyO6+zj67veRq+3+nfDWzyMnSEVuCtrA6nxtmJVXoqXRy8cpFwi5mWGcudEY3wSf2l2cux9eJS4ZvQRM+uHXgzzLhWKrWOqomkopp2H46DYUi1m+977cQhlXJcXbsep8/2c3fpF/P8jty1fmogalfyUmfXcMu4C+u9hQK8PVeNKgv/YNunakeGRHP1Z0gUqKrmXoKlnqEyadEwvLf5xbLVl7UkXHruszxdCXfYtpLqBm86P11fWYm/7941n405eTdnbSzl5wO/v0WXjr/ivQzsbFumf8B+VWU8M=</source>
+  </file>
+  <file path="Library/Wechat/Messages/Transfer.php" generated-path="Library.Wechat.Messages.Transfer.html" hash="17ed5a4fa8b99b0912ee071e6c38ca04" package="Default">
+    <docblock line="0">
+      <description>Transfer.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJyVlN9qE0EUxu/3KY4Q2CTUrAre9L9KhaJVsQUvrMh0czY7uJlZZmaThrbQgGJRiwp6o1JBCnoh1d5Iofg23W19C2c2s2ljW6vnJptzzs785nzf7OhEHMaOV606UIU5QZgMUNRMDvLUHSIU8ABut1AokeD8PfRDomq2fJ0LUCFCkEQR+DzuCNoIFRBWh4j6yCQCZQEXTaIoZ0MQR0h0rkWxnb93c/ra1K3ZKbNUQCPUOaKgTSTUqVSCLiQK69CmKtQVKkHyRPioN6pjQTBJEhVqCh3cMsIonSyea00cz9sO4S5duHj5770RZY8gj1CpWA57XkMjJAs1nze9ovuETt14ZC3d4DkOI02UMdHUf4xwfgalJA2UI46TyOPlqUUfYzM1Xbf6HPz8mr58nW6+S7c+ZR/Wsx9rWfdbMYdY8Fiv0AEzONaAkuIn54nv84SpHM+PiJR93QEXFbK6hKtaJIvnLDmOOV+OYKIK6fZGtvrZ/iuSky0igAhBOjbj5b96d4W+UbFkQShKGOt1lnutp4VrSd2hM/oUP6OlMnLsEPtvPmZrr/Z2dtNnX3qDzN5+3999PEifLGgba3cz3ygBis8qEgTlSl5d6u+pQsHbwLSp+6qV3Z5a+9u76cbzvZ319En3YGunt6HO/1rtuhrLvL1yClz6fiPdXP8PuLsYR51jcCWhDcjNVSzG7s7IxlwnRhfGxvX0rPoP/UQq3tQPEkVL3163GFtO50H24mm6Zb3Xz9MAyuewGatOuWTu6Plxq1oFlpdhsKJ4pXIEbADuvpu7cFp/LdwH/2iQQwfcCK5Yr5gjDYLAxDD0Ac6wUhFWmSPqmBCoEsEOmQv5Vpzfg3ilkQ==</source>
+  </file>
+  <file path="Http/Controllers/CertificateController.php" generated-path="Http.Controllers.CertificateController.html" hash="2b2660e64882ed8a3e97403a97e70be3" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <markers>
+      <todo line="186">删除完成之后是否要删除文件呢?</todo>
+    </markers>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>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</source>
+  </file>
+  <file path="Library/Wechat/Utils/JSON.php" generated-path="Library.Wechat.Utils.JSON.html" hash="3a436bae89c89abc6173eac12e41265b" package="Default">
+    <docblock line="0">
+      <description>JSON.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="James ZHANG" link="mailto:james.cau@gmail.com"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://thenorthmemory.github.io" link="https://thenorthmemory.github.io"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJydVmFzGjcQ/X6/YpthhsMDdw6pO21sHCc2aZxpwQOmnmmcYcTdArLvpBtJh01t//eudAcYDElafUE6aVdvd98+cfQum2ZeuLfnwR587nc7gV2DW14wZUCOoTtDZVSO11cYTZkJyu2PUoGZIozzJIFIZnPFJ1MDTMSQ8AiFRuBiLFXKDJeiDlmCjL7NON45uz/OT9udftu6GvME6RszcMc0xFwbxUe5wRjuuJnSDtegZa4ipItiXCA4YbmZEgoan1mKGv7+9L7zOxzd2EUQsfxkkjKeBJFMj935Fcrm/usDkGVgcMRPFvMgxeJswsUtuDE1JtNvw5BAC6nMNMVUqnkwIWj5KOCSjoeeJ+ylGSOIG/m6Hhie6EPPC0OgdMDFp4uD4A3lQ+EMhbFr6EhDKYNUT4BpnacYezGOucDYr9qqDAeddv/0/UX7jGbnp92zdrUGj49QHNp5pg7Ng19q9uqiwAPBbf6aaZ4YDgROscigouTmWUahUcLHZVXvHHbQqCgaF2GUEDTHEe/Bs3lxTu3Yg0u5DEdQeWWGqqx6LmJUoA0tI8g1myBIkcxLw9D9ZkoajNztuYisHQyHkRREgzwyfs0denjyNm+1mTtuAWUTticAnBNGqJYBlrYLFycZ5SCFlN/T7ZUZS4gNAJeUgGLu432EGbEaFBYMrMEIuZgACpvKONjwxOkygIrMbBgaPnCTMn3rgBCtrSF11Chh0yDYYRrTfVOa9NG4SqTsnqd5Cu57AH/m2hAEmChkVDvbNgL+QSWDzdA0ouMuUZeaOhBowpSJnCUhinCR6eBGS9Eogil6f92JQpMrUSao5xaasmE7lGKhsAzjwk4tVFsFShRRQRMVHANsuDEzbL3g+YgkYsGKZdELFH5RhvoqiS3Yry/yQuV+3SwZUfi0nAjBUbqxldKjue0TRgeWBkvXj60d1Dn0VoctfrqYGkGTETEzpYKhT/Qb/tXu9c+7nTpUD4KDYJ86rnrcqtaWtna8A5vj4Y7oFpGt27z9pk3tGTo+Bt+F0O71ur1hp9tpw0+tVmFPLWuGqJRUfq32LGF2lJV10R0ud55WnssD3wv7551hV1aFX4ZF3JgMiSIJKeUwYkkyYtGt/yq8ppH7X/Ybv7HG+OtD86m2tgh5/qq+YopfyXiGmxE9A006J2b+i107iLoiopcoSjMXS7dP6K/OOxTEmxqhrg5O+43mh3aV0Bbzan2ro+rg8mPj1x2b0VT5U7yPMSqwfnn9lSoQvPzepO8vPNQO1z491Ytclp+/qYQLZq/47192z7q17cJX9nHFssVuWOVz83Kj0DpCu03rRlImtK7QuyAjmlzRAwmXvUG7XpaBLpejG5J2TQ85/UsY2fdb2OeRdkjuJDhTTjIwQ2BKsbneroorWRxo+55kGPExJy8Ko9zxs9THHdabekyq5MSqiGyZtHVh/j9KWjj8YSU1y5emfE8IcVEA+mUZvYyZovSgq7CZZxj8iJAWIHxX1fqiPi0Ys0TjupKuq+ymrlpt+Q/tv0NhnBJtg7SAsiZsS86/EKLv+lm2x5P3L48pMY4=</source>
+  </file>
+  <file path="Http/Kernel.php" generated-path="Http.Kernel.html" hash="2c28d88ef9c1de42a5f3fc9796a36545" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJyVlF1r2zAUhu/9K3QxCITR3nfttjQ0tJRAP7z2Yh7lVDqpRWRJHMlLw9h/nyw7m1rbCdOFhaT3fXw+hE6/2NJmmYYKnQWObGZtcem9/ZRltUN2pVRdSQ0ei4WptQAvjY6C4hpJo2LgWLNsV8HFFTjHukN89ahFqsh+ZSyM4+k0zmzK8hIZWKskj/CJYy/KPINil3l+wyophMINEDLnga+POtvO/fUnEAMi2HY7x3G2ZDxyj4J9SAhn7HurCqPYk9ryr6WYl8jXC0NLkDrkAprj0gg8OYl5fvyH2xUuNV9oTlvr58asJbq+Jwmh1aTmmRC3NdYoOntu7kKPjHYDP09A9+hck0hCuvdAvtvf632QuHljLMP3gsiQW5CpRhFDuT8gydV27miVmzW+Nf0I9+TgLSBTe0z6//+dj4TlcPsnUPtyws4+D0c/C6eofRNNv9zRe/QMTvKWkJSwMY6BHqUvzxtXs9mnvtTo/HhIdygkhcyuVilT9DmubdPTSiqPNA7s2rmIsj6Gm8qC3h7EzFvdGGaD8lXqp/3lfoyi4bJ0gPAa0cFYWs63IH0Xzu7a/c7+ALxyofM=</source>
+  </file>
+  <file path="Http/Middleware/EncryptCookies.php" generated-path="Http.Middleware.EncryptCookies.html" hash="53f84f8b160668c256110191f5d564ac" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJxdjr1OxDAQhHs/xRRUKbgHOBB/QjoKOjpCsdiDEuGzV/YG7oR4d0JiJHTbjHb2m9FeXOmgziXZs6p44ka135lp/ziGEPkphVvnpko8xDjtxyTG/i7n95H/kP4++XJUWw8VUnErlc1lmSt8lFpxwvFgTOEEdl8O82y6blF0eBqI5UXkN9i8+Ja3QQx1yFMMSNnwSrDVhPOW/iu5/pACKUWOzdksqiUb/czjjAdPNVzieSV+n1ihl637dj/M617X</source>
+  </file>
+  <file path="Library/Wechat/Staff.php" generated-path="Library.Wechat.Staff.html" hash="f4dcc311f41a1e11c1754a84a2ee9258" package="Default">
+    <docblock line="0">
+      <description>Staff.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJztWFtPG0cUfvevmCKUXSNf2kp9cQLBDU6KRADFtH0oFRrvju2p1zubmVkMQkihN0LUFlWqKjXigVQorfIAihSVprTlz8SG/IvO7MW79u4aY14aKfsCu3PmO+d835kzM75x06pbqfzERApMgDKH1WpOfgDO+yKkHJAqWFhFlFMbLX+KtDrkOW/4NqGA1xGo2oYBNGKtU1yrcwBNHRhYQyZDAJtVQpuQY2JmgGUgKL6tYtRy5s3N3irNl0sSqooNJL5BDlqQAR0zTnHF5kgHLczrYgQzwIhNNSQc6ciPYBravC6iEA/xYgQ38LT/f66JphyzILj3333vg8G2BjYbwHnqnFuskM/XRAh2JaeRZt63jrEUhiEsYZBPpUzYRMyCIuo+Cq+nUjaLfF2+ixiDNcSWPxREeS/C1JOnffhrZ+97B1kzIGOuXqmNVErG4BjJZwJ0/njY2Try3vyP06uQguXhPLpT8s5fixKONCnFeLMbUb/D77bbh49dt+3dH18/2HJjPX/xtL17HBeIFNisJTmqrEd9nB8dd55/efb46zqCOqIsDhVSCteTQL15YNI1UxWNmByZPMvXLVSAliWK1qnU/BeMmEraC0FYMQ6Ki7Mrd0pLIHgmgeIXCLRwroXwGjZz9+87daLVcLaCzbxmM06aDNFVsSDyNcQbVUMUt3K9D3phfm52vnQ1aGKKgkQJDmZKc6WlIR30ADeqUNOIbfK8jowI7MeLM8UrwtqWDjmKIN+6V7oqMtT1COzdUrlcvFNaKZfmZ4Yk2qt6z02eITMKW/ykuFS8J+iYWyjO+LCXpMEgUJc1ips1JVr+HwnA9tHL8+dP4gpfjibWvRiL4jmxU1vjhPYDWpDCprdCwbhYGLN68lgZaRTxXt92RSwlsS2YmlxOYGWl60x14TKhqWlnzkbKl3pcNvvslIxaEGmKvUImp8p/ipomtFgiDWTGAaVdVTajreOH4/buz52dB529HdFA/D7am7VAsKkZ10L60pHri6mRsKno9ETueZPhFLJTYmWqDBnVQsHrIX5jkY/ntDv5M6VRXXEW8OfDJNPe+/3sr1OR0sjJuE1j5HTcvnVhRq6XCxLrHJ+0H+0P2jh6iw81ITYSxkysNeTmmzBsid2zRaieQFuFEGMga6LcRM9S3RAygbtMAB0h1Ikg2H26A6FHUuX1AwVMTnkpZmJNfZeKeJGm3RBirf2ofGv/Pc46Ts1wBcjdcZGwcBm4zTrjJ5m4EF+dHnZ+evlGSOxuS28l9iV2d/qLJW4/3H/9y8EbIbE40KC3EgcSe2fEHBi7GaQwueHGvzk2xPL+89Grv/fbBy/aX+2OrroFeX1USeEq5JAGkkqsiIbEkraDRQSKvJIyR0DvutBEOoaKR7yAjdUoTPu4TQ3hJCC495SYxPMFwllSNAmd8QJLZ7opJa/K7W/bB9vx90KX/aFuht0rYII+7oV0kEDy9Kz6KP3KYLbiFkFgAa5d6zoVXHpxFApN2ECqwtEaV9LZKfkjQfc+p2S6M8Jq4CpQ3+lCYXEghaaGSBWE8kuHgpEPr1PScs6gy6U1DTkkq2PePff0m9dPTs5OfuvsnJ5vPwNKl0CfwTBzypinTUgfp0ZcaYMM+y7Z/VWQeHhybuDxJ9u+M7tbbyMrWFlXfYyIfoJi1LS4sOhJK53Ma0Cr0tl7dn7479k/h+dPt9wfEcTB1uVaGYa87BSTwUsOvfguyaHrdNAi8TkkFjJnR953OFE9hP8bgZxI9tzYLr9/hO/WmQh2xcaGfptQp8LU4LK2mfoPaJIrZQ==</source>
+  </file>
+  <file path="Library/Wechat/Group.php" generated-path="Library.Wechat.Group.html" hash="403ba56959fbbec3b6bf627b9c44a454" package="Default">
+    <docblock line="0">
+      <description>Group.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJzNV01PE0EYvvdXzIGkCymtmnjhSxBWIAFp+IgHNc10O21HtjvrzCxIDIkHo2CCeFASgwdNTCRe1MTED/6OW+BfODO7W7btflDAxLm03Zl53vd9nneenY7csOt2pjAwkAEDYJoSx87LB0D9LkLKAamChTVEOXXQvTvIqEOe96dvEQp4HYGqY5rAIPYGxbU6B9CqABMbyGIIYKtKaANyTKwcsE0ExbM1jNbVvrnZSf32ki6hqthE4hnkYB0yUMGMU1x2OKqAdczrYgYzwIhDDSQCVVCQwTh0eF1kIQbxcwQjeDz4nm+gMbXsNLlrV65eT15rYmsVqFHn3GZDhUJNpOCU8wZpFILVESvFwhCWWFDIZCzYQMyGIusOCoczAedHrw+aWz+ODp+qHYYJGfN0yDzOSGiDWIyDieJsaVpfBp1jFGSDLKGN8+sIP8JW/uFDlaxRw4NlbBVqEo4VaohnhzswJxf1iWX9/JgGRZCjLtiV4tSFYB27EgU7pc/pF4GtIBNFZbukL5amFxdWiqXZqfMRiytdqPP6/E2B20ZFL6gN1CgjGsuFD39zYnlyJghyHvgy5Ea9FUMFUZ0pxwCYEXDul1/H3z74T4KJ8TVI1az/oKA+bUo4MuSx7ZOJdOOp/KljcEI7AW1IYQPIg2/VQB+07dlK/NwSEp3H22M7ZeE6wowsQ9oNKJVawTQPLhfa2q/2eEdMjj5pMYNjMmtBoyUcShanyS8ThoEYWyaryIoC6veU2eyq1d3adw9/u1vP1OFOKlbaROcKAe1QSxhocpXeAdQURFdNKgoT9UBK4YbWmgiNrGqHLBgd8xdlJZL67WHmInb1+8KqIFQ4HJFePxomcXDsASNWkTCuMWRWh4ZO3SYXJBaG8cttod31E7sfx+7xyx/u7l5z+0nz3XY0xz6kKiuRQ1O8bpjWxV5cYeK4h2oSrnyGOlh8Ic397829ryJ/99XO0aev0Z0i2kDlpMBiD0ZCH5UJMRNJ8CxACyLkwOW1VNSitg3CPcWHbLkgeuqW9i5NW5/axYFsKQ3s+Wy4geXmqKP//uTtx6SjLwXtULNnybzXWUuy/1Sry+Lee/mnc+8Zg3etEvbgvjs4iwUTG1mxSqSZsMMQVXc2zcdJkyIrl0kmJY/+lnN6atvlpRdrFeFjPeno06H74sDdefPn52ePyR7YS/asnru8IW7VK4LggNscuFDDB8zLccp+ZBNnOSkFVKV1fJt8KZK13QyTJJN/GGJfG9u/Tp7vekIlSaSoCMpkkRJdlkJMaw92KUqV5Ns5fFBYulb/QKzwPfuskm1m/gI3lFPf</source>
+  </file>
+  <file path="Library/Wechat/Utils/MagicAttributes.php" generated-path="Library.Wechat.Utils.MagicAttributes.html" hash="10f7acea13cef75501d13b01f1e56e8b" package="Default">
+    <docblock line="0">
+      <description>MagicAttributes.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJy1Vltr3EYUftevmASDtMbZTUr6Ymdjm+BCoJdAKYU6ZpnVzq4G68bMyBtjDA6NS6B1ExonbYJpaSGNKbHXaR+y9aX9Mytp/S86M9KuFK2k4ofMi72a71y+OeebMzfmXcNVatPTCpgGn8AO1hcZI7jpMUSrYgvInTuQMOC0wWdriDDiobtfIt2ArBpvf+QQwAwE2p5pAt1x1wnuGAxAuwVMrCObIoDttkMsyLBjzwDXRJB/W8OoK+0+vn1r6dPPl4SrNjYR/wYZ6EIKWpjG2bRAFzOD72AKqOMRHfFALTTKYAF6zOBZ8OXEOYIbeGH0f9VCNyUsSe6Dq9c+LMea2F4FchmMuXS2VuvwFLxmVXes2gidg+TAlC8OqCmKDS1EXcizzhzh3S8YNumconj8QG7ba9DErUXS8Sxks6V7OnLFifHtuETh7v7g+Pvgyc7gbO986wX/GTw9Ck8e+KeP/Dc/B1uvwhcP/Lcv/e234ZsTGRo2+RFCnQHdhJRma6xsKIrIW7oXaxr42/eHh/3h4T/h2aHwJt36j3fCV0cxZIRcWIMEQELgevylJv+6xGFIFyWbguNAoB4htcrcRMTg2d/BX095iOHZ62Dnt/D0iX/w00VjUcabSwdT1Iar6BbUeVuVhIzoRdyykVxIoAVE49mdFIWCfV4xD72bk9fkXc/FYOuieIAiNj5wLfE3E9tWpNFG5IIvgphHbDAlWv3KTdH1eUZzEr/5HohZ+B4/zneJjSFxctkuKqNfxCBDO0HwusXkZS1TtqNCioXbQLsU46RqYP7pVlIxxGIGcbrA5jdPkdq0y+e7z4e9XtL8W6fqRuJ6U70cH3+qBJJClE3S9MuJ0YpgJTNKcUiXuqig4e4vwcPHkcoLqpEji0wNmLMYKaG015LEi5I5/+O7Ye/+++urpuOYBfoecykrdj49cd0W6uXoa3Gn9nf4lePv7fOaR7dROUcL8WnTymzKMohGJh1awO8iumk0dGiaWhxrJvKbZShUIJJyHZogVSE5tQLq9Tq4mu3/GMXbkXpiNCRm1/O7Ou8+GplIyg1q4DbTovwKL6bzg91grzfsnfiPnpUfLq+5y2dkeUc3Gh3EY46wBZW/hCkVsElhjgxXKmAe2OLdMpun3zGsnJb/zXN/++WFaJXJoogyTVO+yPyYsCmUg5zAg/7xoP+t//CH8PjfYP9X8bg4+DF8/fug/2c5xzSJ7F4LmdjCDJECbUS4/1N/PBJkoJmUU97PakOdGCqraH188VYTdGaORF0SvSBmZ1NPiGXhYGVihowzLjDI1ZEcWDpbd1HDdLqIaAUDKvos9MkIcyKoS1CnQZBr8hekpta0akWbry8vXvlqpVJTueCnrqkpdsnsKxN0YfapSRVZbir/Af7b1UQ=</source>
+  </file>
+  <file path="Providers/RouteServiceProvider.php" generated-path="Providers.RouteServiceProvider.html" hash="d007697ce2c9a342445ca63efe0fffe5" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJy9U8FuEzEQve9XzCHShiht7g0NrVohKnFALZzYCjn2JLG0a5vxOAKh/jtjZ7NbUipu+DL22PM87z377buwC1XlVIcxKI1wHULzifzeGqS4rKoUEe7aNnXWKcbm3ie2blsi0vJ0+71Pzii23jUPKQRPPIIdah6Q9lbjMQsqwklKLtWtihH+eh5/MDrzoqj6VYGMxWxWIszg885GGHnJQoXQWjTAHniHoL1j8m0roJRvimAd/PRpWG5si+c93BH1zoEyxmaGc7CcYSNyZpEhv9x/hC06JMWe6ihAnsceTrGu9oogMomefWpRYiDPqFk6nYz9X0KdrfnAHJqbofNYi1onxG9xYx0+YwKdN9jC2jojV8U5BMVinssEJUoCWb9oLihSHUDzqvkAkwJPQwkhJ4Hde2v+JJTWrdWwSU5n4WAtskx7kB7jTTl4MLHwWVTDXDpBxxcXpex4flm2n15jn9042uipLIv9ujzO/0m2U+EfXPv02WorkzD9Wg+u13C5ggnLSz5bDcnH+Qg+yPEMLg/C78lS4fxN3N5N6/xwFgdFzuXL172ARcRBzKfqNzdGRZM=</source>
+  </file>
+  <file path="Library/Wechat/Stats.php" generated-path="Library.Wechat.Stats.html" hash="87c86a2dcf5572e728017aa11a930197" package="Default">
+    <docblock line="0">
+      <description>Stats.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJzNmVtvG0UUx9/9KeYhUi5KbUDiJWnSWInbWNhJ5HUUIUDWZD22l+wts7MxUVWpFyn1Cw2VoH0AtWohqBKoAQlaoKKfht2Eb8HM7K67Xu+u7V0TZ1/i7Nz+8zvneM4ZX72mt/RMbm4uA+aAQCAxsuwF4P9vQUyA1gCbBwgTbKJPd5DYgiTrNl/XMCAtBBqmLANR0w+x1GwRANU6kCURqQYCktrQsAKJpKnzQJcRpO8OJNTm40rF1cKGUGBTNSQZ0XeQgDY0QF0yCJZ2TYLqoC2RFm2RDGBoJhYRXaiOPAUr0CQtqoI+mqsRXJVWvM9ZBS3zbu/EffDe+x/G95UldQ/wp0WIbizkck0qwdzNipqS83qH9KQdfXPRDrlMRoUKMnRIVQcQLmY85vY3v9hfvjx78/T85TM+SJShYTimyNzMZNj0vCt75sA6Xck6/fP812fuG69h5QBi3uq+yPG/OtYIEhnHKaZx0Z0vB84fvLaOH519/cLuvLaeP7HuHztCeLuoqQYBIL9VrG0LhUpN2C6X85WPQf+zBKY9SlCXsm0kfSGp2f19DqsOCRTNXZRrImIaCBumokB8OL0YEPHbKd27IyVGxOp2ebuUrxZSihBNxZQhQUEV1rdv7Uf3z97+YB0/tE+P7ccn4VrylWpxtVSIYjK0FhpakiijCCY9am6/iZdS3azmSymwuFKIRqAcIYS7Z4xxKoX8WjiSkYyDEazHKbA6R/bjV4N0rG9uV0pBy4yso0W/bsK1UBX//PXT+d8/M+PERM16vhLuJ6NFTQviCG/1CxmIxpETxmZ0OWFs7Fcd+84pVfLv7Tv2j3eto98jxGwJVWqmcq1cEAQhfyOAaHgxOj0kEFQUoxkhpXNEpcRy6ZPSgyeJlEFkrIcvhtWyUyh8lEpLG6G9WCt91xlWS3lzo7peSmEiRVNJKxZM58j6496wetaKQrXrN0n0sBRjsJwRrMUVeSZLqmiQxVxIw9uNq/KMl1QVt921Pl0PTqzj71l4PfkqXE5xo1qoXM+vRhyWQ8uRVIJwg2ZREYelX0lcuPfpSRjuQT1uzAdTNb4yNkWi4WCupkMMFcCSXLUJpqCuF+vRbQISMSK9aZ25SzNsmnirIkutQa3WXWzGmW7eN3SWj7mZ8cBPsXT6yjLbLN20SrNxljfOsA95ke7KqGp7SA2baNYhf6tvr7HpZOTGG1hTIpqIFhxK1zexCiDG8DAWBjulBMcyM3yJeTZdEII7ncti30S0t4HkxsJCMO2dB75ZBgAIT2UnAGDVTXPTEfBy7hEQxObRFwzCTWzTOkMg5U8KoyeNnwyJKkvxU3Pg9cboFII1xASiokLz+rF8NfjrnYQk+k6qCfFYp6eXPA4czmE6Mo2IamoShwYrbcZzcvhLv1RELoOXcC7jcBN/CToCldjK8qJ5uKlxmaZJBmymd5duyi7cSOAwsZXuhNGk9Rg/mVQ+01vFTZjKDi3xxkXFKTeTRlJPFTlhKmVWYo4Li1vvJvWW4EXEhNGs0Qp8rN8y/ruTVIwuVVwxTOOMLd99TjpHukxhxiCNNdT890ujYAq/O7pgOt17nLTh1XexlBDFpE/wIJCUJ3jUfdtQdOynJ+enz4dhAXXp/6XU/Q21C8rZKVu5Zy8BOlN8SQMsOZPOdBt8z/Quakpqrc5+kQRLy+5soT2RWnf7Ad6TaGH9Zt2LSC4AI8OUCRXgu/K7svy5oalbmkG8DTgy/QM9uzrjP5mW2W35Z56pbmX+A+SWuIU=</source>
+  </file>
+  <file path="Console/Commands/CheckCycleBill.php" generated-path="Console.Commands.CheckCycleBill.html" hash="082ac2cdebf13c0e7e3f86a1c72f016a" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJydlc9v0zAUx+/5K6xpUpJBtnWDA+lWYBVISOMEF6RKlee8ttYSO7KdbhPqnT+CGxI3blzg/xl/B89O2qZJFjGqqFb9fnw/L+/ZPXuZL3LPEzQDnVMG5HWeT8ZSaJkCrllGRaKHnlfotSnLqbi74Gk6bG6O71gKW8uYqispJuVSbr1L0yLjghpoarTsH4o8l8pM3lJGE9CTSzlHDJZSrcl4Aex6o0bg1gBSkiqV99kj+Dk6OHArOSAfF0BshQStRPM5ChQKiJwRgxZWkuDqwg+rqHXwqyVVRBvFxbzaOnJrrqQBZiAh+9uU58RnFi5ili66QjwfsTt4GqoEa2SK54ZL8R8EtWjL4F4QcQzEMrjCmQJ8sVXJrmHOdtgBOC5dKRFwsyHkQhsqGLTwFGDtgiwlT3b5iquUMzIrBHNg06kt2qiCmSB0HmWnnC9VIEwc7/gMnXnVwntzC6zYlNLfvQou47fQT7fA6BRaYDh3cczFTAb+Bcy5KEUbPd6o+xWz/ewLeYPNKOc/jvFXULey9fxecm2sX+MQxfHNAhQEvsD5nibYD/8p8Ufn+G0zR6OZVBk1gf8pyqLjATk+jt3jh2E06go96w49HZCT0/j5C3xc6BxMnRNdgbIFCRrAVNdKCPGFbSLK6rb3BNZmx6h2c9TzO29uIEO3bcJoZLd2vfisDhGNVJG6AzfI/LDWsFZStx6SvWAPv8v6MynMwu79+fol3NuVWRFINTwkdvoYsYALEwZ1ySPyjDwhg9C63P/4dv/7++PkByePL/YO8Pqwer9+tsQe7lrZgXXKYY8fXtxqypNG/6rdvkAFGVXXuhFY7fYFVj/aoltDX7jMQVEjO6Brlr4Ec4VnfWqkoWkjQc3SlyABmqRcQCN6c1x7i7f+U3vrtPn7sTVdQuvodck/hBWNaJK8t4NsJ3tJ09aMhj3pm/Krrjv2Df7R/NMNu/JW3l9HVInr</source>
+  </file>
+  <file path="WxUser.php" generated-path="WxUser.html" hash="7f55d69d6e9668e8e1e7670f1e1d834c" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="Author" line="0" description="Xiaoming &lt;minco.wang@gmail.com&gt;"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJy1VE1v00AQvftXzCGSk4g2nJOSpqg99IA4IAQSQdXGnsQL67XZjyYVyoEbPwAhJMSBGxc+Dkjc6J9pw99gvevYiR21QMoe4mTmzXsz6zfZ20+j1Ou02x60YXCgVZQIeExJElM+gT3zGSS7U8Ing0lMKNsNkrhvoB3P4yRGmZIA4SBNe56nJcIxY9qUEIXDQ6LIiEgcHrHkhUauhveSEFnvetyDZKwOkaFCaWgDRqSER7OHEgXgTCEPJVgq76UH5mR8ayVZMBWJwkBhCI3QqEi4A0/80CLCE6L8pzWY6YKhgfnT2YmhFNI34hajR4wGIBVR5jHWPFA04TBBdffsfor8OGw2EvtsWbzrKjsClRYcJLJxtzuNUGDTz5A09G/BsmanP6ZCqmbLdTT3nKp9I9lpw8X5h8vP7y5/frk4//jrzafF6x/my+LV12V+kBJBYmhkXRexXDumMwyLoIpEMpUwPJoFmGZT5JnOVYNKcoru+s2co2fVIa2suTeOUztpbz2z0+c0eJ55xWColKgsSxluwT6sR6ALvl+jcRdnSBzY/ayhJM4qOiZSSmTpLtyulRkfnBqnV3tchkuCArixx4CqswpFFirLLWBzaaK5ErVqF10hyGEbOSIkIY0nWrAKTZkomVbAG8mkHslA0BEWV15EaljNjVHsy1lVzaOl5BLWBa4Zqysaoy3XYGV9bLZYjspuLN5/X7z99p82oVgBnWZ/IlctgYqovAGrO5rrrO5Qf211V7a11R3NP1k9L93K6o7jhqye3+QfWd1ht7V6rrhi9bk3934DZANJKA==</source>
+  </file>
+  <file path="Library/Sms.php" generated-path="Library.Sms.html" hash="0bc76095075114792ae5f228c46d32c2" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <markers>
+      <todo line="59">计数器</todo>
+    </markers>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJytVN+P20QQfs9fsbWixj4lcdIfUUnqchUg9eHQVe31iasin72OTePd7e6aXERPuquQoGqlcg+tAIGgEogKCY4TSBVFiD+mTXL9L5hdO4njy5U+dF/izMw38818s3vxXRayEnFjLJjrYXSZsc21aIu7fNgplRKB0XuUBFGvo78/2PYwkxElnZK9slJCK2jy/a8v/30yerj/andvcvi3Mq1+grmAGNSsN/R/N5Eh5egy8YdrGKOLnFK52qdCxi6pU967BFF2qeT1XSHQ9ViUPi0hOCzZ6kceKrss6t7CQCdvTHgf+Nm2st0Qbg9n32WJt6VjvNj98uXz/cm9zyf/7L/Y3R/ffTr55rNXvzw4Otib/LA3/uqgeebsOaMzBcV0K+pj5CCjeaF1ptVqts43mnO3iAX4CB4odqY1s3Mskr4El4qoXRKY+B9iodiYmkd1mhkgmr0emjoraPTFd6Of748ePB4//mv8x6OpeVWGnA7EfNKZw853HyTEUz7U7XqUCMkTT5pWOrV0CGEEfLLBAb9Uw3a7h6VZcRmrZ66K1SmCYLDLAAJzkLUL3sq0GXWiwMQxk0NzsaSF7txBCw4AWjmG6mzCrrXb7hblUON8o1GpVvLbNBvQ6MfDoz9/ylPdSQnsHB9quoc6y2yizOVujGBKEeml+4HG9+6Pv30+evgMlqEQFxE524elYRzLhBMUR9vYnxnfYMVfI+NrFkfH55TFxKM+9ru6DQfBWFOLaWigkReUQf1u2rdjgDIgjLOo02l9WxaSnk4LOxkBY54vazzLIKh3q6sq5BSuLtTMqBxXybtxbQ1dXb++cXTwbHx4tyCAutpF0+0E82FRgbTK25Jg3o5qJK2YW1jb3lh/fx0d/fZk/Oj30ddP51P2XemqlyM3qXJEAuoAd4HVjdEp88IEzAlUQcowMXXwR0YItY2b1QuNahlzTqj+gRarZxs5KNy3UwAv3KSpMopK/pbMCobY9R1DjRwZ9bRghbkyrNysG+jKxsZVG97qTb5J8k0oUN0xrgCx9hymeCrYCdHXcIA55m0USsnatl3EFYqfkAWeH4mJrMkhw20E7w9o5Sqd7O3aYDCoBZTHtdnu+/+TZQ2TngxVDzBPwJiwOLGZSWydSGK5OY/NOQc8ktgJWCKFCQJVdbRVQGNeWJRBqJ4Zswy8wKNTB/DkpinONd5pWZaFFrXOEtUdBVomdpbzVIBpoPIcz6A3tu6gQqllybLN+lhQ0vWxfmg0fHa3d/4D9QSJ0A==</source>
+  </file>
+  <file path="Library/Wechat/Messages/Music.php" generated-path="Library.Wechat.Messages.Music.html" hash="7c016cfd3654d059525e1ff9a0c242a3" package="Default">
+    <docblock line="0">
+      <description>Music.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJytVUtrFEEQvs+vqMPCPoi7KngxD+MjYsD1lYiXQOidqd1pnFe6exKXEDDgIQhCDnoKJiCCnmJEECWYX5PdmH9hd89MMrOzu2PEuuxO1Vc1X1V93TN1I7ADo1GrGVCDZsipWVcO0M+PCBPgt+HhKjLBQlx6hqZNRD0O3/UZCBuhHToOmH7QZbRjCyCeBQ410eMI1Gv7zCWC+t4EBA4S6VuluKbz7s/fnnuwMKdKtamD0kcErBEOFuWC0VYo0II1KmwZoRy4HzIT5YssTBjMklDYkoU0P+YIU3Q2+V93cUbDzsldvXzl2nisQ73noM0WIuDXG42OpBC26qbvNhL0EKQEpmpJQMMwPOIiD4hkPTDCpSZyTjrIJ41k+Kd7345/bve/b/U3vyTtBcwPZF4X1Dy8DpRC5gwP2CvLI2OCCgeHhyzkJqOB2s+IXDt0W8suWpQsU0t3ZTqE80grgC8EehaHW3KxcUvGumGomei2lNWg93W3//JT/JQ4Z1cJA8IY6caehv6VDASaavOlmAxFDtMRshJBR1lZjqA8UYCJJlUI00MrRKXmV1wxM8oCeHUyN8Xf+0cnv/bTMukdbJ6+/9DbORocbUAYcc92qF85bw2CGIqQedEisysIW/L8ymPtmaox0MQrSZmqxqyfsS+pw3lphqO4KeJTW8n1ekYi6UtZTEAXmNTejVzTJ2/3+lvbxz8Oe68/R0333x2cHL4a0cwQPQ024y8I0m5XBttIF8jLrOyqKZVheuZvhBiL59wh0+Ix6cj41WdElc1ORQpqaL5K5zkG0lmQa69ks89zo7NTkD6w+3TzmcjYMtVctDpeIr2d3d7HN/9JIk8wcLo5iZSYvMx99Vkbfx2VmxcRS5SymFHMhfQSFbiTEc0/SCZF/Wl+84Vrj9LvPU4XuJhwogqLSiPN6LL4R+1oywsocg+5f5K1JgLbMP4Av8htZg==</source>
+  </file>
+  <file path="Library/Wechat/Url.php" generated-path="Library.Wechat.Url.html" hash="144a2c21b71b639866d757a0c92057c1" package="Default">
+    <docblock line="0">
+      <description>Url.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJyVVE1vEkEYvu+vmCakuxC6aK0XKLSNxUDSCAK1JrXZDMMsO3aZ2c7MFpu2P8CD9dDEq/HgTWM8GQ/136D1XzgzsECBVp3LzsfzPvO8z/vOrm9EQWTlMhkLZMAuD129BGZVh1wC5oPaMeaSx/jFHkYBlO7o+DHjQAYY+HEYAsSiE066gQSQdkBIEKYCA0J9xntQEkazIAoxVHvHBPdN3E71UflJs6ypfBJitQcl6EMBOkRITtqxxB3QJzJQJ0QAwWKOsLqogxMFmzCWgVKhBhtpBOtkM5m7PVwysIm41Xv3H96NDQk9BGYEUkYin8t1lYS47SLWyyXoBUgFnOJSgJxlUdjDIoJK9YyFBStx/Pflj58XHw0chVAIXQLr1LI0rYHokQEVdcPgy/frrx9GO8nB5jHk5nS0kTPfiDOJkfYvpbUVhnyIUSHBVr3qNSu1RsvbbeyAIrCTPGFE3D4mrwh1j45MuqhLVtqE5oQyWcY8tAtzwgwnj5FkfFZZBDnsAV1K2gUpGEXVzu1nTYw4ljeTiNuqj1R7UaQbCHje+DJnSJedCk2bmNMhgxop3TQrJZ2cSpKqntMuOXqyhRAWosUOMV1ElC4YkvO5XK+vPv16/zmp2F3JKq9mAYo55nSEuDNP47ajOeZyMrcIlQ/kHJ4444OpYUPDYqtpsQTskNHuqmG0swvhGuDp2mq4vnQRLD0qvBHBVU8z/bqL0yavlF4KRutMSEfg0M/nb/RZNtE+zTSyZEy4bxuhRs3BrUW4+DZ4+25wdTl4/UYR/7fNQqrf0ZTbKOYcU+nMe63eEEMsVGk6S7gXyRMn5TXLjWflxr5dabXqTfsgvchSM5aXwRwaLBXVc2O+b98adnY2FTb8enXloQouquC1tQdpsDF5sjbIDxd6PuUs8R0iBJYzir3n3uNaY2+rsV3e9iq1pqJNp09viEkFqoK6sn8LLIzDznEo8D+xzEXOtUJiumsY3El8o/x0t9zUvVSd9Ma59QdvD+hm</source>
+  </file>
+  <file path="Providers/EventServiceProvider.php" generated-path="Providers.EventServiceProvider.html" hash="223724892c61cb9c66e70ee86396be9b" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJyNUstOAzEMvOcrfKhUqBC9t5SHeEhIHBDlxvaQZt020m4SOcmKquq/480+Ci1C5OLYOzMeO3t14zZOCCNL9E4qhDvnsleylc6R/FSI6BGeiyKW2siA2b01gaQKPnus0HB40MwLaoME0sMh64DTY4UnG00ug7Ymm0fnLIVDv0Z0jlRphV211j0qsS9VSO/hVzx+BjT5CUnsBPAZj0YpwgjeNwhYK0ChPXOYW0rntFl7WFmCwN85L7RKfi9bXke/rSSbI5LbtjJO0ZENqALmMGhkYQYfDYLPsF5wu7u5LTFdhzC7/obpcS+trXYxXTq86KGL5rrgjRwN94brGs4OzRZsqB8ozdqMtrWR/pzNSZIlQPbPt4dBI97zCUMkA5XV+c/txCX3hFU0qu4LS2vD2elv0+mdJ9Kun5dtcXkySbQO0w6fFtB02Yu9+AJC0+ge</source>
+  </file>
+  <file path="Library/Requests.php" generated-path="Library.Requests.html" hash="56543a0c35ae361553a76306d8f023af" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJztV1tvG0UUfvevOFQWa5v1rh33hlOXuo7bWnXsKHFUUC/WZD32rry3zs6mTqpKFBUBotAXKKilAh54hJSnFGjaPxMn4V8we816Y8dp1QoeWFny7pxz5nwzc75vZs58YMpmQkcatkwkYSib5rW6skIQWZtNJGwLQ8XQu0qPfYiZTAIysHBpARbxTRtb1ILzayAtL9ad9nMsvo96I1247auYWIqhQ17Iud/IprJBAMp6Z62OMZwhhkHPqYZFNaQLBumdZW5iQlKRZYWZErcTwB4Xg/NkYO/rzeGDh3sbmzu/f7L9/NHexpPAwpAQpEHSJipYlCh6Dzy33Uf3WFvoRjC1ie67hK0+vBCdbxj7B2OguwbR/TftFVWRoGvrEnVmoIepP56KYfQVnHIgpl1Xb3jOk5RkKIHELG1FV6jnMxuaXYOFqWEykyTzUGHz31xotRerreXFRmux3Fi6UF3kIX+UoEvV8lzcOSlj1GFrxlAgQtBaitkOGK9eZ2auLEnYpEWgeEBFmWoqj0yTDRk5wxUHTst7g3irps7eLOWE93lFY+Ui3sIrJp8RM27jae4gjmiqbFWXjA5briL01hWThw7uqohiHqyOJE8LriO9Z7OcRViXs5UGvy57SfmeB+kka8m2rrjvxyd2VkGSjLOMFpQYahE0NMiyPku5yQGGrmO3AorQx9jMIlVZxRPd5xqtYn6iddnCJFvuYZ1N+7yxrqgqEk8IOUjNI0nRqWHJs1DTKVaBNUBzCT6EfK7NfoW0w0wVX8ErlxUqniicEgonIXX5Umu+zoOq9DFcxFLfSENFJoaGxeMFISfMFE6cEk7nYQl1EVH8KC5SEJNLq9VaCMorGMJRSrJVm682l1u8LzzFImNNipMM3aJIp5bg+LlObebFpaOFS7BlqzRgDx5gyek64mES3GtriEpyG6lqihNvLGGa9chYvGZlUldvzF7PpEVN4figO/biRuAo+qTkxoxwJLB1DYJZiaSCsKv564AsSCoUa+kI0V1AiFi4zRQo5Zr5oONId+PStTVMekw+/OZxYXcSEdJKTuVwYyAG/Tr4+qWzydX07VhiEErsry9wJU5IrgrcLHAjSYJXX0yTkmf1LRG93n725d7W1vDxi90vPoOdbzZ27t/dfv7T8NNfPPHefvnzzt2NQyTcixz+8HT45OO4m4moPOq3/fLJ8Nfvt7e+2t36DWD38bPhxh97mxvDF/fisd4UBNFjwfhjWzWUzsRt4tV2Agut4pojf668894IwmUs6bY6bV+AI28MAQlzb20XOV9rlBc/CoOOFPP6NJ/Y5YVmvd68Um9Wyq1as8EDJTZjBIji3uaPfz96UMjloZCb2S9ZpZt6B2smXQt4kI5V/8RMlWbzcq06nnbhehF0qzRJiNx2iZULhpiFgeoqKmZBCjv2pNzCiOOydVXR+75tbO6uyWqla5hY97x4bsBFJeoWYXKTYm68izNqclE5pvQkJi80l1qwEpz8fD54bApo5DI3bvO0y6l19mnFrE7JB/MZJ56mDPCbYp7JHP1D2D73HDxT2OfEzSGKYkoaTosHbvjng+Hn3w3vP9z59unuX/ciJvGg+Hp5Pe2F0llg6hs6xWQ4zM7UmDkLEMjxu9y49SdsFbRUGMUD8xs5xcXOmOlDNvSg5tkfP0VyJoiIx8OpUYFOdZFqHeYfstCpQx4kw9bp/liPpBRvQXwcMBdq1frcEr+/XKO8fgtiE1lSw6amTQ8ojiiyXwTEqB1KpZI/4RG325F358GSbLBjrLMZY0IMUgSOlaDXk/MdpooAGxmWrykjQhccGDzcI1oz+d7kbXr/gcvS/lgnulcbleZcrXEReM65q3BHSRHE8HDs2Bvc8l5rPl41O/DTbpFx2/+XyH/pErlAUE9DRdCNrOQAefO3zeOvf9vMF2YOXDenc/Pw22ay423d089j41XKpt3T7Q5mZcMcOp6y+4p15x/aTph7</source>
+  </file>
+  <file path="Library/Wechat/User.php" generated-path="Library.Wechat.User.html" hash="2eeb7362365e4ead653f1fd51be25678" package="Default">
+    <docblock line="0">
+      <description>User.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJy1Vs9v2zYUvuuv4CGA5MCxtgG7xI2XH8jSYF0T5Ad2aAqDlmmLi0yqJJU0KwK0QNGml+5StECxS4AecmpQ9FAUPfSfqZ38GSMp0pFlW7Y7jBfL4uP33vu+9x5165c4jB1/ft4B82CfI1ZR/4H+uw2ZALQFto4QEyxBB3+gIISiYrZ/pQyIEIFWEkUgoPEJw+1QAEiaIMIBIhwBTFqUdaDAlJRBHCEo3x1hdKzP3dlcW7+7u66gWjhC8h0U4Bhy0MRcMNxIBGqCYyxCuYM54DRhAZKOmshGsAwTEcoo5KImRnALL9vnSgfVtNlNcD/98OPPxbYRJodAr1CImC/6fluGkDQqAe341nqEpTTMYEkD33EI7CAeQxl1jsKq4yR86O3BvsARP1iFbblvJLl6ddE7+6ThgghyrjVyHjmO8qtt1JoHt2UI3cvP1x/OzRu7sXwEmd41L3z9GzMqUKAInlPBV1O8gBIuwMr2Zn1jfS9NDSwB1xIBY1w5RvghJpUHDzQfQRsvNDDxZTLMV2K71RzQ6sre2m0NNxuQ34AiCNtIDCHe2dzdmzW0UTgbO1v729PjtBlNYq6QcHMIa2f995Wd32any0/iJhSIoQ5kh251SFXtgSWBoCwvawwZ7ADVKKQN5mAcbzbH7+2igCExWAFJQ3apbF4SqPYE9XrfmZfClTNHS/rMI8cUBZhTLblQU6nKlInsaFVinnpYCQLE+R49RGQUUCnl7nQo1+vLL92/X6f1/u3ree/JZXHKNEZkbM4RJO38cek9YQTI9iokQirsGXCVmhxu5RRPaftXWF+76+bZwC3goU4sTuzBUimzq5bxbWiL5IDjnmEiw4ZmVifCpTPIGDzxBmDMcpUXWYZgqWZ5KI+0U2G7qipraQqjrErVG+cmTCWjpMnLqLxQU7xwFLUWF82AKNtYx2u6qppYMQpUyfPKaEV1osBmwmeXVAMUiqqnyYbMIPVlXU1UNq9Gliyzd89VudWVpu59a1jvwNiz3vtVoVgAnnY5pkDGaz616Fb1Is216vbxtNznYyA9Ju8uqm7xJTBQCH9ySrYpz1ZDf8rf1ERBVVlgw5wahIa+8cPh5af+cOievbk+vygeDgQ9FFvZATHrFEhbNINjZsGkAnHViXpWqhuI7+s0dd9N0Wrfvr7vvfpsGHr3vPdxAkOF4zO9kMBoHBN6g9KokMIUxBZ/2aJOYvA/DTxzk2q79HnKkTepwtMbPlveo2XIFmrvxePuPxfds2dXX57OIEaeaEyKb279ZdKfMTl2B9OTlbUxYD19Gldvn/7PaeRjm9RpwzXxveNLfwoWja7MyNJsS7f3LXWnzr8jo966</source>
+  </file>
+  <file path="Http/Controllers/Weixin/BindController.php" generated-path="Http.Controllers.Weixin.BindController.html" hash="3b48d698aac1586d08181e2da383f090" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJx9jz9vwjAQxXd/ituADKGdg1poFiq1S5HoksUk12DVuXP9B1JVfPc6CVKoRPH0fP7de8+LR7M3QpBs0BlZIqyMKdbemyJn8pa1RuuKd1StokyI4P4hRp39hd7wK6Dz7jwOfj+oZzLBD3Irtaqk5/PqVuExRs2TREACuZbOwZobHCO6+TK2/ZT19To9cIhCMcF9etffZcxmC7Ci6vsFERaW2S81O99IStnWDxGbi7IPfFJUjYaArUeqHFx0+BEQjwk7rUr4CFT6LiyuYTudDY/dseiDJTjET00nxzbVXCuazLIeOImrJrvo0nncYlzss3nd5FzhBXoSv8XLmUk=</source>
+  </file>
+  <file path="CompanyBill.php" generated-path="CompanyBill.html" hash="222fe22d8c238815c07eb4f293877529" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJy1lM9L3EAUx+/5K+YgJLu47m6lh0bdqquHPfgDxIJ0S5hNxt3QyUw6M6lKEYQi1EPbS6UXS7GFHoqUUkq1SP1r3FT/i75Msusqu9WCHQLJzHvfN28+72XG74et0DAYDogMsUvQVBiOGUYkCapi0eCsnr7G9FKN0ijwGVakPoMVbmBJ6rOUP4kIU/U57hEK2mI+b6A8am8ftF8fnX3/1H65m8wnIfxj3NQ76PlTIqTPGSqPlPQcR6rFBUJzPnM5Gg+S18gaZs3JZoB9OuLyoAKORcOlWEpU5UGI2ca0Tyki64owTyKdgvHMQDCKRf0KBVfEVcRDQ5AwJWgCmW4qdRqglSaknDi6nEmFaktObf7BQq0666zMLoFzeay/dX4BjKWr2sWp2swAoTZdUoVRg/ouWo2YqxIQTaKAKpFWTpvTYyRDEBUJhrAQeMMJiGgSK8QCmNv2hWYYPTQ9gj3qM2IOIzPEvud4YDMf5dJUNtNtdX2SkUdnrw7bJ2/jvZ32yXb85kd8cHK+/zMt3OnR53j3a8cRiidwgIagCUTN665miflMZUvF3oNJhVXv+VweMbXMksSy4llZwAEH1gJLErpq22stIohl+tJJ9HDAdPkCbK5QyXySmI726YQvVDxfKmgoZcE3hW9pdbsAPHPXEEqRdCHdiE22mu1yG9A6tIZ7og4g98/MemBcCv9XqGl9Lthdhff7+P3Zl/3T44/JLaARxjtb0G3nz391WcZbx+cf3t2szwJ/nXg3gSajYIrSlNr0xjIEu6bTbqXHYFfLbArMPEdxhak5sKv6gNk7iPdetA+/JVT+E5JqJJJLY44z1Vq8lswQ42twWaXXv23DrFPpQdz6MclMvRdTZSLxgHiFyioXAVaWuVIICmVUKtn6gd+xr3C8v3C0jO6M2nfvwaOVg8uwafwBNxxKUg==</source>
+  </file>
+  <file path="Http/Middleware/VerifyCsrfToken.php" generated-path="Http.Middleware.VerifyCsrfToken.html" hash="12b777029292f8b000694d28e3067d47" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJxdjjFOAzEQRXufYgqqLcgBAoIQKUoKmhBoWIrBntVaeG1rZhyIEHfHcUJBpvnS1/tPc3OXx2xMxIkkoyVY5NyvVXP/6J0L9IlMc2OKEGxCKJOPqNSvUokO1ad4yfYvxH44LIWHXfqgCCjwgEKt9sTVZQOKwCVHX0rR/YfNt4F6s65rCR3sRoLn7UZAR1SQMZXg4J3q2obiyMHAaYLl03YF+yax7cvr8/5Pc79HBmTGw7mZtcyclKxWzVUVUla4hdcTcXzjBL3NzY/5BYRlYnQ=</source>
+  </file>
+  <file path="Http/Controllers/CustomerController.php" generated-path="Http.Controllers.CustomerController.html" hash="a859edaa7c9db58785f94e3ec5bbc909" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <markers>
+      <todo line="306">数据验证</todo>
+    </markers>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>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</source>
+  </file>
+  <file path="Library/Wechat/Image.php" generated-path="Library.Wechat.Image.html" hash="3436cb63791c579474db7828ad3786bb" package="Default">
+    <docblock line="0">
+      <description>Image.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJx9U01PE0EYvu+veCEku21KV0288FEhirEJARI0HtQ009lpd8LuzDAzSyHCGSUhJpoQEznIzZgY4sVgUH9Ni/wMZ6a7sBTkvXT6fjzP837szAMRCy+sVj2oQjNFXVK3DnD/V5DUwDuwvEGklhl5+ZzgGOl6Hn7MJeiYQCdLEsBcbEnajTUgFkFCMWGKAGUdLlOkKWc1EAlBxrdBSc/VLTYfLiytLlioDk2I8SENPaQgokpL2s40iaBHdWwiVIHimcTEEEWkUDCHMh0bFcZ4rhFm6Fzxrqek4dIuxd27c/f+7bkJZWvgLNZaqKkw7BoJWbuOeRoW2TdkmsQSlkkIPY+hlCiBjOqREU57xcwHn/78fbvbP9nr//p8drg/2DtypThBSg0X4r32LAfmTGmYX2m2nq0sLs8/glnwC4V2fHUkaL1H6CZl9fV1pxZ36WSbsjAlEUVhJhKOIpp2fcNuEZ0Ca1V4YoAGxz/Pvx/lniIwt4Gki+aO0P0KyTXBdj0TVsJ1PCdWZlhzOQookEQp2AWzLkwgIZrR/2OrBEuir3JnbXNd5ugYtmcFrdYFWTCEq5VKK65mOEFrE/aUJhtWtRkgM5domwvsYx5jotRTvkbYTUCVaQeyc63X4e4GX9/3f384O9jtn/64vWWBdDyaYQgyyfKUW9sdbjFwKKPN0Q4EY/YWWmTTfEIqz4LtbRijqiUJilA7Ibm7Uqq0pmPJe24kC5uYCMsWjA8b6p/sD759HBx+OXtzYN/vjs+PT8F3OP54PpnSdNykuYNQZsxISrQVXCErzLdylQ+zjTzLd8fqHEOZtZvqKtMlIrN/TZi2TKX1TjYEVzpQJOlMTV1+NrWcp1K7UFgGyxdxgfnCz2Tivyp2v+P9A99emos=</source>
+  </file>
+  <file path="Library/Wechat/Media.php" generated-path="Library.Wechat.Media.html" hash="2149eb36656e8ac6970f6a4f27ad1fcb" package="Default">
+    <docblock line="0">
+      <description>Media.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJytWX1v28YZ/1+f4moYoBQwUheg/8ixHTVWNg9+Q6ysGBKDOJMn6VaKZMij7cAxkLbrlq7Y2m1Z1mZZkRbFVhRonQJD6yxN92Emycq36L1SFN9keWPShrp77rnnfs/78fKy1/VKtQsXSuACWEcWhlU2APjvLegT4LbB5h7yiR+iW28gswtJVU5fc31Augi0Q9sGpuvd8XGnSwB0LGBjEzkBAthpu34PEuw6OvBsBOnYHkb7fN3a6tXmxnaTsWpjG9ExSMA+DICFA+Lj3ZAgC+xj0qUzOACBG/omohtZSElwBYakS6WgjytlBJfxFfVe7aElTjYW7tKrP3mtmNbGzpuAP11CvKBeq3WoCOFu1XR7NUWdQUkJY7woQa1UcmAPBR6kUicgXCiVwiA1eusGwXZw6+fbmxsLBfMN3y+afh12iqavUajp9lLlgy//1H/x59N/PRn+/UMFag9RUC3AdOB0AO7BDirPe5B0KxnTey5Vdf40Ra63O56ulUwbBoGwtNJhiYFnuk5AQGNr1Wg117c2rzeu/9K4sbW22Vhhs4tAk+gyG6lCD1f3ET7ATvX2ba4Ss4Mv7mKn1mMsa6Fnu9DSFhKcr21eb/6ieT3GN+LMNFzAFRLkY2jXoGUZ6keK/VjwnzZbYBb2XOgOIrkSjxnOKjHlmi+xYr/RfGNboTI7IA7aD6axXmm0mjOyDj2LvhZzX2muNSnjc+BiIXs6Llc3b2zMpsks2E03dPJVu7a63TqfanchMbsJ/fJNuFezh3r2u2+Nvj7pn/yu//2T00e/Pv3m+eCT9+WkormyB30AfR/ekSM1/q/nuwSZLPrOQ9t291t3PBRQETlluQSKHo3HC02fQsXDxnQqbCF3KhWPMVOpuDUVE1XSKP6MKmVw/Gz0zadZ0LHZPOSYOtP8hh8dDz78h9DK8OlJ/9m7Kvamue+6rp3HnaZVRMM7VUob2gFKb8TNzQ9N4vpJ3h70YU8F6HnoeatW/tw2Mn1EJsUId2l+p2nfMVliB4YRbVYW7PTY0gpfcxgBP8+S+cUlBg+VnmqFo1hmLw3TREHQct9EThajinCko1xQ/12EKOUQ+o7MPEXHkdCWcwQfI89yqwSePXIDTpYnqVC8SLrDh7/tP/+2WDmEel7OFEupiSnun4BN0V9BDgBifY5dRSCIPFrmAuhiM10xjiJBJQkRboPyKyxPG+iA1nCBTPzg7l3wCg4MH0EL7tqqXKjEVrKHdH13n1tE88BEHpOjPCdQ6p/8fvDVR4PHXwzvP2TvHxyPjp8DjfPR5qRhxCCPhMGOIWRVJxFKHIc1navxbLK8fPDx6PiYBlNZNfGQCrRDzvsoT4752yGN0bEAqjFyDSwuCf1WYjY07/KtpgRbjUEccA6SI68jBEsObWacm9go9G26iYSDppIbvh1hJAWeoPdpIeuykn4x7sEXlzw3oF5PuUXmoUenmGCQ9B4Zt9T8hNq4IGBxUWWTpHaUqymhsnGPiUxL5nrddWxqB2pUn8DOwJamy1RiRCOVStq/+SrDc70xq9zAJNx99M/fvPzsjwl3HD5+7/TtZ9SW+yf3hk+++++9t8Xf4niQ4fRRqMDEzosVFgpMH3OlzBAVEnGRJ+OyCgV8O32CdSpgJsJFlk1qsfXcflnzU68jh7V5uaXGlEJE48Jp6id3NC5u/grsEN+1QjOSI36w3HWVTDfLIs8wJOkRMtKqWicRa/Nz3sOng88+GfztBxogsxNePCfM004emzRonF/9rH4qJ7hN07imCAWk0bKzBJZfBa6zxYJLgOx2vZ7TtMSBSgGsWN8c+/hOrqv+5+vhg2cCz+G394dvHRd7IueYKpxUBpYnTcxSI+NHxo6FDnI0kS76EnoQzdEG04YSQo821CVzCuar53LHCCiuMMU/k5RvxJ2MkfJf2YQTRoCDALEyUYzdlK66UwHL0SFAHZQTZIL9BJUao9SqGpnN8c5qZqyBne6Pg/tPXn78eVEBWmQ/M1sBbWIRQZEFJHU940lFM53OiHEjyC+/qdOcvieD0PDe8+Ffnp65qE2emwtwl/pJ4eEDAlltKYoE4IS2nbL1vKhCK52M8/NuPzMq3ZSd6g5jlBg0RHu/s5C1TBQuiWV8sHCZyALJ3dhg4TLe3O6AyWVscLwqExtW4L4OOxOlTNqIGM7L43UCRVG7Uu9LVGFp+xj94bvBBw/jrjG4/9fRp18kbAAdwJ5no3pi+FC9ADBHXAJtcaS5OmhtthprQnd6jAgT1ItoVlvN9WwSOnkzxnv8zCnzpxTrzZXVhrG6omcSsutdSrTRWG9mE8iLLII5nQglRmt1vZmkPkqtr9VYk/POi/73j2ipOPj8Uf/ky4m4Qv/bUa9HZ3a4ZCpy2+0gau+TkxzEIk8t9FJbdICypxAbsbykS8b0/dL5kpTon0DUQWWnHbGjSDoO2YO0vxFD2d2RJjyFc+1hp3wpEvT/nVfYvd/0hNI/eX/04sXZrwqyCxI1yzpGZq452uzhA2QVatNy9x1xJTAuOhRTdnupTa0Fs7NKPDDJTweLyWZxGWgKTo0GHG18X86XQQ+zfzOWpbFn1+n12PjEzX1cFtN1CHJIkEwgh1LKI3ZDhTPLzzgu4/fl2Hs9On9smbivCNR9hRIgdTUxjw6Y77DvOPU6hWKb+Aj2mgcktibGlj38SsYLiaEIypEsVY3+YSx1kLtc2XdqTazvBoi281TSzIWKcbxPz7b6l189GD4+Hj195/RBMj9c9nz2iU78EPhdXIp/nVqgQTOaUG2VvI6W9yILEbNajFuuRzFF51b4nf+hmTIME9p2WW6hC3YpD2KDBZFQrU7PiDuKoIvbvIamrNNEGQGMyWSEAfINJqg0RPF/w7i61tjeNgwdaPIbW0WJXZz3qZfNnJ0UyPIiagac0zeZ2XdbxXeY6v5pUX42SLkgCzmLGeEl1plm+EYGizOELPl1LjtqpfZKZyX2PUlb1qosfhm7IbYtg4FAQ8z4nk8sPSr9CDr8SPA=</source>
+  </file>
+  <file path="Tax.php" generated-path="Tax.html" hash="80cfd96911485803c7a4cc3453f78221" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJwdjDEKwkAQRfs5xRRCyhwgighaWNhZBsK4+0FhszvuTCAi3t0lv3nFe/z9UZ9KlGWGqQTwSXUgWgx8TWmZX1kc41lcHmIYL6m8F2QfbyUitTAkMeO7rIzVkaPxZuhL3Nb3G7QWR3BE3rWfBD5wF8qskj+TyzpVhFJjN9CP/s5kMAA=</source>
+  </file>
+  <file path="Library/Wechat/Utils/File.php" generated-path="Library.Wechat.Utils.File.html" hash="1a9ded7d897fdc1e76639ad1f5a39457" package="Default">
+    <docblock line="0">
+      <description>File.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJx9lMtq20AUhvd6ikMwyDbGF6m+4NwMIYFCbxBKF4kXY3lkTSONhpmRnRCy6KqL0nZTsix9gpYu2pLmdWq3j9GjiWTLJmQ2kub7zz9nzpnRzr4IhNWoVi2owhELaT39BvP5gkgNsQ/Pp1RqmdDTV9QLiK5n+CiWoAMKfhKG4MXiQrJJoIHwMYTMo1xRYNyPZUQ0i3kNREgJzk0ZnZm4J48PDp8dH6ZWPi6Mc0TDjCgYM6UlGyWajmHGdICEKVBxIj2KC41pnsGAJDrALHDEWY6wwwb5ez2ie0a2Ss5pttoPa0PGz8CMQGuh+o3GBFNIRnUvjhq5+h4lCgteKGhYFicRVYJg1hslPH2pWai2LcsLiVKm7tallVqZTqSjCvNvN/PfnxbXb//c/vz7/Xb++V1GcsFgSiQQKclFNtMwTyFjTb20eEpj6T0o0XON7cAmPCVCwS6c3Olx2E677bQ6Nr7u7oH9Wkzs2gq23G6vmTIDBV+D3VbXNczACfOLsNPpdldwFIm1SLfTW8FIuEXott2CLYlkEfac4pozMi3CRz23YDuLSAaHWOeN0i6+3Czef70r7eLHm38ffs0/Xm9WVxBJIoD0LPIJlLyYYxU1LKM29ZLqRPJcf0/fsvYkI7weeW/8hHvp9YAJ1cdaUhIdnutyvljFRFwu91hSRoItHCQcD9ZZeevAwQMl1VYNVDJCvIytQbPmVCrZ5k10encwlnE9JWE5MzuxjUHLHtbXZxx7WIzOtseUorqsaOj3++sH68T4DyuwDw9g6APHH8a28b2yrqz/DbJX0Q==</source>
+  </file>
+  <file path="Console/Commands/SendBillNotice.php" generated-path="Console.Commands.SendBillNotice.html" hash="bc491688035b4769e23c0c7728ee8229" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJylVltr3EYUft9fcRIM0hrL2We5u228dsBgJyXrlxIHMSvNrgekkToziuMUg3sxtKGQFlxaTF7S0lJKSFLiNk2dp/4VZ9ebp/6FnhlpL9K6tVMLY2nPOXPO952b9M67yWZSqXASUZkQn8LVJNloxlzGIcV7FBEeyIVKJZVDVZQQvr1QFiyyMJwQplLFERVT1qusLYjY3mhFMhM2iWjHfCO7ZaKVMEwjxomiZSBT+laaJLFQG9eITwIqtX2Hdc80W1o802Q1RjcVPyRSQovyQPO7HiuGGaJ3FQok5KAqH1UAryuzs+YOs7C+SUEnFFALknUxQCooxB1QqPEzTng3x+fzU8PD790hAqQSjHdz0RVzT0SsqK9oADNjl3WwJGJx2ojO4QaehbBPwVOKCsjRFyxRLOb/A8HEaY2heYrTU3A0BcVUAwFOt0ZAGJeKcJ9OoRAUKXK4E7OgCCNth8yHTsp9E9/zNDclUl/ZVWORFcTYEkG5ct2CzYJR70zBW75L/RTxnadIObiI3aX/jW4TT4d0Chi2l+sy3olta5F2GTdBy6UcRbdyzPqa4fEW5jwbGNfFX/aktk07saBLZBtt8nFw3S5VtkWSZD4g215m4elgng7m5X1T8ILyVSaVDjSeb9fd2qSC2lZASRAyTq05sOr4T2NyGiQIMK49hlB1GvgUEQz+gRM5AdRqrvmzqqjKfTHpJYQF6KUQaaXlvX91Zcm7fgNNJQ2x8WzLzyw8bW7hAAv9hPoAoTKua+s0NNcJKhoK8TfBHnMiMiNYnaiHYR2RBAnfKgj1NQoF9UZ21Gnkorlp46LdGHLB8nY+HaPYfnFj6sQXJcPka5Q6sUzIAlF9sQ7Yl8quyjRH7UeFiIU9tUBcXHPQYTiaOfZC+w0vHBBMeUqLmp0SKTQivu6iMihTpyXaIWmompnVv5DJlBcmAbmjtyJTZjMqTbEklmnfYmOcUaKLliYg7B6uli7ocBfgJD8Mkc/l1vLqcnMdZBrZfnu+K3DpeCpWBGcEp2Xi9xz6TbnSVshRK43YY4pGcO3mjbVhvs1qkeC3AUySQJ/IRr1eMy9GFOS5qhdTN9SOR6c+NUyXi7RmUq4936QS+wkJLS26br40NMWpGtgZi8Kxar1eq07X41yNbpKwonNQL2K5VbvtNMYpKqE2iV3X2lPPTeS9vC5kJPGIfo/il1S5x2YUfqLosh7vfvX66IfB4U9vdg+Od7/uPbvf/+bxycFnvSff9z9/8ferLweHv/X2Hvce/NF7dtB/+EX/4S/9/aevj74bHL482f95ktebRy/Rvrf36+DJI/jrx0novb1P4Xj3k8HTF70H9/vf/j74eP/k+dFoXpyG+RY6eXV48udztCuXTgyLpknpXc+DNSol6eKu00TmRnvEaUQxNgI9ZaRyL7pFAgqX6lB769nSX3nQWmuBMZi3YB5GXgOqCCu30Xm6Y/w08cZfxkDnet/vVHYq/wBw7o5E</source>
+  </file>
+  <file path="Http/Controllers/PartnerController.php" generated-path="Http.Controllers.PartnerController.html" hash="2f34214712be99ff44d180278ac9ebe3" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>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</source>
+  </file>
+  <file path="Library/Wechat/Store.php" generated-path="Library.Wechat.Store.html" hash="0dc0ee441076ea8047c0bf3883e63679" package="Default">
+    <docblock line="0">
+      <description>Store.php</description>
+      <long-description>Part of Overtrue\Wechat.
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+      <tag name="author" line="0" description="overtrue" link="mailto:i@overtrue.me"/>
+      <tag name="copyright" line="0" description="2015 overtrue &lt;i@overtrue.me&gt;"/>
+      <tag name="link" line="0" description="https://github.com/overtrue" link="https://github.com/overtrue"/>
+      <tag name="link" line="0" description="http://overtrue.me" link="http://overtrue.me"/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <source>eJzNVs9PE0EUvu9fMYcmLaS0YOKl/BCEqiREiYV4ENNMd6ftyHZmmZmlEsLBkz0YvRiIcpHEAyfRxISIB/8ZW+G/8M3sbintsgX04F52++bN9977vnlvOnXHq3tWfnTUQqOopLggOW1A5vcyFgrxKnq0SYQSPll7Quw6Vrlw+R4XSNUJqvqui2zubQlaqyuEmYNcahMmCaKsykUDK8pZFnkuwWDbpKRp9i0tzhcflooaqkpdAjasUBNL5FCpBK34ijioSVUdVqhEkvvCJhDIIVEGs9hXdcgCHh7miKbobPSda5AZ43ae3K3xidvJvi5l68g8daU8Wcjna5CCX8nZvJGPvGM8wbEHCxzylsVwg0gPQ9Z9FE5ali8HrGurirpybU6IyYTlu7gG20PJzvYO2yd7JprtYikDDa1ty9J5GSf9jKIHkGL76Pvp14PQEi3MbmJhVkND3rw9wRWxtQApXdxkgGdzJhWaW14szz8uzq0UtW0apcPysUdzTUJfUJbb2DB02TU6VqEs73Gax44Dr/RkH9D94krA4ZWBakTFAS0tllZuAuTCYRsAW11euGZ5vudgReISWyguFa+H5RA3AOoX0YAK3waN+1X0sMANpPuG1VAKe96ic/laidiCqIuC+xVoWuhlZutuReVyN1gmgMv2bB0xe7atUDqU0h06NqOrgyoZNLg+URn9MWfbRMoVvk5YHNBIQNfOQK2nb47bb3c7r1+1P38ITvmvnwedl0fxhVOmUErqs9+tu+sBYXzBLu+mRB7gkGQi4IGqTWwJFWMh8FYmDaqVqZNG0zPdZEZCFY2/gGnA9Vyc7mVsbOa55GyZS5WRxK0WCmFfZKMAvRhhMZpZSD0Ds6JQMDlG2FmUrviSMiA9V4F5W9YzOD2M59/vDjut43Zr7/TgMIFhXq3K7sG5sOLSBlX/lHndmDIThgTGxrNhFPieGB+mRXeh50lXSI2yQJ4ANhvrZqIEbuYzzuuCrkZreQVV9ZBKktXIWSXKroeHTj7tqlk2k+qZ1vdc1stUbbf22z9OotshTk9DE0rB1MKXyFbh3E1UCBoYZl6mB+lmqoQFGsbDTjov0chgsIfJEKY9TIPg6upVIZ7Czv63zu6XJAr1wUf9Y+cf8hvcKd3xk0VJTGtjxHO5QUQNNmpbNmk4XTjF/6FWwT08XKt26+PZ+0/DtBpyQQzVA+5l0qPH314HV+Qg+P8wyMGO9QdQeXa9</source>
+  </file>
+  <file path="Http/Middleware/SessionFilter.php" generated-path="Http.Middleware.SessionFilter.html" hash="ea63d4cfb1127331f9234fbb1667fde4" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJxlkM9KAzEQxu95ihGE3S3V3lvRSkHqwYteCxJ3p20gm8Qki5VSKEJFUfHgUS8iiIrgRbAg4su0pb6F+68t4lyGTH7z8X2ztqHaiggaolHUR9hUqlG3VjV2WBBwPKIaK4REBqHGpYmSV/JIsJoMFRXHFeJzagzsoTFMii3GLWrSJRBXqVBIOxSgTkWsB1QAE74MmWiBxsMIjV3NkRlZVVTTEKCxzXkUg9RiZmk34wGW881/G7nHmBDYWXxrtJEWELIOBvmwlHYVHXDmQzMSvo29Qzs16c70i7PQmZ6X7nRJJhEXa7pLjTx3udymxnX87Cj7LHA8rzsnk1qQzfhgbddBraV2iuBM3z4mJ0/jwdlP/3xy8Twa9kfDl9Hnw/T9cTx4HV8Px6dX0+/b6f3l5OZq9HXneJU/ynk+jQHT6FvXW1m30qVpJtepyxBrUlgtOUddbaFNJrG9hUhvkSnXSgPPD5GjPdIjv9zpu90=</source>
+  </file>
+  <file path="Http/Controllers/HomeController.php" generated-path="Http.Controllers.HomeController.html" hash="66e1b4e537711db2f9b923c338384e3b" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <markers>
+      <todo line="74">是否限制用户创建的代帐公司个数</todo>
+    </markers>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>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</source>
+  </file>
+  <file path="Http/Middleware/WeixinUserFilter.php" generated-path="Http.Middleware.WeixinUserFilter.html" hash="c0bfdaea932c67ec42b83e53e6c01ccb" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJydUU1vwjAMvedXeBJSC2LjDvtgICF22GVo2qWXLDEQKU2zfIhOE/99bRKgME7zJXL83vOzff+kt5ooWqLVlCE8a10sndPFq+Bc4o4anBDibay8WzSTkM1lZX1ba5MXKX0pFHVYrLzWlXHFgjLK0RYrtFZUqtEgTFJr4QNFLVQrtBDSoSE/BJoYDQbhhQEsqWo6A1UgFKsa3Q0Y/PJo3V2CHJBTTQ0tAYqOgWD+LeKhl4h/CMk+9BTWp6pB542CUtTI0+covNp/SsFg7RVzzTSwDRbzg/wQzvT6gRPnaiPtYDxeV2aDLs+anZmsPzkCeswbg8q1W4GHE/4qWKwhv+ky+p1WQW1XXxWK312pgPYR29YCcPb9EYB50rl9FPyCEy34K73b4DynYU15Fo9dzITi80o5U0mJZtpkWGf9C9E20gEMcmGQuX/p7M+y4wq0P+xyGGfu0E6UZCCc8XjehNyTPfkF1Abwig==</source>
+  </file>
+  <package name="App" full_name="App">
+    <package name="Http" full_name="App\Http">
+      <package name="Controllers" full_name="App\Http\Controllers"/>
+    </package>
+  </package>
+  <package name="Default" full_name="Default"/>
+  <package name="global" full_name="global"/>
+  <deprecated count="0"/>
+</project>

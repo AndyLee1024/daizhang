@@ -1,0 +1,251 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+
+namespace App\Http\Controllers;
+
+use Auth;
+use App\BankAccount;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
+use Session;
+use App\Http\Requests;
+use App\Http\Controllers\BaseController;
+use Illuminate\Support\Facades\Validator;
+
+/**
+ * 银行账户控制器
+ * @package App\Http\Controllers
+ * @version 1.0
+ * @author  AndyLee &lt;root@lostman.org&gt;
+ */
+class BankAccountController extends BaseController
+{
+    /**
+     * 列出银行账户
+     * @return mixed
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getBankAccount()
+    {
+        $bank_list = BankAccount::where('company_id', Session::get('customer_id'))-&gt;get();
+        return view('customer.bank.index')-&gt;with('lists', $bank_list);
+    }
+
+    /**
+     * 创建银行账户
+     * @return \Illuminate\View\View
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getCreateBankAccount()
+    {
+        return view('customer.bank.create');
+    }
+
+    /**
+     * 修改银行账户
+     * @return mixed
+     * @param integer $id 银行账户
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getModifyBankAccount($id)
+    {
+        try{
+            $account = BankAccount::findOrFail($id);
+        }catch (ModelNotFoundException $e){
+            Session::flash('error', '银行账户信息不存在');
+            return redirect()-&gt;back();
+        }
+
+        if($account-&gt;company_id != Session::get('customer_id')){
+            Session::flash('error', '您没有权限修改此账户');
+            return redirect()-&gt;back();
+        }
+
+        return view('customer.bank.modify')-&gt;with('account', $account);
+    }
+
+    /**
+     * 删除银行账户信息
+     * @param Request $request
+     * @return redirect
+     * @param $id
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function postModifyBankAccount(Request $request, $id){
+
+        $input = $request-&gt;only('account', 'register_user_name', 'bank_branch', 'card_name',
+            'phone', 'bank', 'address', 'province', 'city', 'town', 'bank_url', 'bank_address', 'remarks');
+
+        $rules = [
+            'account' =&gt; 'required',
+//            'bank_branch' =&gt; 'required',
+            'card_name' =&gt; 'required',
+            'bank'      =&gt; 'required',
+//            'province'  =&gt; 'required',
+//            'city'      =&gt; 'required',
+//            'town'      =&gt; 'required',
+            'bank_url'  =&gt; 'url',
+            'address'   =&gt; 'integer'
+        ];
+
+        $v = Validator::make($input, $rules);
+        if($v-&gt;fails()){
+            Session::flash('error', $v-&gt;messages()-&gt;first());
+            return redirect()-&gt;back();
+        }
+
+        try{
+            $account = BankAccount::findOrFail($id);
+        }catch (ModelNotFoundException $e){
+            Session::flash('error', '银行账户信息不存在');
+            return redirect()-&gt;back();
+        }
+
+        if($account-&gt;company_id != Session::get('customer_id')){
+            Session::flash('error', '您没有权限修改此账户');
+            return redirect()-&gt;back();
+        }
+
+        $account-&gt;account = $input['account'];
+        $account-&gt;account_name = $input['card_name'];
+        $account-&gt;bank = $input['bank'];
+        $account-&gt;bank_branch = $input['bank_branch'];
+        $account-&gt;remarks = $input['remarks'];
+        $account-&gt;province = $input['province'];
+        $account-&gt;city = $input['city'];
+        $account-&gt;town = $input['town'];
+        $account-&gt;bank_url = $input['bank_url'];
+        $account-&gt;bank_address = $input['bank_address'];
+        $account-&gt;state_code = $input['address'];
+        $account-&gt;save();
+
+        Session::flash('success', '更新银行账户成功');
+
+        return redirect()-&gt;to(action('BankAccountController@getBankAccount', Session::get('customer_id')));
+
+
+
+
+    }
+
+    /**
+     * 删除银行账户
+     * @param integer $id
+     * @return redirect
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getDeleteBankAccount($id)
+    {
+        try{
+            $account = BankAccount::findOrFail($id);
+        }catch (ModelNotFoundException $e){
+            Session::flash('error', '银行账户信息不存在');
+            return redirect()-&gt;back();
+        }
+
+        if($account-&gt;company_id != Session::get('customer_id')){
+            Session::flash('error', '您没有权限修改此账户');
+            return redirect()-&gt;back();
+        }
+        $account-&gt;delete();
+        Session::flash('success', '删除银行账户完成');
+        return redirect()-&gt;to(action('BankAccountController@getBankAccount', Session::get('customer_id')));
+
+    }
+
+    /**
+     * 创建银行账户 post
+     * @param Request $request
+     * @return mixed
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function postCreateBankAccount(Request $request)
+    {
+        $input = $request-&gt;only('account', 'register_user_name', 'bank_branch', 'card_name',
+            'phone', 'bank', 'address', 'province', 'city', 'town', 'bank_url', 'bank_address', 'remarks');
+
+        $rules = [
+            'account' =&gt; 'required',
+//            'bank_branch' =&gt; 'required',
+            'card_name' =&gt; 'required',
+//            'phone'     =&gt; 'required',
+            'bank'      =&gt; 'required',
+//            'province'  =&gt; 'required',
+//            'city'      =&gt; 'required',
+//            'town'      =&gt; 'required',
+            'bank_url'  =&gt; 'url',
+            'address'   =&gt; 'integer'
+        ];
+
+        $v = Validator::make($input, $rules);
+        if($v-&gt;fails()){
+            Session::flash('error', $v-&gt;messages()-&gt;first());
+            return redirect()-&gt;back();
+        }
+
+        $account = new BankAccount();
+        $account-&gt;company_id = Session::get('customer_id');
+        $account-&gt;operator_id = Auth::user()-&gt;id;
+        $account-&gt;account_type = ''; //TODO账户类型
+        $account-&gt;account = $input['account'];
+        $account-&gt;account_name = $input['card_name'];
+        $account-&gt;bank = $input['bank'];
+        $account-&gt;bank_branch = $input['bank_branch'];
+        $account-&gt;remarks = $input['remarks'];
+        $account-&gt;province = $input['province'];
+        $account-&gt;city = $input['city'];
+        $account-&gt;town = $input['town'];
+        $account-&gt;bank_url = $input['bank_url'];
+        $account-&gt;bank_address = $input['bank_address'];
+        $account-&gt;state_code = $input['address'];
+        $account-&gt;save();
+
+        Session::flash('success', '添加银行账户成功');
+
+        return redirect()-&gt;to(action('BankAccountController@getBankAccount', Session::get('customer_id')));
+    }
+}
+</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all();
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>

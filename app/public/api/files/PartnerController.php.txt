@@ -1,0 +1,207 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Auth;
+use Input;
+use Session;
+use Redirect;
+use Validator;
+use App\Partner;
+use Illuminate\Http\Request;
+use App\Http\Requests;
+use App\Http\Controllers\BaseController;
+
+/**
+ * 客户 － 股东信息模块
+ * @package App\Http\Controllers
+ * @version 1.0
+ * @author  AndyLee <root@lostman.org>
+ */
+class PartnerController extends BaseController
+{
+
+    /**
+     * 获取股东信息
+     * @param integer $id
+     * @return mixed
+     * @author AndyLee <root@lostman.org>
+     */
+    public function getPartner($id)
+    {
+        $map = [
+            'company_id'  => Session::get('customer_id')
+        ];
+
+        $partners = Partner::where($map)->get();
+        return view('customer.partner.index')->with('partners', $partners);
+    }
+
+    /**
+     * 创建股东
+     * @return mixed
+     * @author AndyLee <root@lostman.org>
+     */
+    public function getCreatePartner()
+    {
+        return view('customer.partner.create');
+    }
+
+    /**
+     * 创建股东Action
+     * @return mixed
+     * @author AndyLee <root@lostman.org>
+     */
+    public function postCreatePartner()
+    {
+        /**
+         * partner_name 股东名称
+         * partner_type 股东类型
+         * credits      出资金额
+         * post         职位
+         * certificate  证件类型
+         * certificate_number 证件号码
+         */
+        $input = Input::Only('partner_name', 'partner_type', 'credits', 'post', 'certificate', 'certificate_number');
+        $rules = [
+
+            'partner_name' => 'required',
+            'partner_type' => 'required|in:境内中国公民,全民所有制,有限公司,股份有限公司,外国企业,其他',
+            'credits'      => 'numeric',
+            'post'         => 'required|in:董事长,董事,总经理,监事',
+            'certificate'  => 'required|in:身份证,营业执照,注册证书,港澳台胞证,其他',
+            'certificate_number' => 'required'
+
+        ];
+
+        $v = Validator::make($input, $rules);
+        if($v->fails()){
+            Session::flash('error', $v->messages()->first());
+            return Redirect::to(action('PartnerController@getCreatePartner', Session::get('customer_id')));
+        }
+        $partner = new Partner;
+        $partner->company_id = Session::get('customer_id');
+        $partner->operator_id = Auth::user()->id;
+        $partner->name = $input['partner_name'];
+        $partner->credits = $input['credits'];
+        $partner->certificate = $input['certificate'];
+        $partner->certificate_number = $input['certificate_number'];
+        $partner->post = $input['post'];
+        $partner->partner_type = $input['partner_type'];
+        $partner->save();
+
+        Session::flash('success', '添加股东成功');
+
+        return Redirect::to(action('PartnerController@getPartner', Session::get('customer_id')));
+    }
+
+    /**
+     * 删除股东
+     * @param int $id
+     * @param int $pid 股东序号
+     * @return mixed
+     * @author AndyLee <root@lostman.org>
+     */
+    public function getDeletePartner($id, $pid)
+    {
+        $map = [
+            'id' => $pid,
+            'company_id'  => Session::get('customer_id')
+        ];
+
+        $record = Partner::where($map)->delete();
+
+        if(!$record){
+            Session::flash('error', '删除失败,您可以没权限进行操作');
+            return Redirect::to(action('PartnerController@getPartner', Session::get('customer_id')));
+        }
+
+        Session::flash('success', '删除股东成功');
+        return Redirect::to(action('PartnerController@getPartner', Session::get('customer_id')));
+    }
+
+    /**
+     * 编辑股东
+     * @param int $pid 股东序号
+     * @param int $id
+     * @return mixed
+     * @author AndyLee <root@lostman.org>
+     */
+    public function getModifyPartner($id, $pid)
+    {
+        $map = [
+            'id' => $pid,
+            'company_id'  => Session::get('customer_id')
+        ];
+
+        try{
+            $record = Partner::where($map)->firstOrFail();
+        }catch (ModelNotFoundException $e){
+            Session::flash('error', '无法进行编辑,您可以没权限进行操作');
+            return Redirect::to(action('PartnerController@getPartner', Session::get('customer_id')));
+        }
+
+        return view('customer.partner.modify')->with('record', $record);
+    }
+
+    /**
+     * 编辑股东信息
+     * @return mixed
+     * @param $id
+     * @param $pid
+     * @author AndyLee <root@lostman.org>
+     */
+    public function postModifyPartner($id, $pid){
+
+
+        /**
+         * partner_name 股东名称
+         * partner_type 股东类型
+         * credits      出资金额
+         * post         职位
+         * certificate  证件类型
+         * certificate_number 证件号码
+         */
+        $input = Input::Only('partner_name', 'partner_type', 'credits', 'post', 'certificate', 'certificate_number');
+        $rules = [
+
+            'partner_name' => 'required',
+            'partner_type' => 'required|in:境内中国公民,全民所有制,有限公司,股份有限公司,外国企业,其他',
+            'credits'      => 'numeric',
+            'post'         => 'required|in:董事长,董事,总经理,监事',
+            'certificate'  => 'required|in:身份证,营业执照,注册证书,港澳台胞证,其他'
+        ];
+
+        $v = Validator::make($input, $rules);
+        if($v->fails()){
+            Session::flash('error', $v->messages()->first());
+            return Redirect::to(action('PartnerController@getModifyPartner', [Session::get('customer_id'),$pid]));
+        }
+
+        try{
+            $record = Partner::findOrFail($pid);
+        }catch (ModelNotFoundException $e){
+            Session::flash('error', '对不起,此条纪录不存在');
+            return Redirect::to(action('PartnerController@getPartner', Session::get('customer_id')));
+        }
+
+        if($record->company_id === Session::get('customer_id') || $record->operator_id === Auth::user()->id){
+            $record->name = $input['partner_name'];
+            $record->credits = $input['credits'];
+            $record->certificate = $input['certificate'];
+            $record->certificate_number = $input['certificate_number'];
+            $record->post = $input['post'];
+            $record->partner_type = $input['partner_type'];
+            $record->save();
+
+            Session::flash('success', '操作成功, 更新股东信息完成');
+
+        }else{
+            Session::flash('error', '操作失败, 您可以没权限进行操作');
+        }
+
+        return Redirect::to(action('PartnerController@getPartner', Session::get('customer_id')));
+    }
+
+}
+

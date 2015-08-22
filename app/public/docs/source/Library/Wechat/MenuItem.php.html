@@ -1,0 +1,139 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../../../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../../../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../../../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../../../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+/**
+ * MenuItem.php
+ *
+ * Part of Overtrue\Wechat.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @author    overtrue &lt;i@overtrue.me&gt;
+ * @copyright 2015 overtrue &lt;i@overtrue.me&gt;
+ * @link      https://github.com/overtrue
+ * @link      http://overtrue.me
+ */
+
+namespace Overtrue\Wechat;
+
+use Overtrue\Wechat\Utils\MagicAttributes;
+use Closure;
+
+/**
+ * 菜单项
+ *
+ * @property array $sub_button
+ */
+class MenuItem extends MagicAttributes
+{
+
+    /**
+     * 实例化菜单
+     *
+     * @param string $name
+     * @param string $type
+     * @param string $property
+     */
+    public function __construct($name, $type = null, $property = null)
+    {
+        $this-&gt;with('name', $name);
+
+        $type !== null &amp;&amp; $this-&gt;with('type', $type);
+
+        if ($property !== null) {
+            switch($type){
+                case 'view':
+                    $key = 'url';
+                    break;
+                case 'media_id':
+                    // no break
+                case 'view_limited':
+                    $key = 'media_id';
+                    break;
+                default:
+                    $key = 'key';
+            }
+            $this-&gt;with($key, $property);
+        }
+    }
+
+    /**
+     * 设置子菜单
+     *
+     * @param array $buttons
+     *
+     * @return MenuItem
+     */
+    public function buttons($buttons)
+    {
+        if ($buttons instanceof Closure) {
+            $buttons = $buttons($this);
+        }
+
+        if (!is_array($buttons)) {
+            throw new Exception('子菜单必须是数组或者匿名函数返回数组', 1);
+        }
+
+        $this-&gt;with('sub_button', $buttons);
+
+        return $this;
+    }
+
+    /**
+     * 添加子菜单
+     *
+     * @param MenuItem $button
+     */
+    public function button(MenuItem $button)
+    {
+        $subButtons = $this-&gt;sub_button;
+
+        $subButtons[] = $button;
+
+        $this-&gt;with('sub_button', $subButtons);
+    }
+}
+</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all();
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>

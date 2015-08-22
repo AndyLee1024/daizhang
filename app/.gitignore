@@ -1,0 +1,8 @@
+/vendor
+/node_modules
+.env
+public/uploads/
+public/icon/
+public/captcha/
+.DS_Store
+.idea/

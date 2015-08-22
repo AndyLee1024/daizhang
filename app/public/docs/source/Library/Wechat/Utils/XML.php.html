@@ -1,0 +1,191 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../../../../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../../../../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../../../../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../../../../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+/**
+ * XML.php
+ *
+ * Part of Overtrue\Wechat.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @author    overtrue &lt;i@overtrue.me&gt;
+ * @copyright 2015 overtrue &lt;i@overtrue.me&gt;
+ * @link      https://github.com/overtrue
+ * @link      http://overtrue.me
+ */
+
+namespace Overtrue\Wechat\Utils;
+
+/**
+ * XML 工具类，用于构建与解析 XML
+ */
+class XML
+{
+
+    /**
+     * XML 转换为数组
+     *
+     * @param string $xml XML string
+     *
+     * @return array
+     */
+    public static function parse($xml)
+    {
+        $data = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA | LIBXML_NOBLANKS);
+
+        if (is_object($data) &amp;&amp; get_class($data) === 'SimpleXMLElement') {
+            $data = self::arrarval($data);
+        }
+
+        return $data;
+    }
+
+    /**
+     * XML编码
+     *
+     * @param mixed  $data 数据
+     * @param string $root 根节点名
+     * @param string $item 数字索引的子节点名
+     * @param string $attr 根节点属性
+     * @param string $id   数字索引子节点key转换的属性名
+     *
+     * @return string
+     */
+    public static function build(
+        $data,
+        $root = 'xml',
+        $item = 'item',
+        $attr = '',
+        $id = 'id'
+    )
+    {
+        if (is_array($attr)) {
+            $_attr = array();
+
+            foreach ($attr as $key =&gt; $value) {
+                $_attr[] = &quot;{$key}=\&quot;{$value}\&quot;&quot;;
+            }
+
+            $attr = implode(' ', $_attr);
+        }
+
+        $attr = trim($attr);
+        $attr = empty($attr) ? '' : &quot; {$attr}&quot;;
+        $xml  = &quot;&lt;{$root}{$attr}&gt;&quot;;
+        $xml  .= self::data2Xml($data, $item, $id);
+        $xml  .= &quot;&lt;/{$root}&gt;&quot;;
+
+        return $xml;
+    }
+
+    /**
+     * 生成&lt;![CDATA[%s]]&gt;
+     *
+     * @param string $string 内容
+     *
+     * @return string
+     */
+    public static function cdata($string)
+    {
+        return sprintf('&lt;![CDATA[%s]]&gt;', $string);
+    }
+
+    /**
+     * 把对象转换成数组
+     *
+     * @param string $data 数据
+     *
+     * @return array
+     */
+    private static function arrarval($data)
+    {
+        if (is_object($data) &amp;&amp; get_class($data) === 'SimpleXMLElement') {
+            $data = (array) $data;
+        }
+
+        if (is_array($data)) {
+            foreach ($data as $index =&gt; $value) {
+                $data[$index] = self::arrarval($value);
+            }
+        }
+
+        return $data;
+    }
+
+    /**
+     * 转换数组为xml
+     *
+     * @param array  $data 数组
+     * @param string $item item的属性名
+     * @param string $id   id的属性名
+     *
+     * @return string
+     */
+    private static function data2Xml($data, $item = 'item', $id = 'id')
+    {
+        $xml = $attr = '';
+
+        foreach ($data as $key =&gt; $val) {
+            if (is_numeric($key)) {
+                $id &amp;&amp; $attr = &quot; {$id}=\&quot;{$key}\&quot;&quot;;
+                $key  = $item;
+            }
+
+            $xml .= &quot;&lt;{$key}{$attr}&gt;&quot;;
+
+            if ((is_array($val) || is_object($val))) {
+                $xml .= self::data2Xml((array) $val, $item, $id);
+            } else {
+                $xml .= is_numeric($val) ? $val : self::cdata($val);
+            }
+
+            $xml .= &quot;&lt;/{$key}&gt;&quot;;
+        }
+
+        return $xml;
+    }
+}
+</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all();
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>

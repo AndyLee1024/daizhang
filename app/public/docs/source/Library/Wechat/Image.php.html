@@ -1,0 +1,109 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../../../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../../../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../../../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../../../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+/**
+ * Image.php
+ *
+ * Part of Overtrue\Wechat.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @author    overtrue &lt;i@overtrue.me&gt;
+ * @copyright 2015 overtrue &lt;i@overtrue.me&gt;
+ * @link      https://github.com/overtrue
+ * @link      http://overtrue.me
+ */
+
+namespace Overtrue\Wechat;
+
+/**
+ * 图片上传服务
+ */
+class Image
+{
+    const API_UPLOAD = 'https://file.api.weixin.qq.com/cgi-bin/media/uploadimg';
+
+    /**
+     * Http对象
+     *
+     * @var Http
+     */
+    protected $http;
+
+    /**
+     * constructor
+     *
+     * @param string $appId
+     * @param string $appSecret
+     */
+    public function __construct($appId, $appSecret)
+    {
+        $this-&gt;http = new Http(new AccessToken($appId, $appSecret));
+    }
+
+    /**
+     * 上传媒体文件
+     *
+     * @param string $path
+     *
+     * @return string
+     */
+    public function upload($path)
+    {
+        if (!file_exists($path) || !is_readable($path)) {
+            throw new Exception(&quot;文件不存在或不可读 '$path'&quot;);
+        }
+
+        $options = array(
+                    'files' =&gt; array('media' =&gt; $path),
+                   );
+
+        $contents = $this-&gt;http-&gt;post(self::API_UPLOAD, array(), $options);
+
+        return $contents['url'];
+    }
+}
+</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all();
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>

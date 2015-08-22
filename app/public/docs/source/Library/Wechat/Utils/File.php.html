@@ -1,0 +1,96 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../../../../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../../../../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../../../../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../../../../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+/**
+ * File.php
+ *
+ * Part of Overtrue\Wechat.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @author    overtrue &lt;i@overtrue.me&gt;
+ * @copyright 2015 overtrue &lt;i@overtrue.me&gt;
+ * @link      https://github.com/overtrue
+ * @link      http://overtrue.me
+ */
+
+namespace Overtrue\Wechat\Utils;
+
+class File
+{
+    /**
+     * 对应文件类型
+     *
+     * @var array
+     */
+    protected static $extensionMaps = [
+        '255216'   =&gt; 'jpg',
+        '13780'    =&gt; 'png',
+        '7173'     =&gt; 'gif',
+        '6677'     =&gt; 'bmp',
+        '7368'     =&gt; 'mp3',
+        '3533'     =&gt; 'amr',
+        '8273'     =&gt; 'wav',
+        '4838'     =&gt; 'wma',
+    ];
+
+    /**
+     * 根据文件流获取
+     *
+     * @param  string $content 文件流
+     *
+     * @return string 文件类型
+     */
+    public static function getStreamExt($content)
+    {
+        $stream = @unpack(&quot;C2chars&quot;, substr($content, 0,2));
+
+        $code = intval($stream['chars1'].$stream['chars2']);
+
+        return isset(self::$extensionMaps[$code]) ? self::$extensionMaps[$code] : null;
+    }
+}
+</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all();
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>

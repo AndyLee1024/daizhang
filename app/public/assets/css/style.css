@@ -1,0 +1,230 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after {
+  content: "";
+  content: none; }
+
+q:before, q:after {
+  content: "";
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+body {
+  font-family: "Helvetica Neue", Helvetica, "NotoSansHans-Regular", sans-serif;
+  background-color: #f1f3f6; }
+
+.signup-logo {
+  margin: 0 auto;
+  padding: 52px 0 38px 0;
+  width: 309px;
+  height: 44px;
+  text-indent: -9999px;
+  background-image: url("../img/logo.png");
+  background-repeat: no-repeat;
+  background-position: center; }
+  @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
+    .signup-logo {
+      background-image: url("../img/logo@2x.png");
+      background-size: 309px 44px; } }
+
+.signup-wrap {
+  width: 800px;
+  height: 480px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1); }
+
+.signup-copyright {
+  margin: 0 auto;
+  text-align: center;
+  color: #aaa;
+  font-size: 12px;
+  line-height: 42px;
+  margin-top: 12px; }
+
+.signup-header {
+  height: 118px;
+  padding: 0 60px;
+  background: url(../img/login_header_bg.jpg) no-repeat;
+  border-radius: 3px 3px 0 0; }
+  .signup-header h1 {
+    font-size: 24px;
+    color: #fff;
+    line-height: 118px; }
+
+.signup-body::after {
+  clear: both;
+  content: "";
+  display: table; }
+
+.signup-body-l {
+  float: left;
+  width: 50%;
+  box-sizing: border-box;
+  padding: 30px 60px;
+  position: relative; }
+  .signup-body-l.signin-body-l {
+    padding-top: 54px; }
+  .signup-body-l:after {
+    position: absolute;
+    right: 0;
+    top: 30px;
+    content: "";
+    background-color: #eee;
+    width: 1px;
+    height: 280px;
+    display: block; }
+  .signup-body-l .form-row {
+    margin-bottom: 12px; }
+    .signup-body-l .form-row::after {
+      clear: both;
+      content: "";
+      display: table; }
+    .signup-body-l .form-row.form-row-error {
+      position: relative; }
+      .signup-body-l .form-row.form-row-error input[type=text], .signup-body-l .form-row.form-row-error input[type=password] {
+        border: 1px solid #e74f36; }
+        .signup-body-l .form-row.form-row-error input[type=text]:focus, .signup-body-l .form-row.form-row-error input[type=password]:focus {
+          border: 1px solid #e74f36; }
+      .signup-body-l .form-row.form-row-error .error-message {
+        position: absolute;
+        right: 0px;
+        top: 12px;
+        color: #e74f36;
+        font-size: 12px;
+        padding: 4px 8px;
+        border-radius: 2px 2px 0 0; }
+
+
+
+      .signup-body-l .form-row.form-row-error .form-row-l .error-message {
+        right: 132px; }
+    .signup-body-l .form-row .form-row-l {
+      float: left;
+      width: 54%; }
+    .signup-body-l .form-row .form-row-r {
+      float: left;
+      width: 44%;
+      padding-left: 2%; }
+    .signup-body-l .form-row input[type=text], .signup-body-l .form-row input[type=password] {
+      box-sizing: border-box;
+      width: 100%;
+      padding-left: 12px;
+      font-size: 14px;
+      color: #333;
+      height: 42px;
+      border: 1px solid #ddd;
+      border-radius: 3px; }
+      .signup-body-l .form-row input[type=text]:focus, .signup-body-l .form-row input[type=password]:focus {
+        border-color: #25a1f2;
+        outline: 0; }
+  .signup-body-l .form-row-pw {
+    color: #808080;
+    font-size: 13px;
+    line-height: 16px; }
+    .signup-body-l .form-row-pw .forgot-password {
+      float: right; }
+      .signup-body-l .form-row-pw .forgot-password a {
+        color: #25a1f2;
+        line-height: 16px; }
+  .signup-body-l .tos {
+    font-size: 12px;
+    color: #808080;
+    line-height: 40px;
+    text-align: center; }
+    .signup-body-l .tos a {
+      color: #25a1f2; }
+
+.signup-body-r {
+  float: left;
+  width: 50%;
+  padding: 30px 114px;
+  box-sizing: border-box; }
+  .signup-body-r h4 {
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 10px; }
+  .signup-body-r .btn-outline {
+    margin: 0 auto;
+    width: 168px;
+    padding: 0;
+    margin-bottom: 20px; }
+  .signup-body-r .qr-img {
+    width: 168px;
+    height: 168px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px; }
+  .signup-body-r p {
+    font-size: 12px;
+    color: #808080;
+    text-align: center; }
+
+.btn {
+  background-color: #25a1f2;
+  border: 0;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 3px;
+  display: inline-block;
+  width: 100%;
+  height: 40px;
+  outline: 0;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; }
+  .btn:hover {
+    cursor: pointer;
+    background-color: #1588d4; }
+  .btn:active {
+    -webkit-transform: scale(0.95);
+    -moz-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    -o-transform: scale(0.95);
+    transform: scale(0.95); }
+
+.btn-outline {
+  border: 1px solid #25a1f2;
+  color: #25a1f2;
+  font-size: 14px;
+  border-radius: 3px;
+  display: inline-block;
+  padding: 0 40px;
+  height: 40px;
+  text-decoration: none;
+  text-align: center;
+  line-height: 40px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; }
+  .btn-outline:hover {
+    cursor: pointer;
+    background-color: #1588d4;
+    color: #fff; }
+  .btn-outline:active {
+    -webkit-transform: scale(0.95);
+    -moz-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    -o-transform: scale(0.95);
+    transform: scale(0.95); }

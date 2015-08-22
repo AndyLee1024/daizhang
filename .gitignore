@@ -1,0 +1,4 @@
+.DS_Store
+.idea/
+app/public/uploads
+app/public/captcha

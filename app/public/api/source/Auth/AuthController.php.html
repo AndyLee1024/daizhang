@@ -1,0 +1,306 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+
+namespace App\Http\Controllers\Auth;
+
+use Auth;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
+use View;
+use Hash;
+use Input;
+use Cache;
+use Session;
+use App\User;
+use Redirect;
+use Response;
+use Validator;
+use App\Library\Sms;
+use App\Http\Controllers\BaseController;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+
+class AuthController extends BaseController
+{
+    /*
+    |--------------------------------------------------------------------------
+    | Registration &amp; Login Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles the registration of new users, as well as the
+    | authentication of existing users. By default, this controller uses
+    | a simple trait to add these behaviors. Why don't you explore it?
+    |
+    */
+
+    use AuthenticatesAndRegistersUsers;
+
+
+    public function __construct()
+    {
+//        $this-&gt;middleware('guest');
+    }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' =&gt; 'required|max:255',
+            'email' =&gt; 'required|email|max:255|unique:users',
+            'password' =&gt; 'required|confirmed|min:6',
+        ]);
+    }
+
+
+    /**
+     * 登入系统
+     * @return mixed
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getLogin()
+    {
+        return View::make('login');
+    }
+
+    /**
+     * 登入系统
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function postLogin()
+    {
+        $input = Input::Only('mobile', 'password');
+        $rules = [
+           'mobile' =&gt; 'required|Regex:/^1[0-9]{10}$/',
+            'password' =&gt; 'required|min:6|max:16'
+        ];
+
+        $v = Validator::make($input, $rules);
+        if($v-&gt;fails()){
+            Session::flash('error', $v-&gt;messages()-&gt;first());
+            return redirect()-&gt;to('/auth/login');
+        }
+
+        if(Auth::attempt(['mobile' =&gt; $input['mobile'], 'password' =&gt; $input['password']])){
+
+            Session::flash('success', '登录成功');
+            return redirect()-&gt;intended('/');
+
+        }else{
+            Session::flash('error', '手机号或者密码不正确');
+            return redirect()-&gt;to('/auth/login');
+
+        }
+
+
+    }
+
+    /**
+     * 注册页面
+     * @return mixed
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getRegister()
+    {
+        return View::make('register');
+    }
+
+
+    /**
+     * 登出
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getLogout()
+    {
+        if(Auth::check()){
+            Auth::logout();
+        }
+
+        Session::flush();
+
+        Session::flash('success', '登出成功');
+        return Redirect::to('/auth/login');
+
+    }
+
+
+    /**
+     * 获取验证码
+     * @param Request $request
+     * @return json
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getCaptcha(Request $request)
+    {
+        $input = $request-&gt;get('mobile');
+
+        if(!preg_match(&quot;/^13[0-9]{1}[0-9]{8}$|15[056189732]{1}[0-9]{8}$|17[056189732]{1}[0-9]{8}$|18[012356789]{1}[0-9]{8}$/&quot;,$input)){
+            return Response::json(['message' =&gt; '手机号码格式不正确', 'message_code' =&gt; -1]);
+        }
+
+        $ip = $request-&gt;ip();
+
+        $time = new \DateTime();
+
+        $count = Cache::get($ip.'-'.$time-&gt;format('Y-m-d'));
+
+        if($count &gt; 10){
+            return Response::json(['message' =&gt; '发送验证码次数超出阀值', 'message_code'=&gt; -2]);
+        }
+
+
+        Cache::increment($ip.'-'.$time-&gt;format('Y-m-d'));
+        Cache::put($input, 'aa', 3);
+
+        $user = User::where('mobile', $input)-&gt;first();
+        if(!empty($user)){
+            return Response::json(['message' =&gt; '手机号码已经注册', 'message_code' =&gt; -3]);
+        }
+
+
+        $captcha = mt_rand(100000, 999999);
+
+        $sms = new Sms();
+        $text=&quot;【白羽软件】您的验证码是&quot;.$captcha.' ，请于3分钟内填写。';
+        $result = $sms-&gt;sendMessage($text, $input);
+
+
+        if($result-&gt;code &lt; 0){
+            //@see http://www.yunpian.com/api/retcode.html
+            return Response::json(['message'=&gt; '验证码发送失败, 网关异常', 'message_code' =&gt; -4]);
+        }
+
+
+        Cache::increment($ip.'-'.$time-&gt;format('Y-m-d'));
+        Cache::put($input, $captcha, 3);
+
+        return Response::json(['message' =&gt; '验证码发送成功, 请检查您的手机', 'message_code' =&gt; 1]);
+
+    }
+
+    /**
+     * 注册Action
+     * @return mixed
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function postRegister()
+    {
+        $input = Input::Only('phone', 'nickname', 'secret', 'captcha');
+
+        $rules = [
+            'phone'    =&gt; 'required|Regex:/^1[0-9]{10}$/|unique:user_operators,mobile',
+            'nickname' =&gt; 'required|min:2|max:8',
+            'secret'   =&gt; 'required|min:6|max:16',
+            'captcha'  =&gt; 'required'
+        ];
+
+        $message = [
+            'phone.required'    =&gt; '手机号码必填',
+            'phone.Regex'       =&gt; '手机号码不规范',
+            'phone.unique'      =&gt; '手机号码已存在',
+            'nickname.required' =&gt; '昵称必填',
+            'nickname.min'      =&gt; '昵称最少2位',
+            'nickname.max'      =&gt; '昵称最长8位',
+            'secret.required'   =&gt; '密码必填',
+            'secret.min'        =&gt; '密码最少6位',
+            'secret.max'        =&gt; '密码最长16位',
+            'captcha'           =&gt; '短信验证码必填'
+        ];
+
+        $v = Validator::make($input, $rules, $message);
+        if($v-&gt;fails()){
+            Session::flash('error', $v-&gt;messages()-&gt;first());
+            return Redirect::to('/auth/register');
+        }
+
+        $captcha = Cache::get($input['phone']);
+        if($captcha != $input['captcha']){
+            Session::flash('error', '短信验证码不正确');
+            return Redirect::to('/auth/register');
+        }
+
+        /**
+         * 验证完成
+         */
+        $operator = new User;
+        $operator-&gt;mobile = $input['phone'];
+        $operator-&gt;username = $input['nickname'];
+        $operator-&gt;password = Hash::make($input['secret']);
+        $operator-&gt;avatar = get_static('assets/avatar/'.mt_rand(1,43).'.png');
+        $operator-&gt;save();
+
+        /**
+         * 注册完成，自动登录
+         */
+
+        Auth::attempt(['mobile' =&gt; $input['phone'], 'password' =&gt; $input['secret']]);
+
+        Session::flash('success', '注册成功,系统已经自动为您登录');
+
+        return redirect()-&gt;intended('/');
+
+    }
+
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return User
+     */
+    protected function create(array $data)
+    {
+        return User::create([
+            'name' =&gt; $data['name'],
+            'email' =&gt; $data['email'],
+            'password' =&gt; bcrypt($data['password']),
+        ]);
+    }
+
+}
+</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all();
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>

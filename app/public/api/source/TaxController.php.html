@@ -1,0 +1,150 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+
+namespace App\Http\Controllers;
+
+use Ramsey\Uuid\Uuid;
+use DatePeriod;
+use Auth;
+use DateInterval;
+use DateTime;
+use App\Tax;
+use Illuminate\Http\Request;
+use App\CustomerCompany as Company;
+use App\Http\Requests;
+
+class TaxController extends BaseController
+{
+    /**
+     * 获取税务信息
+     * @return mixed
+     * @param Request $request
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function getTaxList(Request $request)
+    {
+        $company = Company::find($request-&gt;session()-&gt;get('customer_id'));
+        $start = new \DateTime($company-&gt;created_at);
+        $end      = new DateTime();
+        $interval = DateInterval::createFromDateString('1 month');
+        $period   = new DatePeriod($start, $interval, $end);
+
+        $card = [];
+
+        foreach ($period as $dt) {
+
+            $map = [
+                'user_id' =&gt; $request-&gt;session()-&gt;get('company_id'),
+                'company_id' =&gt; $request-&gt;session()-&gt;get('customer_id'),
+                'flag' =&gt; $dt-&gt;format(&quot;Ym&quot;)
+            ];
+
+            $tax = Tax::where($map)-&gt;first();
+            if(empty($tax)){
+                $record = new Tax();
+                $record-&gt;user_id = $request-&gt;session()-&gt;get('company_id');
+                $record-&gt;company_id = $request-&gt;session()-&gt;get('customer_id');
+                $record-&gt;operator_id = Auth::user()-&gt;id;
+                $record-&gt;card_name = $dt-&gt;format(&quot;Ym&quot;).'税务申报单';
+                $record-&gt;finish_time = strtotime($dt-&gt;format('Y-m').'-15');
+                $record-&gt;uuid = Uuid::uuid1();
+                $record-&gt;guoshui_status = 0;
+                $record-&gt;dishui_status = 0;
+                $record-&gt;flag = $dt-&gt;format(&quot;Ym&quot;);
+                $record-&gt;save();
+                $card[] = $record-&gt;toArray();
+            }else{
+                $card[] = $tax-&gt;toArray();
+            }
+        }
+
+        $card = array_reverse($card);
+        return view('customer.tax.index')-&gt;with('cards', $card);
+    }
+
+    /**
+     * 完成税务申报
+     * @param Request $request
+     * @return mixed
+     * @author AndyLee &lt;root@lostman.org&gt;
+     */
+    public function postFinishTaxApply(Request $request){
+        $input = $request-&gt;only('type', 'flag');
+
+        $map = [
+            'user_id' =&gt; $request-&gt;session()-&gt;get('company_id'),
+            'company_id' =&gt; $request-&gt;session()-&gt;get('customer_id')
+        ];
+        /*
+         * 国税部分
+         */
+        if($input['type'] == 'guoshui'){
+            $map['guoshui_status'] = 0;
+
+            $tax = Tax::where($map)-&gt;first();
+            if(!empty($tax)){
+                $tax-&gt;guoshui_status = 1;
+                $tax-&gt;save();
+
+                return \Response::json(['message'=&gt; '国税申报完成', 'state' =&gt; 'success']);
+            }
+        }
+
+        if($input['type'] == 'dishui'){
+            $map['dishui_status'] = 0;
+
+            $tax = Tax::where($map)-&gt;first();
+            if(!empty($tax)){
+                $tax-&gt;dishui_status = 1;
+                $tax-&gt;save();
+
+                return \Response::json(['message'=&gt; '地税申报完成', 'state' =&gt; 'success']);
+            }
+        }
+
+    }
+}
+</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all();
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>

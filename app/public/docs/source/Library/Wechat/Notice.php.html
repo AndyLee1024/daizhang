@@ -1,0 +1,387 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../../../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../../../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../../../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../../../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+/**
+ * Notice.php
+ *
+ * Part of Overtrue\Wechat.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @author    overtrue &lt;i@overtrue.me&gt;
+ * @copyright 2015 overtrue &lt;i@overtrue.me&gt;
+ * @link      https://github.com/overtrue
+ * @link      http://overtrue.me
+ */
+
+namespace Overtrue\Wechat;
+
+/**
+ * 模板消息
+ */
+class Notice
+{
+
+    /**
+     * Http对象
+     *
+     * @var Http
+     */
+    protected $http;
+
+    /**
+     * 默认数据项颜色
+     *
+     * @var string
+     */
+    protected $defaultColor = '#173177';
+
+    /**
+     * 消息属性
+     *
+     * @var array
+     */
+    protected $message = array(
+                          'touser'      =&gt; '',
+                          'template_id' =&gt; '',
+                          'url'         =&gt; '',
+                          'topcolor'    =&gt; '#FF00000',
+                          'data'        =&gt; array(),
+                         );
+
+    /**
+     * 工业列表
+     *
+     * @var array
+     */
+    protected static $industries = array(
+                                    'IT科技'              =&gt; array(
+                                                                1 =&gt; '互联网/电子商务',
+                                                                2 =&gt; 'IT软件与服务',
+                                                                3 =&gt; 'IT硬件与设备',
+                                                                4 =&gt; '电子技术',
+                                                                5 =&gt; '通信与运营商',
+                                                                6 =&gt; '网络游戏',
+                                                               ),
+
+                                    '金融业'             =&gt; array(
+                                                                7 =&gt; '银行',
+                                                                8 =&gt; '基金|理财|信托',
+                                                                9 =&gt; '保险',
+                                                               ),
+
+                                    '餐饮'                =&gt; array(10 =&gt; '餐饮'),
+
+                                    '酒店旅游'          =&gt; array(
+                                                                11 =&gt; '酒店',
+                                                                12 =&gt; '旅游',
+                                                               ),
+
+                                    '运输与仓储'       =&gt; array(
+                                                                13 =&gt; '快递',
+                                                                14 =&gt; '物流',
+                                                                14 =&gt; '仓储',
+                                                               ),
+
+                                    '教育'                =&gt; array(
+                                                                16 =&gt; '培训',
+                                                                17 =&gt; '院校',
+                                                               ),
+
+                                    '政府与公共事业' =&gt; array(
+                                                                18 =&gt; '学术科研',
+                                                                19 =&gt; '交警',
+                                                                20 =&gt; '博物馆',
+                                                                21 =&gt; '公共事业|非盈利机构',
+                                                               ),
+
+                                    '医药护理'          =&gt; array(
+                                                                22 =&gt; '医药医疗',
+                                                                23 =&gt; '护理美容',
+                                                                24 =&gt; '保健与卫生',
+                                                               ),
+
+                                    '交通工具'          =&gt; array(
+                                                                25 =&gt; '汽车相关',
+                                                                26 =&gt; '摩托车相关',
+                                                                27 =&gt; '火车相关',
+                                                                28 =&gt; '飞机相关',
+                                                               ),
+
+                                    '房地产'             =&gt; array(
+                                                                29 =&gt; '建筑',
+                                                                30 =&gt; '物业',
+                                                               ),
+
+                                    '消费品'             =&gt; array(31 =&gt; '消费品'),
+
+                                    '商业服务'          =&gt; array(
+                                                                32 =&gt; '法律',
+                                                                33 =&gt; '会展',
+                                                                34 =&gt; '中介服务',
+                                                                35 =&gt; '认证',
+                                                                36 =&gt; '审计',
+                                                               ),
+
+                                    '文体娱乐'          =&gt; array(
+                                                                37 =&gt; '传媒',
+                                                                38 =&gt; '体育',
+                                                                39 =&gt; '娱乐休闲',
+                                                               ),
+
+                                    '印刷'                =&gt; array(40 =&gt; '印刷'),
+
+                                    '其它'                =&gt; array(41 =&gt; '其它'),
+                                   );
+
+    const API_SEND_NOTICE  = 'https://api.weixin.qq.com/cgi-bin/message/template/send';
+    const API_SET_INDUSTRY = 'https://api.weixin.qq.com/cgi-bin/template/api_set_industry';
+    const API_ADD_TEMPLATE = 'https://api.weixin.qq.com/cgi-bin/template/api_add_template';
+
+    /**
+     * constructor
+     *
+     * @param string $appId
+     * @param string $appSecret
+     */
+    public function __construct($appId, $appSecret)
+    {
+        $this-&gt;http  = new Http(new AccessToken($appId, $appSecret));
+    }
+
+    /**
+     * 修改账号所属行业
+     *
+     * @param int $industryOne
+     * @param int $industryTwo
+     *
+     * @return bool
+     */
+    public function setIndustry($industryOne, $industryTwo)
+    {
+        $params = array(
+                   'industry_id1' =&gt; $industryOne,
+                   'industry_id2' =&gt; $industryTwo,
+                  );
+
+        return $this-&gt;http-&gt;jsonPost(self::API_SET_INDUSTRY, $params);
+    }
+
+    /**
+     * 添加模板并获取模板ID
+     *
+     * @param string $shortId
+     *
+     * @return string
+     */
+    public function addTemplate($shortId)
+    {
+        $params = array('template_id_short' =&gt; $shortId);
+
+        $result = $this-&gt;http-&gt;jsonPost(self::API_ADD_TEMPLATE, $params);
+
+        return $result['template_id'];
+    }
+
+    /**
+     * 发送模板消息
+     *
+     * @param string $to
+     * @param string $templateId
+     * @param array  $data
+     * @param string $url
+     * @param string $color
+     *
+     * @return int
+     */
+    public function send(
+        $to = null,
+        $templateId = null,
+        array $data = array(),
+        $url = null,
+        $color = '#FF0000'
+    ) {
+        $params = array(
+                   'touser'      =&gt; $to,
+                   'template_id' =&gt; $templateId,
+                   'url'         =&gt; $url,
+                   'topcolor'    =&gt; $color,
+                   'data'        =&gt; $data,
+                  );
+
+        $required = array(
+                     'touser',
+                     'template_id',
+                    );
+
+        foreach ($params as $key =&gt; $value) {
+            if (in_array($key, $required) &amp;&amp; empty($value) &amp;&amp; empty($this-&gt;message[$key])) {
+                throw new Exception(&quot;消息属性 '$key' 不能为空！&quot;);
+            }
+
+            $params[$key] = empty($value) ? $this-&gt;message[$key] : $value;
+        }
+
+        $params['data'] = $this-&gt;formatData($params['data']);
+
+        $result = $this-&gt;http-&gt;jsonPost(self::API_SEND_NOTICE, $params);
+
+        return $result['msgid'];
+    }
+
+    /**
+     * 设置模板消息数据项的默认颜色
+     *
+     * @param string $color
+     */
+    public function defaultColor($color)
+    {
+        $this-&gt;defaultColor = $color;
+    }
+
+    /**
+     * 行业列表
+     *
+     * @return array
+     */
+    public function industries()
+    {
+        return self::$industries;
+    }
+
+    /**
+     * 魔术访问
+     *
+     * @param string $property
+     *
+     * @return mixed
+     */
+    public function __get($property)
+    {
+        if ($property === 'industries') {
+            return $this-&gt;industries();
+        }
+    }
+
+    /**
+     * 格式化模板数据
+     *
+     * @param array $data
+     *
+     * @return array
+     */
+    protected function formatData($data)
+    {
+        $return = array();
+
+        foreach ($data as $key =&gt; $item) {
+            if (is_scalar($item)) {
+                $value = $item;
+                $color = $this-&gt;defaultColor;
+            } elseif (is_array($item) &amp;&amp; !empty($item)) {
+                if (isset($item['value'])) {
+                    $value = strval($item['value']);
+                    $color = empty($item['color']) ? $this-&gt;defaultColor : strval($item['color']);
+                } elseif (count($item) &lt; 2) {
+                    $value = array_shift($item);
+                    $color = $this-&gt;defaultColor;
+                } else {
+                    list($value, $color) = each($item);
+                }
+            } else {
+                $value = '数据项格式错误';
+                $color = $this-&gt;defaultColor;
+            }
+
+            $return[$key] = array(
+                             'value' =&gt; $value,
+                             'color' =&gt; $color,
+                            );
+        }
+
+        return $return;
+    }
+
+    /**
+     * 魔术调用
+     *
+     * @param string $method
+     * @param array  $args
+     *
+     * @return Notice
+     */
+    public function __call($method, $args)
+    {
+        $map = array(
+                'template'   =&gt; 'template_id',
+                'uses'       =&gt; 'template_id',
+                'templateId' =&gt; 'template_id',
+                'to'         =&gt; 'touser',
+                'receiver'   =&gt; 'touser',
+                'color'      =&gt; 'topcolor',
+                'topColor'   =&gt; 'topcolor',
+                'url'        =&gt; 'url',
+                'linkTo'     =&gt; 'linkTo',
+                'data'       =&gt; 'data',
+                'with'       =&gt; 'data',
+               );
+
+        if (0 === stripos($method, 'with')) {
+            $method = lcfirst(substr($method, 4));
+        }
+
+        if (0 === stripos($method, 'and')) {
+            $method = lcfirst(substr($method, 3));
+        }
+
+        if (isset($map[$method])) {
+            $this-&gt;message[$map[$method]] = array_shift($args);
+
+            return $this;
+        }
+    }
+}
+</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all();
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>

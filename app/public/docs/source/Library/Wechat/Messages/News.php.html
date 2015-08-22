@@ -1,0 +1,150 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../../../../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../../../../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../../../../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../../../../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+/**
+ * News.php
+ *
+ * Part of Overtrue\Wechat.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @author    overtrue &lt;i@overtrue.me&gt;
+ * @copyright 2015 overtrue &lt;i@overtrue.me&gt;
+ * @link      https://github.com/overtrue
+ * @link      http://overtrue.me
+ */
+
+namespace Overtrue\Wechat\Messages;
+
+use Closure;
+
+/**
+ * 图文消息
+ */
+class News extends BaseMessage
+{
+
+    /**
+     * 属性
+     *
+     * @var array
+     */
+    protected $items = array();
+
+    /**
+     * 添加图文消息内容
+     *
+     * @param NewsItem $item
+     *
+     * @return News
+     */
+    public function item(NewsItem $item)
+    {
+        array_push($this-&gt;items, $item);
+
+        return $this;
+    }
+
+    /**
+     * 添加多条图文消息
+     *
+     * @param array|Closure $items
+     *
+     * @return News
+     */
+    public function items($items)
+    {
+        if ($items instanceof Closure) {
+            $items = $items();
+        }
+
+        array_map(array($this, 'item'), (array) $items);
+
+        return $this;
+    }
+
+    /**
+     * 生成主动消息数组
+     */
+    public function toStaff()
+    {
+        $articles = array();
+
+        foreach ($this-&gt;items as $item) {
+            $articles[] = array(
+                           'title'       =&gt; $item-&gt;title,
+                           'description' =&gt; $item-&gt;description,
+                           'url'         =&gt; $item-&gt;url,
+                           'picurl'      =&gt; $item-&gt;pic_url,
+                          );
+        }
+
+        return array('news' =&gt; array('articles' =&gt; $articles));
+    }
+
+    /**
+     * 生成回复消息数组
+     */
+    public function toReply()
+    {
+        $articles = array();
+
+        foreach ($this-&gt;items as $item) {
+            $articles[] = array(
+                           'Title'       =&gt; $item-&gt;title,
+                           'Description' =&gt; $item-&gt;description,
+                           'Url'         =&gt; $item-&gt;url,
+                           'PicUrl'      =&gt; $item-&gt;pic_url,
+                          );
+        }
+
+        return array(
+                'ArticleCount' =&gt; count($articles),
+                'Articles'     =&gt; $articles,
+               );
+    }
+}
+</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all();
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,185 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../../../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../../../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../../../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../../../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+/**
+ * Http.php
+ *
+ * Part of Overtrue\Wechat.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @author    overtrue &lt;i@overtrue.me&gt;
+ * @copyright 2015 overtrue &lt;i@overtrue.me&gt;
+ * @link      https://github.com/overtrue
+ * @link      http://overtrue.me
+ */
+
+namespace Overtrue\Wechat;
+
+use Overtrue\Wechat\Utils\Http as HttpClient;
+use Overtrue\Wechat\Utils\JSON;
+
+/**
+ * @method mixed jsonPost($url, $params = array(), $options = array())
+ */
+class Http extends HttpClient
+{
+
+    /**
+     * token
+     *
+     * @var string
+     */
+    protected $token;
+
+    /**
+     * json请求
+     *
+     * @var bool
+     */
+    protected $json = false;
+
+    /**
+     * 缓存类
+     *
+     * @var Cache
+     */
+    protected $cache;
+
+    /**
+     * constructor
+     *
+     * @param AccessToken $token
+     */
+    public function __construct($token = null)
+    {
+        $this-&gt;token = $token instanceof AccessToken ? $token-&gt;getToken() : $token;
+        parent::__construct();
+    }
+
+    /**
+     * 设置请求access_token
+     *
+     * @param string $token
+     */
+    public function setToken($token)
+    {
+        $this-&gt;token = $token;
+    }
+
+    /**
+     * 发起一个HTTP/HTTPS的请求
+     *
+     * @param string $url     接口的URL
+     * @param string $method  请求类型   GET | POST
+     * @param array  $params  接口参数
+     * @param array  $options 其它选项
+     *
+     * @return array | boolean
+     */
+    public function request($url, $method = self::GET, $params = array(), $options = array())
+    {
+        if ($this-&gt;token) {
+            $url .= (stripos($url, '?') ? '&amp;' : '?').'access_token='.$this-&gt;token;
+        }
+
+        $method = strtoupper($method);
+
+        if ($this-&gt;json) {
+            $options['json'] = true;
+        }
+
+        $response = parent::request($url, $method, $params, $options);
+
+        $this-&gt;json = false;
+
+        if (empty($response['data'])) {
+            throw new Exception('服务器无响应');
+        }
+
+        $contents = JSON::decode($response['data'], true);
+
+        // while the response is an invalid JSON structure, returned the source data
+        if (JSON_ERROR_NONE !== json_last_error()) {
+            return $response['data'];
+        }
+
+        if (isset($contents['errcode']) &amp;&amp; 0 !== $contents['errcode']) {
+            if (empty($contents['errmsg'])) {
+                $contents['errmsg'] = 'Unknown';
+            }
+
+            throw new Exception(&quot;[{$contents['errcode']}] &quot;.$contents['errmsg'], $contents['errcode']);
+        }
+
+        if ($contents === array('errcode' =&gt; '0', 'errmsg' =&gt; 'ok')) {
+            return true;
+        }
+
+        return $contents;
+    }
+
+    /**
+     * 魔术调用
+     *
+     * @param string $method
+     * @param array  $args
+     *
+     * @return mixed
+     */
+    public function __call($method, $args)
+    {
+        if (stripos($method, 'json') === 0) {
+            $method = strtolower(substr($method, 4));
+            $this-&gt;json = true;
+        }
+
+        $result = call_user_func_array(array($this, $method), $args);
+
+        return $result;
+    }
+}
+</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all();
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>
